@@ -553,6 +553,444 @@
       "What is the difference between inline inspection and final inspection?",
       "Inline Inspection production চলাকালীন defect শনাক্ত করে। Final Inspection সাধারণত order সম্পন্ন হওয়ার পর finished goods-এর quality, quantity, packing ও buyer requirement যাচাই করে।",
       "Inline inspection identifies defects during production. Final inspection checks finished goods, quantity, packing and buyer requirements after production is completed."
+    ],
+    [
+      "Quality কী?",
+      "What is Quality?",
+      "Quality হলো পণ্যের নির্ধারিত Specification, Standard এবং Customer Requirements পূরণ করার সক্ষমতা।",
+      "Quality is the ability of a product to meet specified standards, specifications, and customer requirements."
+    ],
+    [
+      "Quality Assurance-এর প্রধান উদ্দেশ্য কী?",
+      "What is the main objective of Quality Assurance?",
+      "উৎপাদন প্রক্রিয়ায় ত্রুটি প্রতিরোধ করা এবং ধারাবাহিকভাবে নির্ধারিত মান নিশ্চিত করা।",
+      "The main objective of Quality Assurance is to prevent defects during production and ensure consistent product quality."
+    ],
+    [
+      "Quality Control-এর প্রধান উদ্দেশ্য কী?",
+      "What is the main objective of Quality Control?",
+      "পণ্য পরীক্ষা করে ত্রুটি শনাক্ত করা এবং নির্ধারিত মান অনুযায়ী পণ্য নিশ্চিত করা।",
+      "The main objective of Quality Control is to inspect products, identify defects, and ensure they meet the required standards."
+    ],
+    [
+      "Quality Policy কী?",
+      "What is a Quality Policy?",
+      "Quality Policy হলো প্রতিষ্ঠানের মান সম্পর্কিত আনুষ্ঠানিক নীতিমালা, যেখানে মানের লক্ষ্য ও অঙ্গীকার প্রকাশ করা হয়।",
+      "A Quality Policy is a formal statement of an organization's commitment and direction regarding quality."
+    ],
+    [
+      "Quality Objective কী?",
+      "What is a Quality Objective?",
+      "Quality Objective হলো মান উন্নয়ন ও বজায় রাখার জন্য নির্ধারিত পরিমাপযোগ্য লক্ষ্য।",
+      "A Quality Objective is a measurable target established to maintain and improve quality."
+    ],
+    [
+      "Quality Standard কী?",
+      "What is a Quality Standard?",
+      "Quality Standard হলো পণ্যের গ্রহণযোগ্য মান নির্ধারণের জন্য নির্দিষ্ট নিয়ম, Specification ও Requirement।",
+      "A Quality Standard is a set of defined rules, specifications, and requirements used to determine acceptable product quality."
+    ],
+    [
+      "Customer Satisfaction কী?",
+      "What is Customer Satisfaction?",
+      "পণ্য বা সেবা ক্রেতার প্রত্যাশা ও চাহিদা পূরণ করলে যে সন্তুষ্টি তৈরি হয় তাকে Customer Satisfaction বলে।",
+      "Customer Satisfaction is achieved when a product or service meets or exceeds customer expectations."
+    ],
+    [
+      "Quality Improvement কী?",
+      "What is Quality Improvement?",
+      "পণ্যের মান, উৎপাদন প্রক্রিয়া ও কাজের দক্ষতা ধারাবাহিকভাবে উন্নত করার প্রক্রিয়াকে Quality Improvement বলে।",
+      "Quality Improvement is the continuous process of enhancing product quality, production processes, and work efficiency."
+    ],
+    [
+      "Total Quality Management (TQM) কী?",
+      "What is Total Quality Management (TQM)?",
+      "TQM হলো প্রতিষ্ঠানের সকল কর্মী ও বিভাগের অংশগ্রহণে ক্রেতার সন্তুষ্টি এবং ধারাবাহিক মান উন্নয়নের ব্যবস্থাপনা পদ্ধতি।",
+      "TQM is a management approach involving all employees and departments to achieve customer satisfaction and continuous quality improvement."
+    ],
+    [
+      "Quality Culture কী?",
+      "What is Quality Culture?",
+      "Quality Culture হলো প্রতিষ্ঠানের এমন কর্মপরিবেশ যেখানে প্রত্যেকে নিজের কাজের মান বজায় রাখা ও উন্নয়নে দায়িত্বশীল থাকে।",
+      "Quality Culture is a workplace environment where everyone takes responsibility for maintaining and improving quality."
+    ],
+    [
+      "Quality Standardization কী?",
+      "What is Quality Standardization?",
+      "একই কাজের জন্য নির্দিষ্ট পদ্ধতি ও মান অনুসরণ করে উৎপাদনে ধারাবাহিকতা নিশ্চিত করাকে Quality Standardization বলে।",
+      "Quality Standardization ensures consistency by following defined methods and standards for the same task."
+    ],
+    [
+      "Quality Inspection কী?",
+      "What is Quality Inspection?",
+      "পণ্য বা প্রক্রিয়া নির্ধারিত Specification অনুযায়ী হচ্ছে কি না তা পরীক্ষা করার প্রক্রিয়াকে Quality Inspection বলে।",
+      "Quality Inspection is the process of checking whether products or processes meet specified requirements."
+    ],
+    [
+      "Quality Audit কী?",
+      "What is a Quality Audit?",
+      "নির্ধারিত Quality System, Procedure ও Standard অনুসরণ করা হচ্ছে কি না তা পদ্ধতিগতভাবে যাচাই করাকে Quality Audit বলে।",
+      "A Quality Audit is a systematic examination to verify whether quality systems, procedures, and standards are being followed."
+    ],
+    [
+      "Internal Audit কী?",
+      "What is an Internal Audit?",
+      "প্রতিষ্ঠানের নিজস্ব প্রশিক্ষিত কর্মী বা অডিটর দ্বারা প্রতিষ্ঠানের Quality System ও কার্যক্রম যাচাই করাকে Internal Audit বলে।",
+      "An Internal Audit is an examination of an organization's quality system and activities by its own trained personnel or auditors."
+    ],
+    [
+      "External Audit কী?",
+      "What is an External Audit?",
+      "বাইরের স্বাধীন অডিটর, Buyer বা Certification Body দ্বারা প্রতিষ্ঠানের কার্যক্রম ও মান ব্যবস্থা যাচাই করাকে External Audit বলে।",
+      "An External Audit is an assessment conducted by an independent auditor, buyer, or certification body."
+    ],
+    [
+      "Compliance কী?",
+      "What is Compliance?",
+      "Buyer Requirements, আইন, আন্তর্জাতিক মান এবং প্রতিষ্ঠানের নির্ধারিত নিয়ম মেনে চলাকে Compliance বলে।",
+      "Compliance means following buyer requirements, laws, international standards, and organizational rules."
+    ],
+    [
+      "Non-Conformity কী?",
+      "What is Non-Conformity?",
+      "কোনো পণ্য, প্রক্রিয়া বা কার্যক্রম নির্ধারিত Requirement পূরণ করতে ব্যর্থ হলে তাকে Non-Conformity বলে।",
+      "Non-Conformity occurs when a product, process, or activity fails to meet specified requirements."
+    ],
+    [
+      "Conformity কী?",
+      "What is Conformity?",
+      "কোনো পণ্য বা প্রক্রিয়া নির্ধারিত Requirement ও Standard পূরণ করলে তাকে Conformity বলে।",
+      "Conformity means that a product or process meets the specified requirements and standards."
+    ],
+    [
+      "Quality Risk কী?",
+      "What is Quality Risk?",
+      "পণ্যের মান বা উৎপাদন প্রক্রিয়ায় সমস্যা সৃষ্টি করতে পারে এমন সম্ভাব্য ঝুঁকিকে Quality Risk বলে।",
+      "Quality Risk is a potential threat that may negatively affect product quality or production processes."
+    ],
+    [
+      "Quality Responsibility কী?",
+      "What is Quality Responsibility?",
+      "নির্ধারিত মান অনুযায়ী কাজ করা, ত্রুটি প্রতিরোধ করা এবং নিজের কাজের মান নিশ্চিত করার দায়িত্বকে Quality Responsibility বলে।",
+      "Quality Responsibility is the duty to follow standards, prevent defects, and ensure the quality of one's work."
+    ],
+    [
+      "Defect কী?",
+      "What is a Defect?",
+      "পণ্যের কোনো বৈশিষ্ট্য নির্ধারিত Specification বা Requirement থেকে বিচ্যুত হলে তাকে Defect বলে।",
+      "A defect is a product characteristic that deviates from specified requirements or standards."
+    ],
+    [
+      "Defective Product কী?",
+      "What is a Defective Product?",
+      "যে পণ্যে এক বা একাধিক ত্রুটি রয়েছে এবং যা নির্ধারিত মান পূরণ করে না তাকে Defective Product বলে।",
+      "A defective product is a product containing one or more defects that fails to meet required standards."
+    ],
+    [
+      "Defect Classification কী?",
+      "What is Defect Classification?",
+      "ত্রুটিকে Critical, Major এবং Minor—এই শ্রেণিতে ভাগ করার প্রক্রিয়াকে Defect Classification বলে।",
+      "Defect Classification is the process of categorizing defects as Critical, Major, or Minor."
+    ],
+    [
+      "Defect Analysis কী?",
+      "What is Defect Analysis?",
+      "উৎপাদনে পাওয়া ত্রুটির ধরন, সংখ্যা, কারণ এবং প্রভাব বিশ্লেষণ করাকে Defect Analysis বলে।",
+      "Defect Analysis involves examining defect types, quantities, causes, and their effects during production."
+    ],
+    [
+      "Defect Rate কী?",
+      "What is Defect Rate?",
+      "মোট পরিদর্শিত ইউনিটের তুলনায় ত্রুটিযুক্ত ইউনিটের শতকরা হারকে Defect Rate বলে।",
+      "Defect Rate is the percentage of defective units compared with the total inspected units."
+    ],
+    [
+      "Defect Rate-এর সূত্র কী?",
+      "What is the formula for Defect Rate?",
+      "Defect Rate (%) = (Defective Units ÷ Total Inspected Units) × 100।",
+      "Defect Rate (%) = (Defective Units ÷ Total Inspected Units) × 100."
+    ],
+    [
+      "Defective Percentage কী?",
+      "What is Defective Percentage?",
+      "মোট পরিদর্শিত পণ্যের মধ্যে ত্রুটিযুক্ত পণ্যের শতকরা পরিমাণকে Defective Percentage বলে।",
+      "Defective Percentage is the percentage of defective products among all inspected products."
+    ],
+    [
+      "Rework কী?",
+      "What is Rework?",
+      "ত্রুটিযুক্ত বা Specification অনুযায়ী না হওয়া পণ্যকে পুনরায় কাজ করে গ্রহণযোগ্য অবস্থায় আনার প্রক্রিয়াকে Rework বলে।",
+      "Rework is the process of correcting a defective or non-conforming product to make it acceptable."
+    ],
+    [
+      "Repair কী?",
+      "What is Repair?",
+      "ত্রুটিযুক্ত পণ্যের কার্যকারিতা পুনরুদ্ধার করার জন্য মেরামত করাকে Repair বলে। তবে এটি সব সময় মূল Specification পূরণ নাও করতে পারে।",
+      "Repair is the process of restoring the functionality of a defective product, although it may not fully meet the original specifications."
+    ],
+    [
+      "Scrap কী?",
+      "What is Scrap?",
+      "যে পণ্য বা উপকরণ মেরামত বা পুনরায় কাজ করেও ব্যবহারযোগ্য করা যায় না এবং বাতিল করতে হয় তাকে Scrap বলে।",
+      "Scrap refers to products or materials that cannot be made usable through repair or rework and must be discarded."
+    ],
+    [
+      "Rejection কী?",
+      "What is Rejection?",
+      "নির্ধারিত Acceptance Criteria পূরণ না করায় পণ্য বা লট বাতিল করাকে Rejection বলে।",
+      "Rejection is the refusal of a product or lot because it does not meet the specified acceptance criteria."
+    ],
+    [
+      "First Time Pass Rate কী?",
+      "What is First Time Pass Rate?",
+      "প্রথমবার পরিদর্শনে কোনো পুনরায় কাজ ছাড়াই পাস করা পণ্যের শতকরা হারকে First Time Pass Rate বলে।",
+      "First Time Pass Rate is the percentage of products that pass inspection the first time without rework."
+    ],
+    [
+      "FPY কী?",
+      "What is FPY?",
+      "FPY (First Pass Yield) হলো কোনো প্রক্রিয়ায় প্রথমবারেই Rework বা Repair ছাড়া ভালো পণ্য পাওয়ার হার।",
+      "FPY (First Pass Yield) measures the percentage of products that pass a process the first time without rework or repair."
+    ],
+    [
+      "Quality Alert কী?",
+      "What is a Quality Alert?",
+      "গুরুত্বপূর্ণ ত্রুটি বা Quality Risk সম্পর্কে সংশ্লিষ্ট কর্মীদের দ্রুত সতর্ক করার জন্য প্রকাশিত নির্দেশনাকে Quality Alert বলে।",
+      "A Quality Alert is a notice issued to quickly inform relevant employees about important defects or quality risks."
+    ],
+    [
+      "Defect Prevention কী?",
+      "What is Defect Prevention?",
+      "ত্রুটি তৈরি হওয়ার আগেই সম্ভাব্য কারণ শনাক্ত করে প্রতিরোধমূলক ব্যবস্থা নেওয়াকে Defect Prevention বলে।",
+      "Defect Prevention means identifying potential causes and taking preventive measures before defects occur."
+    ],
+    [
+      "Quality Checkpoint কী?",
+      "What is a Quality Checkpoint?",
+      "উৎপাদন প্রক্রিয়ার নির্দিষ্ট ধাপে মান যাচাই করার জন্য নির্ধারিত পরীক্ষার স্থান বা ধাপকে Quality Checkpoint বলে।",
+      "A Quality Checkpoint is a designated stage or location in production where quality is verified."
+    ],
+    [
+      "Quality Standard Operating Procedure কী?",
+      "What is a Quality Standard Operating Procedure?",
+      "Quality SOP হলো মান নিয়ন্ত্রণের কাজ কীভাবে সম্পন্ন করতে হবে তার লিখিত ও অনুমোদিত নির্দেশনা।",
+      "A Quality SOP is a documented and approved instruction describing how quality control activities must be performed."
+    ],
+    [
+      "PDCA Cycle কী?",
+      "What is the PDCA Cycle?",
+      "PDCA হলো Plan, Do, Check এবং Act—এই চার ধাপের মাধ্যমে ধারাবাহিক উন্নয়নের পদ্ধতি।",
+      "PDCA is a continuous improvement method consisting of four stages: Plan, Do, Check, and Act."
+    ],
+    [
+      "Kaizen কী?",
+      "What is Kaizen?",
+      "Kaizen হলো কর্মী ও ব্যবস্থাপনার অংশগ্রহণে ছোট ছোট পরিবর্তনের মাধ্যমে ধারাবাহিক উন্নয়নের পদ্ধতি।",
+      "Kaizen is a continuous improvement approach based on small, ongoing improvements involving employees and management."
+    ],
+    [
+      "Poka-Yoke কী?",
+      "What is Poka-Yoke?",
+      "Poka-Yoke হলো ভুল হওয়া প্রতিরোধ বা ভুল দ্রুত শনাক্ত করার ব্যবস্থা, যা উৎপাদন প্রক্রিয়ায় ত্রুটি কমায়।",
+      "Poka-Yoke is a mistake-proofing method designed to prevent errors or detect them quickly during production."
+    ],
+    [
+      "FMEA কী?",
+      "What is FMEA?",
+      "FMEA (Failure Mode and Effects Analysis) হলো সম্ভাব্য ত্রুটি, তার কারণ ও প্রভাব বিশ্লেষণ করে ঝুঁকি কমানোর পদ্ধতি।",
+      "FMEA (Failure Mode and Effects Analysis) is a method used to identify potential failures, their causes, and effects to reduce risk."
+    ],
+    [
+      "Risk Priority Number (RPN) কী?",
+      "What is Risk Priority Number (RPN)?",
+      "FMEA-তে Severity, Occurrence এবং Detection স্কোর গুণ করে RPN নির্ধারণ করা হয়।",
+      "In FMEA, RPN is calculated by multiplying the Severity, Occurrence, and Detection scores."
+    ],
+    [
+      "5 Why Analysis কী?",
+      "What is 5 Why Analysis?",
+      "কোনো সমস্যার মূল কারণ খুঁজে বের করার জন্য ধারাবাহিকভাবে কেন প্রশ্ন করার পদ্ধতিকে 5 Why Analysis বলে।",
+      "5 Why Analysis is a problem-solving method that repeatedly asks why to identify the root cause of a problem."
+    ],
+    [
+      "Fishbone Diagram-এর অন্য নাম কী?",
+      "What is another name for a Fishbone Diagram?",
+      "Fishbone Diagram-এর অন্য নাম Cause and Effect Diagram বা Ishikawa Diagram।",
+      "Another name for a Fishbone Diagram is the Cause and Effect Diagram or Ishikawa Diagram."
+    ],
+    [
+      "Pareto Principle কী?",
+      "What is the Pareto Principle?",
+      "Pareto Principle অনুযায়ী অনেক ক্ষেত্রে প্রায় ৮০% সমস্যা প্রায় ২০% কারণ থেকে সৃষ্টি হয়।",
+      "The Pareto Principle suggests that, in many situations, approximately 80% of problems arise from 20% of the causes."
+    ],
+    [
+      "Histogram কী কাজে ব্যবহৃত হয়?",
+      "What is a Histogram used for?",
+      "ডেটার বণ্টন ও বিভিন্ন মানের Frequency বুঝতে Histogram ব্যবহার করা হয়।",
+      "A Histogram is used to understand the distribution and frequency of data values."
+    ],
+    [
+      "Control Chart কী কাজে ব্যবহৃত হয়?",
+      "What is a Control Chart used for?",
+      "উৎপাদন প্রক্রিয়ার পরিবর্তন পর্যবেক্ষণ এবং প্রক্রিয়াটি Statistical Control-এর মধ্যে আছে কি না তা বুঝতে ব্যবহার করা হয়।",
+      "A Control Chart is used to monitor process variation and determine whether a process is statistically under control."
+    ],
+    [
+      "Check Sheet কী?",
+      "What is a Check Sheet?",
+      "নির্দিষ্ট তথ্য বা ত্রুটি পদ্ধতিগতভাবে সংগ্রহ ও গণনা করার জন্য ব্যবহৃত একটি সহজ ফরম্যাট হলো Check Sheet।",
+      "A Check Sheet is a simple format used to systematically collect and count specific data or defects."
+    ],
+    [
+      "Scatter Diagram কী?",
+      "What is a Scatter Diagram?",
+      "দুটি ভেরিয়েবলের মধ্যে সম্পর্ক বা Correlation পর্যবেক্ষণের জন্য Scatter Diagram ব্যবহার করা হয়।",
+      "A Scatter Diagram is used to observe the relationship or correlation between two variables."
+    ],
+    [
+      "Flow Chart কী?",
+      "What is a Flow Chart?",
+      "কোনো কাজ বা প্রক্রিয়ার ধাপগুলো ধারাবাহিকভাবে চিত্রের মাধ্যমে প্রকাশ করাকে Flow Chart বলে।",
+      "A Flow Chart is a visual representation of the sequential steps in a process."
+    ],
+    [
+      "Brainstorming কী?",
+      "What is Brainstorming?",
+      "কোনো সমস্যা সমাধানের জন্য দলগতভাবে বিভিন্ন ধারণা ও সম্ভাব্য সমাধান সংগ্রহ করার পদ্ধতিকে Brainstorming বলে।",
+      "Brainstorming is a group technique used to generate ideas and possible solutions to solve a problem."
+    ],
+    [
+      "Continuous Improvement কী?",
+      "What is Continuous Improvement?",
+      "কাজের পদ্ধতি, পণ্যের মান এবং উৎপাদন দক্ষতা নিয়মিত উন্নত করার প্রক্রিয়াকে Continuous Improvement বলে।",
+      "Continuous Improvement is the ongoing process of improving work methods, product quality, and production efficiency."
+    ],
+    [
+      "Benchmarking কী?",
+      "What is Benchmarking?",
+      "অন্য প্রতিষ্ঠানের ভালো পদ্ধতি ও পারফরম্যান্সের সঙ্গে নিজের প্রতিষ্ঠানের তুলনা করে উন্নয়নের সুযোগ খুঁজে বের করাকে Benchmarking বলে।",
+      "Benchmarking is the process of comparing an organization's performance and practices with industry leaders to identify improvement opportunities."
+    ],
+    [
+      "Six Sigma কী?",
+      "What is Six Sigma?",
+      "Six Sigma হলো ডেটাভিত্তিক Quality Improvement পদ্ধতি, যার লক্ষ্য প্রক্রিয়ার Variation ও Defect কমানো।",
+      "Six Sigma is a data-driven quality improvement methodology aimed at reducing process variation and defects."
+    ],
+    [
+      "DMAIC কী?",
+      "What is DMAIC?",
+      "DMAIC হলো Define, Measure, Analyze, Improve এবং Control—এই পাঁচ ধাপের Six Sigma সমস্যা সমাধান পদ্ধতি।",
+      "DMAIC is a five-step Six Sigma problem-solving method: Define, Measure, Analyze, Improve, and Control."
+    ],
+    [
+      "Statistical Process Control (SPC) কী?",
+      "What is Statistical Process Control (SPC)?",
+      "SPC হলো পরিসংখ্যানভিত্তিক পদ্ধতি, যার মাধ্যমে উৎপাদন প্রক্রিয়ার Variation পর্যবেক্ষণ ও নিয়ন্ত্রণ করা হয়।",
+      "SPC is a statistical method used to monitor and control variation in production processes."
+    ],
+    [
+      "Process Variation কী?",
+      "What is Process Variation?",
+      "উৎপাদন প্রক্রিয়ায় একই কাজের ফলাফলের মধ্যে যে পার্থক্য দেখা যায় তাকে Process Variation বলে।",
+      "Process Variation refers to differences in output produced by the same process over time."
+    ],
+    [
+      "Quality Manual কী?",
+      "What is a Quality Manual?",
+      "Quality Manual হলো প্রতিষ্ঠানের Quality Management System, নীতি, দায়িত্ব ও কার্যক্রমের প্রধান লিখিত বিবরণ।",
+      "A Quality Manual is the main document describing an organization's Quality Management System, policies, responsibilities, and activities."
+    ],
+    [
+      "Quality Record কী?",
+      "What is a Quality Record?",
+      "Quality কার্যক্রম সম্পন্ন হওয়ার প্রমাণ হিসেবে সংরক্ষিত Inspection Report, Audit Report ও অন্যান্য নথিকে Quality Record বলে।",
+      "A Quality Record is documented evidence of quality activities, such as inspection reports and audit reports."
+    ],
+    [
+      "Document Control কী?",
+      "What is Document Control?",
+      "প্রতিষ্ঠানের Quality Documents সঠিক Version, Approval, Distribution ও Revision অনুযায়ী পরিচালনা করাকে Document Control বলে।",
+      "Document Control ensures that quality documents are managed through proper versioning, approval, distribution, and revision."
+    ],
+    [
+      "Revision Control কী?",
+      "What is Revision Control?",
+      "কোনো Document বা Specification পরিবর্তন হলে তার নতুন Version ও পরিবর্তনের ইতিহাস নিয়ন্ত্রণ করাকে Revision Control বলে।",
+      "Revision Control manages new versions and the history of changes made to documents or specifications."
+    ],
+    [
+      "Traceability কী?",
+      "What is Traceability?",
+      "পণ্যের Material, Production Process, Batch এবং Inspection History শনাক্ত ও অনুসরণ করার সক্ষমতাকে Traceability বলে।",
+      "Traceability is the ability to identify and track a product's materials, production process, batch, and inspection history."
+    ],
+    [
+      "Product Identification কী?",
+      "What is Product Identification?",
+      "Style, Color, Size, Lot বা Barcode-এর মাধ্যমে পণ্যকে আলাদাভাবে শনাক্ত করার প্রক্রিয়াকে Product Identification বলে।",
+      "Product Identification is the process of distinguishing products using style, color, size, lot, or barcode information."
+    ],
+    [
+      "Quality Report কী?",
+      "What is a Quality Report?",
+      "Inspection Result, Defect Data, Quality Performance ও Corrective Action-এর তথ্য সংবলিত নথিকে Quality Report বলে।",
+      "A Quality Report is a document containing inspection results, defect data, quality performance, and corrective actions."
+    ],
+    [
+      "Quality KPI কী?",
+      "What is a Quality KPI?",
+      "Quality KPI হলো মানের পারফরম্যান্স পরিমাপের সূচক, যেমন DHU, Defect Rate, RFT এবং First Pass Yield।",
+      "Quality KPI is a performance indicator used to measure quality, such as DHU, Defect Rate, RFT, and First Pass Yield."
+    ],
+    [
+      "Quality Performance কী?",
+      "What is Quality Performance?",
+      "নির্ধারিত Quality Target-এর তুলনায় পণ্য ও উৎপাদন প্রক্রিয়ার মানের ফলাফলকে Quality Performance বলে।",
+      "Quality Performance refers to the quality results of products and processes compared with established quality targets."
+    ],
+    [
+      "Quality Monitoring কী?",
+      "What is Quality Monitoring?",
+      "উৎপাদন ও Inspection-এর বিভিন্ন ধাপে নিয়মিত Quality Data পর্যবেক্ষণ করাকে Quality Monitoring বলে।",
+      "Quality Monitoring is the regular observation of quality data at different stages of production and inspection."
+    ],
+    [
+      "Quality Planning কী?",
+      "What is Quality Planning?",
+      "পণ্যের মান নিশ্চিত করার জন্য প্রয়োজনীয় Standard, Inspection Method, Resource ও Quality Target আগে থেকে নির্ধারণ করাকে Quality Planning বলে।",
+      "Quality Planning involves defining the standards, inspection methods, resources, and quality targets required to ensure product quality."
+    ],
+    [
+      "Quality Control Plan কী?",
+      "What is a Quality Control Plan?",
+      "উৎপাদনের কোন ধাপে কী পরীক্ষা হবে, কে পরীক্ষা করবে এবং কোন Standard অনুসরণ করা হবে তার লিখিত পরিকল্পনাকে Quality Control Plan বলে।",
+      "A Quality Control Plan is a documented plan defining what will be inspected, when, by whom, and according to which standards."
+    ],
+    [
+      "Quality Gate কী?",
+      "What is a Quality Gate?",
+      "উৎপাদনের নির্দিষ্ট ধাপে পরবর্তী ধাপে যাওয়ার আগে Quality Requirement পূরণ হয়েছে কি না যাচাই করার নিয়ন্ত্রণ ব্যবস্থাকে Quality Gate বলে।",
+      "A Quality Gate is a control point where quality requirements must be verified before moving to the next production stage."
+    ],
+    [
+      "Quality Training কী?",
+      "What is Quality Training?",
+      "কর্মীদের Quality Standard, Defect Identification, Inspection Method ও Work Procedure সম্পর্কে দক্ষ করার প্রশিক্ষণকে Quality Training বলে।",
+      "Quality Training develops employees' skills in quality standards, defect identification, inspection methods, and work procedures."
+    ],
+    [
+      "Quality Feedback কী?",
+      "What is Quality Feedback?",
+      "উৎপাদন বা Inspection-এ পাওয়া Quality Result ও সমস্যা সংশ্লিষ্ট কর্মী বা বিভাগকে জানানোকে Quality Feedback বলে।",
+      "Quality Feedback means communicating quality results and problems to the relevant employees or departments."
+    ],
+    [
+      "Management Review কী?",
+      "What is a Management Review?",
+      "প্রতিষ্ঠানের Quality Management System-এর কার্যকারিতা, লক্ষ্য, Audit Result ও Improvement Plan পর্যালোচনার জন্য ব্যবস্থাপনার আনুষ্ঠানিক সভাকে Management Review বলে।",
+      "A Management Review is a formal management meeting to evaluate the effectiveness of the Quality Management System, objectives, audit results, and improvement plans."
     ]
   ],
   "AQL & Inspection": [
@@ -615,6 +1053,192 @@
       "What happens when an inspection fails?",
       "Inspection fail হলে defect details report করতে হয়, lot hold বা rejection status জানাতে হয় এবং buyer-এর নির্দেশনা অনুযায়ী sorting, rework বা corrective action নিতে হয়।",
       "When inspection fails, report the defect details, communicate the lot hold or rejection status, and arrange sorting, rework or corrective action according to buyer instructions."
+    ],
+    [
+      "Inspection কী?",
+      "What is Inspection?",
+      "নির্ধারিত মান ও Specification অনুযায়ী পণ্য বা উপকরণ পরীক্ষা করার প্রক্রিয়াকে Inspection বলে।",
+      "Inspection is the process of examining products or materials against specified standards and requirements."
+    ],
+    [
+      "Sampling Inspection কী?",
+      "What is Sampling Inspection?",
+      "সম্পূর্ণ লট পরীক্ষা না করে নির্দিষ্ট সংখ্যক নমুনা পরীক্ষা করে লটের মান সম্পর্কে সিদ্ধান্ত নেওয়াকে Sampling Inspection বলে।",
+      "Sampling Inspection involves examining a selected number of samples to make a decision about the quality of an entire lot."
+    ],
+    [
+      "100% Inspection কী?",
+      "What is 100% Inspection?",
+      "লটের প্রতিটি পিস পরীক্ষা করাকে 100% Inspection বলে।",
+      "100% Inspection means examining every piece in a lot."
+    ],
+    [
+      "Random Sampling কী?",
+      "What is Random Sampling?",
+      "লট থেকে পক্ষপাতহীনভাবে এলোমেলো পদ্ধতিতে নমুনা নির্বাচন করাকে Random Sampling বলে।",
+      "Random Sampling is the process of selecting samples from a lot without bias."
+    ],
+    [
+      "Inspection Lot কী?",
+      "What is an Inspection Lot?",
+      "একই ধরনের ও নির্দিষ্ট শর্তে উৎপাদিত পণ্যের যে নির্দিষ্ট পরিমাণ একসঙ্গে পরীক্ষা করা হয় তাকে Inspection Lot বলে।",
+      "An Inspection Lot is a defined quantity of products produced under similar conditions and presented for inspection."
+    ],
+    [
+      "Sample Size কী?",
+      "What is Sample Size?",
+      "কোনো লট থেকে পরীক্ষার জন্য নির্বাচিত মোট নমুনার সংখ্যাকে Sample Size বলে।",
+      "Sample Size is the total number of units selected from a lot for inspection."
+    ],
+    [
+      "General Inspection Level কী?",
+      "What is a General Inspection Level?",
+      "ANSI/ASQ Z1.4 বা সংশ্লিষ্ট Sampling Standard-এ General Inspection Level হলো নমুনা নির্বাচনের সাধারণ স্তর। যেমন Level I, II ও III।",
+      "In ANSI/ASQ Z1.4 or related sampling standards, General Inspection Levels are standard sample-size selection levels, such as Level I, II, and III."
+    ],
+    [
+      "Special Inspection Level কী?",
+      "What is a Special Inspection Level?",
+      "নির্দিষ্ট পরিস্থিতিতে তুলনামূলক ছোট নমুনা পরীক্ষার জন্য ব্যবহৃত Sampling Level-কে Special Inspection Level বলে।",
+      "Special Inspection Levels are used when relatively small sample sizes are required under specified conditions."
+    ],
+    [
+      "Normal Inspection কী?",
+      "What is Normal Inspection?",
+      "স্বাভাবিক উৎপাদন পরিস্থিতিতে নির্ধারিত Sampling Plan অনুযায়ী পরিচালিত Inspection-কে Normal Inspection বলে।",
+      "Normal Inspection is conducted according to the specified sampling plan under normal production conditions."
+    ],
+    [
+      "Tightened Inspection কী?",
+      "What is Tightened Inspection?",
+      "পূর্বের Inspection Result বা Quality Performance খারাপ হলে বেশি কঠোর Sampling Criteria অনুযায়ী পরীক্ষা করাকে Tightened Inspection বলে।",
+      "Tightened Inspection uses stricter sampling criteria when previous inspection results or quality performance indicate problems."
+    ],
+    [
+      "Reduced Inspection কী?",
+      "What is Reduced Inspection?",
+      "ধারাবাহিক ভালো Quality Performance-এর ভিত্তিতে অনুমোদিত নিয়ম অনুযায়ী কম নমুনা পরীক্ষা করাকে Reduced Inspection বলে।",
+      "Reduced Inspection involves checking fewer samples when consistently good quality performance meets the applicable requirements."
+    ],
+    [
+      "Calibration কী?",
+      "What is Calibration?",
+      "Measuring Instrument-এর ফলাফল নির্ভরযোগ্য রাখতে সেটিকে স্বীকৃত Reference Standard-এর সঙ্গে তুলনা ও যাচাই করার প্রক্রিয়াকে Calibration বলে।",
+      "Calibration is the process of comparing a measuring instrument with a recognized reference standard to ensure reliable measurements."
+    ],
+    [
+      "Measuring Instrument কী?",
+      "What is a Measuring Instrument?",
+      "কোনো পণ্যের Dimension, Weight, Temperature বা অন্যান্য পরিমাপ নির্ধারণের জন্য ব্যবহৃত যন্ত্রকে Measuring Instrument বলে।",
+      "A Measuring Instrument is a device used to measure dimensions, weight, temperature, or other product characteristics."
+    ],
+    [
+      "Measurement Accuracy কী?",
+      "What is Measurement Accuracy?",
+      "কোনো পরিমাপের ফল প্রকৃত বা Reference Value-এর কতটা কাছাকাছি তা Measurement Accuracy নির্দেশ করে।",
+      "Measurement Accuracy indicates how close a measured value is to the true or reference value."
+    ],
+    [
+      "Measurement Precision কী?",
+      "What is Measurement Precision?",
+      "একই শর্তে বারবার পরিমাপ করলে ফলাফলগুলো কতটা কাছাকাছি থাকে তা Measurement Precision নির্দেশ করে।",
+      "Measurement Precision indicates how close repeated measurements are to one another under the same conditions."
+    ],
+    [
+      "Tolerance কী?",
+      "What is Tolerance?",
+      "কোনো Dimension বা Measurement-এর জন্য অনুমোদিত সর্বোচ্চ ও সর্বনিম্ন সীমার পার্থক্যকে Tolerance বলে।",
+      "Tolerance is the permitted range of variation between the maximum and minimum acceptable measurement values."
+    ],
+    [
+      "Specification কী?",
+      "What is a Specification?",
+      "পণ্যের Design, Measurement, Material, Construction ও Quality Requirement-এর লিখিত বিবরণকে Specification বলে।",
+      "A Specification is a documented description of a product's design, measurements, materials, construction, and quality requirements."
+    ],
+    [
+      "First Piece Inspection কী?",
+      "What is First Piece Inspection?",
+      "উৎপাদন শুরুর পর প্রথম তৈরি পণ্যটি Specification অনুযায়ী আছে কি না যাচাই করাকে First Piece Inspection বলে।",
+      "First Piece Inspection verifies whether the first produced item meets the required specifications before continuing production."
+    ],
+    [
+      "Inline Quality Inspection কী?",
+      "What is Inline Quality Inspection?",
+      "উৎপাদন চলাকালীন কাজের বিভিন্ন ধাপে পণ্য পরীক্ষা করে ত্রুটি দ্রুত শনাক্ত করার প্রক্রিয়াকে Inline Quality Inspection বলে।",
+      "Inline Quality Inspection involves checking products at different stages during production to identify defects quickly."
+    ],
+    [
+      "Final Quality Inspection কী?",
+      "What is Final Quality Inspection?",
+      "উৎপাদন সম্পন্ন হওয়ার পর পণ্য Buyer-এর Specification ও Acceptance Criteria পূরণ করছে কি না যাচাই করাকে Final Quality Inspection বলে।",
+      "Final Quality Inspection verifies whether completed products meet buyer specifications and acceptance criteria."
+    ],
+    [
+      "Quality Monitoring কী?",
+      "What is Quality Monitoring?",
+      "উৎপাদন ও Inspection-এর বিভিন্ন ধাপে নিয়মিত Quality Data পর্যবেক্ষণ করাকে Quality Monitoring বলে।",
+      "Quality Monitoring is the regular observation of quality data at different stages of production and inspection."
+    ],
+    [
+      "Quality Planning কী?",
+      "What is Quality Planning?",
+      "পণ্যের মান নিশ্চিত করার জন্য প্রয়োজনীয় Standard, Inspection Method, Resource ও Quality Target আগে থেকে নির্ধারণ করাকে Quality Planning বলে।",
+      "Quality Planning involves defining the standards, inspection methods, resources, and quality targets required to ensure product quality."
+    ],
+    [
+      "Quality Control Plan কী?",
+      "What is a Quality Control Plan?",
+      "উৎপাদনের কোন ধাপে কী পরীক্ষা হবে, কে পরীক্ষা করবে এবং কোন Standard অনুসরণ করা হবে তার লিখিত পরিকল্পনাকে Quality Control Plan বলে।",
+      "A Quality Control Plan is a documented plan defining what will be inspected, when, by whom, and according to which standards."
+    ],
+    [
+      "Quality Gate কী?",
+      "What is a Quality Gate?",
+      "উৎপাদনের নির্দিষ্ট ধাপে পরবর্তী ধাপে যাওয়ার আগে Quality Requirement পূরণ হয়েছে কি না যাচাই করার নিয়ন্ত্রণ ব্যবস্থাকে Quality Gate বলে।",
+      "A Quality Gate is a control point where quality requirements must be verified before moving to the next production stage."
+    ],
+    [
+      "Pre-Production Meeting কী?",
+      "What is a Pre-Production Meeting?",
+      "উৎপাদন শুরুর আগে Style, Specification, Construction, Quality Risk ও Buyer Requirements নিয়ে সংশ্লিষ্ট বিভাগের আলোচনা সভাকে Pre-Production Meeting বলে।",
+      "A Pre-Production Meeting is a discussion among relevant departments before production to review style, specifications, construction, quality risks, and buyer requirements."
+    ],
+    [
+      "Quality KPI কী?",
+      "What is a Quality KPI?",
+      "Quality KPI হলো মানের পারফরম্যান্স পরিমাপের সূচক, যেমন DHU, Defect Rate, RFT এবং First Pass Yield।",
+      "Quality KPI is a performance indicator used to measure quality, such as DHU, Defect Rate, RFT, and First Pass Yield."
+    ],
+    [
+      "Quality Report কী?",
+      "What is a Quality Report?",
+      "Inspection Result, Defect Data, Quality Performance ও Corrective Action-এর তথ্য সংবলিত নথিকে Quality Report বলে।",
+      "A Quality Report is a document containing inspection results, defect data, quality performance, and corrective actions."
+    ],
+    [
+      "Traceability কী?",
+      "What is Traceability?",
+      "পণ্যের Material, Production Process, Batch এবং Inspection History শনাক্ত ও অনুসরণ করার সক্ষমতাকে Traceability বলে।",
+      "Traceability is the ability to identify and track a product's materials, production process, batch, and inspection history."
+    ],
+    [
+      "Product Identification কী?",
+      "What is Product Identification?",
+      "Style, Color, Size, Lot বা Barcode-এর মাধ্যমে পণ্যকে আলাদাভাবে শনাক্ত করার প্রক্রিয়াকে Product Identification বলে।",
+      "Product Identification is the process of distinguishing products using style, color, size, lot, or barcode information."
+    ],
+    [
+      "Quality Checkpoint কী?",
+      "What is a Quality Checkpoint?",
+      "উৎপাদন প্রক্রিয়ার নির্দিষ্ট ধাপে মান যাচাই করার জন্য নির্ধারিত পরীক্ষার স্থান বা ধাপকে Quality Checkpoint বলে।",
+      "A Quality Checkpoint is a designated stage or location in production where quality is verified."
+    ],
+    [
+      "Quality Alert কী?",
+      "What is a Quality Alert?",
+      "গুরুত্বপূর্ণ ত্রুটি বা Quality Risk সম্পর্কে সংশ্লিষ্ট কর্মীদের দ্রুত সতর্ক করার জন্য প্রকাশিত নির্দেশনাকে Quality Alert বলে।",
+      "গুরুত্বপূর্ণ ত্রুটি বা Quality Risk সম্পর্কে সংশ্লিষ্ট কর্মীদের দ্রুত সতর্ক করার জন্য প্রকাশিত নির্দেশনাকে Quality Alert বলে।"
     ]
   ],
   "Fabric": [
