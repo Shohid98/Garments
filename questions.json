@@ -54,11 +54,6 @@
       "key": "Merchandising",
       "bn": "মার্চেন্ডাইজিং",
       "emoji": "📋"
-    },
-    {
-      "key": "GPQ",
-      "bn": "জিপিকিউ",
-      "emoji": "📒"
     }
   ],
   "Cutting": [
@@ -741,14 +736,6 @@
       "What information should be checked when an order shipment is delayed?",
       "Production status, material availability, inspection result, packing completion, booking status এবং shipment deadline যাচাই করে delay-এর কারণ ও revised plan সংশ্লিষ্ট পক্ষকে জানাতে হয়।",
       "Check production status, material availability, inspection results, packing completion, booking status and shipment deadlines. Communicate the delay reason and revised plan to the relevant parties."
-    ]
-  ],
-  "GPQ": [
-    [
-      "G.P.Q এর পূর্ণ রূপ কি?",
-      "What is the full form of G.P.Q?",
-      "উৎপাদন ও গুণমানের জন্য নির্দেশিকা",
-      "Guide Line for Production & Quality"
     ]
   ]
 }
