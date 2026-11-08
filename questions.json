@@ -1,0 +1,684 @@
+{
+  "Cutting": [
+    [
+      "কাটিং বিভাগের প্রধান দায়িত্ব কী?",
+      "What is the main responsibility of the Cutting Department?",
+      "অনুমোদিত প্যাটার্ন ও মার্কার অনুযায়ী নির্ভুলভাবে কাপড় কাটা, সাইজ ও শেড ঠিক রাখা, কাপড়ের অপচয় কমানো এবং সঠিক প্যানেল সুইং বিভাগে সরবরাহ করা।",
+      "To cut fabric accurately according to approved patterns and markers, maintain size and shade consistency, minimize fabric wastage and supply correct panels to sewing."
+    ],
+    [
+      "মার্কার এফিসিয়েন্সি কী এবং কীভাবে হিসাব করা হয়?",
+      "What is Marker Efficiency and how is it calculated?",
+      "মার্কার এরিয়ার কত শতাংশ জায়গা প্যাটার্ন ব্যবহার করেছে, সেটিই মার্কার এফিসিয়েন্সি। সূত্র: (Pattern Area ÷ Marker Area) × 100। প্যাটার্ন এরিয়া ৮০ এবং মার্কার এরিয়া ১০০ হলে এফিসিয়েন্সি ৮০%।",
+      "Marker efficiency is the percentage of marker area occupied by pattern pieces. Formula: (Pattern Area ÷ Marker Area) × 100. If pattern area is 80 and marker area is 100, efficiency is 80%."
+    ],
+    [
+      "কাটিংয়ের আগে ফ্যাব্রিক রিল্যাক্সেশন কেন করা হয়?",
+      "Why is fabric relaxation required before cutting?",
+      "নিটিং, ডাইং, ফিনিশিং ও রোলিংয়ের সময় তৈরি হওয়া টেনশন কমিয়ে কাপড়কে স্বাভাবিক অবস্থায় ফিরতে দেওয়া হয়। এতে কাটিংয়ের পর সাইজ পরিবর্তন কমে। সময় কাপড়ের ধরন ও বায়ারের নির্দেশনা অনুযায়ী নির্ধারণ করতে হয়।",
+      "Relaxation allows fabric to recover from tension created during knitting, dyeing, finishing and rolling. It reduces dimensional changes after cutting. Time depends on fabric type and buyer requirements."
+    ],
+    [
+      "One-Way Marker ও Two-Way Marker-এর পার্থক্য কী?",
+      "What is the difference between One-Way and Two-Way Markers?",
+      "One-Way Marker-এ সব প্যাটার্ন একই দিকে থাকে; Directional বা Nap Fabric-এর জন্য দরকার হতে পারে। Two-Way Marker-এ অনুমোদিত কাপড়ে দুই দিকে প্যাটার্ন বসানো যায়, এতে এফিসিয়েন্সি বাড়তে পারে।",
+      "A One-Way Marker places all pattern pieces in the same direction, often required for directional or napped fabrics. A Two-Way Marker allows pieces in both directions when permitted, potentially improving efficiency."
+    ],
+    [
+      "ফ্যাব্রিক স্প্রেডিংয়ের গুরুত্বপূর্ণ চেকপয়েন্ট কী কী?",
+      "What are the important checkpoints in fabric spreading?",
+      "ফেস সাইড, শেড, অ্যালাইনমেন্ট, টেনশন, প্লাই সংখ্যা, কাপড়ের ত্রুটি, লে-এর দৈর্ঘ্য এবং এজ অ্যালাইনমেন্ট পরীক্ষা করতে হয়।",
+      "Check fabric face, shade, alignment, tension, ply count, fabric defects, lay length and edge alignment."
+    ],
+    [
+      "Bowing ও Skewing-এর মধ্যে পার্থক্য কী?",
+      "What is the difference between Bowing and Skewing?",
+      "Bowing-এ কাপড়ের আড়াআড়ি সুতা বা ডিজাইন বাঁকা হয়। Skewing-এ আড়াআড়ি সুতা Selvedge-এর সঙ্গে ৯০ ডিগ্রি না থেকে তির্যক হয়। দুটিই প্যানেল ম্যাচিং ও পোশাকের চেহারায় সমস্যা করতে পারে।",
+      "Bowing is a curved weft line or pattern across the width. Skewing is a diagonal weft line that is not perpendicular to the selvedge. Both can affect panel matching and garment appearance."
+    ],
+    [
+      "কাটিং সেকশনে Fabric Numbering কেন করা হয়?",
+      "Why is Fabric Numbering done in the Cutting Department?",
+      "প্রতিটি প্লাই থেকে কাটা প্যানেলের পরিচয় ও সিরিয়াল বজায় রাখতে numbering করা হয়। এতে একই পোশাকের অংশগুলোতে শেডের পার্থক্য কমে এবং sewing-এ সঠিক প্যানেল ম্যাচিং হয়।",
+      "Numbering identifies panels from each ply. It helps prevent shade variation within a garment and supports correct panel matching during sewing."
+    ],
+    [
+      "Straight Knife ও Band Knife মেশিনের পার্থক্য কী?",
+      "What is the difference between Straight Knife and Band Knife machines?",
+      "Straight Knife-এর সোজা ব্লেড ওপর-নিচে চলাচল করে ফ্যাব্রিক লে কাটে। Band Knife-এ ধারাবাহিক সরু ব্লেড থাকে, যা টেবিলে ছোট অংশ ও নির্দিষ্ট আকৃতি নির্ভুলভাবে কাটতে ব্যবহৃত হয়।",
+      "A Straight Knife uses a vertically moving straight blade to cut fabric lays. A Band Knife uses a continuous narrow blade, commonly for accurate cutting of smaller sections and shapes."
+    ],
+    [
+      "কাটিংয়ের সাধারণ ত্রুটিগুলো কী কী?",
+      "What are common cutting defects?",
+      "অসমান কাটিং, ভুল সাইজ, Notch মিসিং, Drill Mark ভুল, Frayed Edge, Ply Shifting, Shade Mixing, Pattern Mismatch, Fabric Hole এবং ভুল Numbering।",
+      "Common defects include uneven cutting, wrong-size panels, missing notches, incorrect drill marks, frayed edges, ply shifting, shade mixing, pattern mismatch, fabric holes and incorrect numbering."
+    ],
+    [
+      "মার্কার লেন্থ ও প্লাই থেকে প্রতি গার্মেন্টসের কনজাম্পশন কীভাবে হিসাব করবেন?",
+      "How do you calculate fabric consumption from marker length and plies?",
+      "সূত্র: (Marker Length × Ply Quantity) ÷ মোট গার্মেন্টস। উদাহরণ: ১০ মিটার মার্কার, ৫০ প্লাই, ১০০ পিস হলে (১০×৫০)÷১০০ = ৫ মিটার/পিস। প্রকৃত হিসাবের সঙ্গে marker width, size ratio ও wastage বিবেচনা করতে হয়।",
+      "Formula: (Marker Length × Ply Quantity) ÷ Total garments. Example: 10 m marker, 50 plies and 100 pieces = (10×50)÷100 = 5 m per garment. Actual consumption also considers marker width, size ratio and wastage."
+    ]
+  ],
+  "Sewing": [
+    [
+      "সুইং লাইনে Input Quality Check কেন করা হয়?",
+      "Why is an input quality check done on a sewing line?",
+      "কাট প্যানেলের সাইজ, শেড, নাম্বারিং, নচ, ড্রিল মার্ক ও প্যানেলের ত্রুটি যাচাই করতে হয়। ভুল প্যানেল লাইনে ঢুকলে পরবর্তী অপারেশনে defect বাড়ে।",
+      "It verifies cut-panel size, shade, numbering, notches, drill marks and panel defects. Incorrect panels entering the line can create defects in later operations."
+    ],
+    [
+      "SPI বলতে কী বোঝায় এবং এটি কীভাবে পরীক্ষা করবেন?",
+      "What does SPI mean and how do you check it?",
+      "SPI হলো Stitches Per Inch। নির্দিষ্ট সেলাইয়ের এক ইঞ্চি অংশে stitch সংখ্যা গুনে SPI পরীক্ষা করা হয়। Buyer specification অনুযায়ী ফল মিলিয়ে দেখতে হয়।",
+      "SPI means Stitches Per Inch. Count the stitches within one inch of a seam and compare the result with the buyer specification."
+    ],
+    [
+      "সুইং লাইনে Seam Puckering কেন হয়?",
+      "Why does seam puckering occur in sewing?",
+      "সুতা ও কাপড়ের টেনশন, ভুল needle-thread combination, বেশি presser-foot pressure, ভুল stitch density বা fabric feeding-এর কারণে puckering হতে পারে।",
+      "Puckering may result from incorrect thread or fabric tension, unsuitable needle-thread combination, excessive presser-foot pressure, incorrect stitch density or fabric feeding."
+    ],
+    [
+      "Needle-এর Ball Point ও Sharp Point-এর ব্যবহার কী?",
+      "What are Ball Point and Sharp Point needles used for?",
+      "Ball Point Needle knit fabric-এ loop-এর মাঝ দিয়ে যায়, তাই knit fabric-এর জন্য উপযোগী। Sharp Point Needle woven fabric-এ সুতা ভেদ করে stitch তৈরি করে। সঠিক needle নির্বাচন fabric ও operation অনুযায়ী হয়।",
+      "A Ball Point Needle passes between loops and is suitable for knit fabrics. A Sharp Point Needle penetrates woven fabric yarns. Selection depends on fabric and operation."
+    ],
+    [
+      "Seam Allowance কী এবং কেন গুরুত্বপূর্ণ?",
+      "What is Seam Allowance and why is it important?",
+      "সেলাই লাইনের বাইরে প্যাটার্নে যে অতিরিক্ত কাপড় রাখা হয় তাকে Seam Allowance বলে। এটি কম বা বেশি হলে garment measurement, seam strength ও appearance প্রভাবিত হয়।",
+      "Seam allowance is the fabric margin between the stitch line and cut edge. Incorrect allowance affects garment measurement, seam strength and appearance."
+    ],
+    [
+      "সুইং লাইনে Broken Stitch-এর কারণ কী?",
+      "What causes broken stitches on a sewing line?",
+      "ভুল thread tension, damaged needle, নিম্নমানের সুতা, ভুল threading, burr থাকা needle plate বা অতিরিক্ত machine speed-এর কারণে stitch break হতে পারে।",
+      "Broken stitches can result from incorrect thread tension, damaged needles, poor thread quality, incorrect threading, burrs on the needle plate or excessive machine speed."
+    ],
+    [
+      "Lockstitch ও Chainstitch-এর পার্থক্য কী?",
+      "What is the difference between Lockstitch and Chainstitch?",
+      "Lockstitch-এ needle ও bobbin thread কাপড়ের মধ্যে interlock করে। Chainstitch-এ looper thread দিয়ে chain তৈরি হয়। ব্যবহার নির্ভর করে seam type, stretch ও buyer requirement-এর ওপর।",
+      "Lockstitch interlocks needle and bobbin threads within the fabric. Chainstitch forms loops using looper threads. Selection depends on seam type, stretch and buyer requirements."
+    ],
+    [
+      "সুইং লাইনে Inline Inspection কী?",
+      "What is Inline Inspection in sewing?",
+      "উৎপাদন চলাকালে নির্দিষ্ট অপারেশন ও garment পর্যায়ে quality check করাকে Inline Inspection বলে। এতে defect দ্রুত শনাক্ত করে পরবর্তী প্রক্রিয়ায় ছড়ানো রোধ করা যায়।",
+      "Inline inspection checks quality at selected operations and garment stages during production. It detects defects early and prevents them from spreading to later processes."
+    ],
+    [
+      "Needle Damage হলে কী ব্যবস্থা নিতে হয়?",
+      "What action is required when a sewing needle breaks?",
+      "মেশিন বন্ধ করে broken needle-এর সব অংশ সংগ্রহ ও মিলিয়ে দেখতে হয়। garment, work area ও machine পরীক্ষা করে needle control procedure অনুসরণ করতে হয়। কোনো অংশ না পেলে পণ্য release করা যাবে না; factory policy অনুযায়ী escalation করতে হবে।",
+      "Stop the machine and collect and reconcile all broken needle parts. Check the garment, work area and machine under the needle-control procedure. If any part is missing, do not release the product; escalate according to factory policy."
+    ],
+    [
+      "সুইং লাইনের DHU কীভাবে হিসাব করা হয়?",
+      "How is DHU calculated on a sewing line?",
+      "DHU = (মোট defect ÷ মোট garment checked) × 100। উদাহরণ: ২০০টি garment-এ ৩০টি defect পাওয়া গেলে DHU = ৩০÷২০০×১০০ = ১৫। এখানে এক garment-এ একাধিক defect থাকলে defect count আলাদা করে গণনা করতে হবে।",
+      "DHU = (Total defects ÷ Total garments checked) × 100. Example: 30 defects in 200 garments gives 15 DHU. Multiple defects on one garment are counted separately as defects."
+    ]
+  ],
+    "Finishing": [
+    [
+      "গার্মেন্টস ফিনিশিং বিভাগের প্রধান কাজ কী?",
+      "What are the main responsibilities of the garment finishing department?",
+      "ফিনিশিংয়ে thread trimming, stain removal, pressing, measurement checking, final appearance inspection, folding, tagging ও packing করা হয়। Buyer specification অনুযায়ী finished garment প্রস্তুত করাই লক্ষ্য।",
+      "Finishing includes thread trimming, stain removal, pressing, measurement checks, final appearance inspection, folding, tagging and packing to buyer specifications."
+    ],
+    [
+      "Measurement Tolerance কী?",
+      "What is Measurement Tolerance?",
+      "Buyer-এর নির্ধারিত মাপ থেকে অনুমোদিত কম-বেশির সীমাকে Measurement Tolerance বলে। যেমন কোনো পয়েন্টে ±০.৫ সেমি অনুমোদিত থাকলে actual measurement সেই সীমার মধ্যে থাকতে হবে।",
+      "Measurement tolerance is the permitted variation from the buyer's specified measurement. For example, if ±0.5 cm is allowed at a point, the actual measurement must remain within that range."
+    ],
+    [
+      "Pressing-এর সময় Shine Mark কেন হয়?",
+      "Why do shine marks occur during pressing?",
+      "অতিরিক্ত তাপ, চাপ, ভুল iron surface, pressing time বা fabric-এর উপযোগী interlining/press cloth না ব্যবহারে shine mark হতে পারে। Fabric care instruction অনুযায়ী temperature ও pressure সেট করতে হয়।",
+      "Shine marks may result from excessive heat, pressure, pressing time, unsuitable iron surface or lack of a suitable press cloth. Set temperature and pressure according to fabric care instructions."
+    ],
+    [
+      "গার্মেন্টসে Oil Stain কীভাবে শনাক্ত করবেন?",
+      "How do you identify oil stains on garments?",
+      "ভালো আলোতে garment surface পরীক্ষা করতে হয়। সন্দেহজনক দাগে stain identification procedure অনুসরণ করতে হবে। Oil stain পাওয়া গেলে garment আলাদা করে অনুমোদিত stain-removal method ব্যবহার করতে হবে।",
+      "Inspect the garment surface under proper lighting. Follow the stain-identification procedure for suspected marks. Segregate oil-stained garments and use an approved stain-removal method."
+    ],
+    [
+      "Final Measurement Check কেন করা হয়?",
+      "Why is a final measurement check performed?",
+      "Packing-এর আগে buyer measurement chart অনুযায়ী নির্ধারিত POM মাপা হয়। এতে out-of-tolerance garment শনাক্ত করে shipment-এর আগে সংশোধন বা segregation করা যায়।",
+      "Specified points of measurement are checked against the buyer measurement chart before packing. Out-of-tolerance garments can then be corrected or segregated before shipment."
+    ],
+    [
+      "ফিনিশিংয়ে Broken Button বা Missing Button কীভাবে নিয়ন্ত্রণ করবেন?",
+      "How do you control broken or missing buttons in finishing?",
+      "Button attachment, button count, button security ও matching পরীক্ষা করতে হয়। Broken বা missing button পাওয়া গেলে garment আলাদা করে approved replacement ও reinspection করতে হবে।",
+      "Check button attachment, count, security and matching. Segregate garments with broken or missing buttons, replace using approved components and reinspect."
+    ],
+    [
+      "Folding-এর সময় কোন বিষয়গুলো নিশ্চিত করতে হয়?",
+      "What should be ensured during garment folding?",
+      "সঠিক folding method, garment size, presentation, crease position, tissue বা insert, এবং buyer packing instruction অনুসরণ করতে হয়।",
+      "Follow the correct folding method, garment size, presentation, crease position, tissue or insert requirements and buyer packing instructions."
+    ],
+    [
+      "ফিনিশিংয়ে Shade Variation কীভাবে ধরা যায়?",
+      "How can shade variation be detected in finishing?",
+      "একই order-এর garment একই lighting condition-এ shade standard বা approved sample-এর সঙ্গে তুলনা করতে হয়। shade mismatch পাওয়া গেলে আলাদা করে buyer-approved disposition নিতে হবে।",
+      "Compare garments from the same order with the shade standard or approved sample under consistent lighting. Segregate mismatches and obtain buyer-approved disposition."
+    ],
+    [
+      "Metal Contamination বলতে কী বোঝায়?",
+      "What is metal contamination in garments?",
+      "পোশাকে needle fragment, pin, staple বা অন্য ধাতব বস্তু থেকে যাওয়াকে metal contamination বলে। Buyer requirement অনুযায়ী needle control, metal detection ও documented checking করতে হয়।",
+      "Metal contamination means needle fragments, pins, staples or other metal objects remaining in garments. Apply needle control, metal detection and documented checks according to buyer requirements."
+    ],
+    [
+      "Packing Audit-এ কী কী পরীক্ষা করবেন?",
+      "What do you check during a packing audit?",
+      "Style, colour, size ratio, quantity, folding, polybag, barcode, hangtag, price ticket, carton marking, assortment ও carton quantity যাচাই করতে হয়।",
+      "Check style, colour, size ratio, quantity, folding, polybag, barcode, hangtag, price ticket, carton marking, assortment and carton quantity."
+    ]
+  ],
+  "Knitting": [
+    [
+      "Knitting কী এবং Garment Industry-তে এর ভূমিকা কী?",
+      "What is knitting and what is its role in the garment industry?",
+      "Knitting হলো yarn loop intermeshing করে fabric তৈরি করার প্রক্রিয়া। T-shirt, polo shirt, underwear ও sportswear-এর মতো পোশাকে knitted fabric ব্যবহৃত হয়।",
+      "Knitting forms fabric by intermeshing yarn loops. Knitted fabrics are used in T-shirts, polo shirts, underwear and sportswear."
+    ],
+    [
+      "Single Jersey ও Rib Fabric-এর পার্থক্য কী?",
+      "What is the difference between Single Jersey and Rib Fabric?",
+      "Single Jersey সাধারণত এক পাশে knit ও অন্য পাশে purl appearance দেখায় এবং edge curl করতে পারে। Rib fabric-এ knit ও purl wale পর্যায়ক্রমে থাকে, ফলে stretch ও recovery বেশি হয়।",
+      "Single Jersey typically has knit and purl appearances on opposite sides and may curl at edges. Rib fabric alternates knit and purl wales, giving greater stretch and recovery."
+    ],
+    [
+      "GSM কীভাবে পরীক্ষা করা হয়?",
+      "How is GSM tested?",
+      "নির্দিষ্ট area-এর fabric sample কেটে GSM cutter বা জানা area ব্যবহার করে ওজন মাপা হয়। Formula: Weight in grams ÷ Area in square meters।",
+      "Cut a fabric sample of known area and weigh it using a GSM cutter or known-area method. Formula: Weight in grams ÷ Area in square meters."
+    ],
+    [
+      "Knitting-এ Needle Line কী?",
+      "What is a Needle Line in knitting?",
+      "নির্দিষ্ট needle বা needle position-এর কারণে fabric length বরাবর দৃশ্যমান vertical line তৈরি হলে তাকে Needle Line বলা হয়। Needle condition ও machine setting পরীক্ষা করতে হয়।",
+      "A visible vertical line along the fabric length caused by a needle or needle position is called a needle line. Check needle condition and machine settings."
+    ],
+    [
+      "Yarn Count কী বোঝায়?",
+      "What does Yarn Count mean?",
+      "Yarn Count হলো সুতার fineness বা thickness প্রকাশের পরিমাপ। Cotton system-এ Ne count বেশি হলে yarn সাধারণত finer হয়; Tex system-এ Tex বেশি হলে yarn coarser হয়।",
+      "Yarn count expresses yarn fineness or thickness. In the cotton count system, a higher Ne generally means finer yarn; in the Tex system, a higher Tex means coarser yarn."
+    ],
+    [
+      "Knitting-এ Hole Defect কেন হয়?",
+      "Why do hole defects occur in knitting?",
+      "Broken needle, damaged sinker, yarn breakage, excessive yarn tension বা machine setting-এর কারণে hole তৈরি হতে পারে। Defect location ও machine condition পরীক্ষা করতে হয়।",
+      "Holes may result from broken needles, damaged sinkers, yarn breakage, excessive yarn tension or machine settings. Inspect defect location and machine condition."
+    ],
+    [
+      "Spirality কী এবং কেন হয়?",
+      "What is spirality and why does it occur?",
+      "Garment-এর side seam বা fabric wale wash-এর পর ঘুরে যাওয়াকে spirality বলে। Yarn twist, knitting structure, fabric relaxation ও finishing condition এর কারণ হতে পারে।",
+      "Spirality is the twisting of garment side seams or fabric wales, often noticeable after washing. Yarn twist, knitting structure, relaxation and finishing conditions can contribute."
+    ],
+    [
+      "Course ও Wale কী?",
+      "What are Course and Wale in knitted fabric?",
+      "Course হলো fabric-এর আড়াআড়ি loop-এর সারি। Wale হলো দৈর্ঘ্য বরাবর loop-এর কলাম।",
+      "A course is a horizontal row of loops in knitted fabric. A wale is a vertical column of loops."
+    ],
+    [
+      "Knitting-এ Barre Mark কী?",
+      "What is a Barre Mark in knitting?",
+      "Fabric-এর width বরাবর আলাদা shade বা appearance-এর band তৈরি হলে তাকে Barre Mark বলে। Yarn variation, dye affinity বা machine setting-এর পার্থক্য এর কারণ হতে পারে।",
+      "A barre mark is a band of different shade or appearance across the fabric width. Yarn variation, dye affinity or machine-setting differences may cause it."
+    ],
+    [
+      "Knitted Fabric Inspection-এ কী কী পরীক্ষা করা হয়?",
+      "What is checked during knitted fabric inspection?",
+      "GSM, width, shade, hole, needle line, barre, slub, contamination, oil stain, spirality এবং buyer-এর নির্ধারিত fabric inspection standard পরীক্ষা করতে হয়।",
+      "Check GSM, width, shade, holes, needle lines, barre, slubs, contamination, oil stains, spirality and the buyer's specified fabric inspection standard."
+    ]
+  ],
+  "Printing": [
+    [
+      "Garment Printing কী?",
+      "What is garment printing?",
+      "Fabric বা garment surface-এ নির্দিষ্ট design, colour ও artwork প্রয়োগের প্রক্রিয়াকে garment printing বলে।",
+      "Garment printing is the process of applying a specified design, colour and artwork to fabric or garment surfaces."
+    ],
+    [
+      "Screen Printing ও Heat Transfer-এর পার্থক্য কী?",
+      "What is the difference between Screen Printing and Heat Transfer?",
+      "Screen Printing-এ screen ও squeegee দিয়ে ink fabric-এ দেওয়া হয়। Heat Transfer-এ printed film বা transfer paper তাপ ও চাপ দিয়ে garment-এ বসানো হয়।",
+      "Screen printing applies ink through a screen using a squeegee. Heat transfer applies a printed film or transfer paper to a garment using heat and pressure."
+    ],
+    [
+      "Print Registration বলতে কী বোঝায়?",
+      "What is print registration?",
+      "একাধিক colour বা layer-এর print নির্দিষ্ট অবস্থানে সঠিকভাবে মিলে যাওয়াকে print registration বলে। Misregistration হলে design-এর outline বা colour সরে যায়।",
+      "Print registration means accurate alignment of multiple colours or layers. Misregistration causes outlines or colours to shift."
+    ],
+    [
+      "Printing-এর আগে Strike-off Approval কেন জরুরি?",
+      "Why is strike-off approval important before printing?",
+      "Bulk production-এর আগে artwork, colour shade, size, placement ও print appearance অনুমোদনের জন্য strike-off তৈরি করা হয়। অনুমোদন ছাড়া bulk printing শুরু করা উচিত নয়।",
+      "A strike-off confirms artwork, colour shade, size, placement and print appearance before bulk production. Bulk printing should not start without approval."
+    ],
+    [
+      "Print Cracking কেন হয়?",
+      "Why does print cracking occur?",
+      "ভুল ink formulation, অতিরিক্ত curing, কম curing, বেশি ink thickness বা fabric stretch-এর সঙ্গে ink-এর অসামঞ্জস্যের কারণে cracking হতে পারে।",
+      "Cracking may result from incorrect ink formulation, over- or under-curing, excessive ink thickness or incompatibility between ink and fabric stretch."
+    ],
+    [
+      "Curing Temperature কেন নিয়ন্ত্রণ করতে হয়?",
+      "Why must curing temperature be controlled?",
+      "Curing-এর নির্ধারিত তাপমাত্রা ও সময় ঠিক না থাকলে print wash বা rubbing-এর সময় উঠে যেতে পারে। অতিরিক্ত তাপে fabric বা print ক্ষতিগ্রস্ত হতে পারে। তাই approved process অনুযায়ী curing করতে হবে।",
+      "Incorrect curing temperature or time can cause poor wash and rubbing fastness. Excessive heat may damage the fabric or print. Follow the approved curing parameters."
+    ],
+    [
+      "Print-এর Wash Fastness কীভাবে পরীক্ষা করা হয়?",
+      "How is print wash fastness checked?",
+      "Buyer-এর test method অনুযায়ী garment বা fabric wash করে print-এর colour change, cracking এবং peeling পরীক্ষা করা হয়। ফলাফল নির্ধারিত requirement-এর সঙ্গে তুলনা করতে হয়।",
+      "Wash the garment or fabric according to the buyer's test method. Check colour change, cracking and peeling, then compare the result with the required standard."
+    ],
+    [
+      "Print-এর Colour Bleeding কেন হয়?",
+      "Why does colour bleeding occur in printing?",
+      "Ink বা pigment সঠিকভাবে fix না হলে, ভুল curing হলে অথবা ink-এর মান খারাপ হলে wash-এর সময় colour bleeding হতে পারে।",
+      "Colour bleeding may occur when ink or pigment is not properly fixed, curing is incorrect, or the ink quality is unsuitable."
+    ],
+    [
+      "Print-এর Hand Feel বলতে কী বোঝায়?",
+      "What is meant by print hand feel?",
+      "Print করা অংশ স্পর্শ করলে কতটা নরম, শক্ত বা পুরু অনুভূত হয় সেটিই hand feel। অতিরিক্ত ink বা ভুল print process-এর কারণে print শক্ত হয়ে যেতে পারে।",
+      "Hand feel describes how soft, stiff or thick the printed area feels. Excessive ink or an incorrect printing process can make the print stiff."
+    ],
+    [
+      "Bulk Printing শুরু করার আগে কী কী যাচাই করতে হয়?",
+      "What should be checked before bulk printing?",
+      "Approved artwork, strike-off, colour shade, print placement, size, registration, curing process এবং প্রয়োজনীয় test result যাচাই করতে হয়।",
+      "Check approved artwork, strike-off, colour shade, placement, size, registration, curing process and required test results before bulk printing."
+    ]
+  ],
+  "Embroidery": [
+    [
+      "Embroidery-তে Stitch Density কী?",
+      "What is stitch density in embroidery?",
+      "নির্দিষ্ট জায়গায় কত ঘনভাবে stitch দেওয়া হয়েছে তাকে stitch density বলে। Density বেশি হলে fabric কুঁচকে যেতে পারে এবং কম হলে design অসম্পূর্ণ দেখাতে পারে।",
+      "Stitch density is the concentration of stitches in a given area. Excessive density may cause puckering, while low density can make the design look incomplete."
+    ],
+    [
+      "Embroidery-তে Thread Breakage কেন হয়?",
+      "Why does thread breakage occur in embroidery?",
+      "ভুল thread tension, needle-এর সমস্যা, নিম্নমানের thread, ভুল needle size অথবা machine timing-এর কারণে thread breakage হতে পারে।",
+      "Thread breakage may result from incorrect tension, needle problems, poor thread quality, unsuitable needle size or machine timing."
+    ],
+    [
+      "Embroidery-তে Puckering কী?",
+      "What is puckering in embroidery?",
+      "Embroidery করার পর fabric-এর চারপাশে কুঁচকে যাওয়া বা ঢেউয়ের মতো অবস্থা তৈরি হলে তাকে puckering বলে। Stabilizer, tension ও stitch density পরীক্ষা করতে হয়।",
+      "Puckering is the wrinkling or gathering of fabric around an embroidered design. Check stabilizer, thread tension and stitch density."
+    ],
+    [
+      "Embroidery Backing Material কেন ব্যবহার করা হয়?",
+      "Why is backing material used in embroidery?",
+      "Backing material fabric-কে স্থিতিশীল রাখে এবং stitching-এর সময় কাপড় টেনে যাওয়া বা কুঁচকে যাওয়া কমায়। Fabric অনুযায়ী backing নির্বাচন করতে হয়।",
+      "Backing material stabilizes the fabric and reduces stretching or puckering during stitching. Select the backing according to the fabric type."
+    ],
+    [
+      "Embroidery Design Placement কীভাবে যাচাই করা হয়?",
+      "How is embroidery design placement checked?",
+      "Approved artwork বা placement measurement অনুযায়ী garment-এর নির্দিষ্ট অংশে design-এর অবস্থান, দূরত্ব ও alignment পরীক্ষা করতে হয়।",
+      "Check the design position, distance and alignment against the approved artwork or placement measurements."
+    ],
+    [
+      "Embroidery-তে Needle Damage-এর ঝুঁকি কী?",
+      "What is the risk of needle damage in embroidery?",
+      "ভাঙা needle-এর অংশ garment-এ থেকে গেলে consumer safety risk তৈরি হতে পারে। Needle breakage হলে broken needle procedure অনুসরণ করে সব অংশ উদ্ধার ও হিসাব মিলাতে হয়।",
+      "Broken needle fragments left in a garment can create a consumer safety risk. Follow the broken needle procedure and recover and account for all fragments."
+    ],
+    [
+      "Embroidery Thread Shade কীভাবে নিয়ন্ত্রণ করা হয়?",
+      "How is embroidery thread shade controlled?",
+      "Approved thread shade বা colour standard-এর সঙ্গে production thread মিলিয়ে দেখতে হয়। একই garment-এর সব অংশে shade consistency বজায় রাখতে হবে।",
+      "Compare production thread with the approved thread shade or colour standard. Maintain shade consistency across all garment panels."
+    ],
+    [
+      "Embroidery-তে Skipped Stitch কেন হয়?",
+      "Why do skipped stitches occur in embroidery?",
+      "Needle, thread tension, machine timing বা hoop setting-এর সমস্যায় skipped stitch হতে পারে। Production-এর আগে sample run করে পরীক্ষা করা উচিত।",
+      "Skipped stitches may occur due to needle, thread tension, machine timing or hoop-setting problems. Check with a sample run before production."
+    ],
+    [
+      "Embroidery Design Distortion কী কারণে হয়?",
+      "What causes embroidery design distortion?",
+      "ভুল hooping, fabric stretching, stabilizer-এর অভাব অথবা ভুল stitch sequence-এর কারণে design-এর আকার ও আকৃতি পরিবর্তিত হতে পারে।",
+      "Incorrect hooping, fabric stretching, insufficient stabilizer or an unsuitable stitch sequence can distort the design."
+    ],
+    [
+      "Embroidery Approval-এর আগে কী পরীক্ষা করা জরুরি?",
+      "What must be checked before embroidery approval?",
+      "Design, colour, size, placement, stitch density, backing, thread tension এবং approved sample-এর সঙ্গে appearance মিলিয়ে দেখতে হবে।",
+      "Check design, colour, size, placement, stitch density, backing, thread tension and appearance against the approved sample."
+    ]
+  ],
+  "Quality Assurance": [
+    [
+      "Quality Assurance (QA) বলতে কী বোঝায়?",
+      "What is Quality Assurance (QA)?",
+      "Quality Assurance হলো এমন একটি পরিকল্পিত ব্যবস্থা যার মাধ্যমে production process নিয়ন্ত্রণ করে defect হওয়ার আগেই প্রতিরোধ করা হয়।",
+      "Quality Assurance is a planned system that controls production processes to prevent defects before they occur."
+    ],
+    [
+      "Quality Control (QC) ও QA-এর মধ্যে পার্থক্য কী?",
+      "What is the difference between QC and QA?",
+      "QA মূলত process ও system উন্নয়নের মাধ্যমে defect প্রতিরোধ করে। QC পণ্য বা কাজ পরীক্ষা করে defect শনাক্ত করে।",
+      "QA focuses on improving processes and systems to prevent defects. QC checks products or operations to identify defects."
+    ],
+    [
+      "গার্মেন্টসে Defect প্রধানত কয় প্রকার?",
+      "What are the main types of garment defects?",
+      "Defect সাধারণত তিন ভাগে শ্রেণিবদ্ধ করা হয়: Critical, Major এবং Minor। Buyer-এর defect classification অনুযায়ী প্রতিটি defect নির্ধারণ করতে হয়।",
+      "Defects are generally classified as Critical, Major and Minor. Each defect must be classified according to the buyer's requirements."
+    ],
+    [
+      "Critical Defect কী?",
+      "What is a critical defect?",
+      "যে defect ব্যবহারকারীর নিরাপত্তা বা আইনগত compliance-এর ঝুঁকি তৈরি করে তাকে Critical Defect বলে। যেমন garment-এ ভাঙা needle বা ধারালো metal থাকা।",
+      "A critical defect creates a safety or legal compliance risk, such as a broken needle or sharp metal piece inside a garment."
+    ],
+    [
+      "Major Defect কী?",
+      "What is a major defect?",
+      "যে defect পণ্যের ব্যবহার, appearance বা buyer-এর গ্রহণযোগ্যতাকে উল্লেখযোগ্যভাবে প্রভাবিত করে তাকে Major Defect বলে। যেমন open seam বা ভুল measurement।",
+      "A major defect significantly affects product usability, appearance or buyer acceptance, such as an open seam or incorrect measurement."
+    ],
+    [
+      "Minor Defect কী?",
+      "What is a minor defect?",
+      "যে defect পণ্যের ব্যবহারযোগ্যতা উল্লেখযোগ্যভাবে নষ্ট করে না এবং তুলনামূলকভাবে ছোট ধরনের ত্রুটি, তাকে Minor Defect বলে। যেমন সামান্য loose thread।",
+      "A minor defect is a relatively small fault that does not significantly affect product usability, such as a minor loose thread."
+    ],
+    [
+      "Root Cause Analysis কেন করা হয়?",
+      "Why is Root Cause Analysis performed?",
+      "একই defect বারবার হওয়ার প্রকৃত কারণ শনাক্ত করার জন্য Root Cause Analysis করা হয়। শুধু defect ঠিক না করে এর মূল কারণ দূর করা জরুরি।",
+      "Root Cause Analysis identifies the actual reason behind recurring defects. The objective is to eliminate the root cause, not just repair the defect."
+    ],
+    [
+      "CAPA বলতে কী বোঝায়?",
+      "What does CAPA mean?",
+      "CAPA-এর পূর্ণরূপ Corrective and Preventive Action। Corrective Action বিদ্যমান সমস্যার কারণ দূর করে এবং Preventive Action ভবিষ্যতে একই সমস্যা হওয়া প্রতিরোধ করে।",
+      "CAPA means Corrective and Preventive Action. Corrective Action addresses the cause of an existing problem, while Preventive Action prevents recurrence."
+    ],
+    [
+      "PP Meeting কেন করা হয়?",
+      "Why is a PP meeting conducted?",
+      "Production শুরু হওয়ার আগে buyer requirement, approved sample, measurement, construction, trims, workmanship এবং quality standard পরিষ্কার করার জন্য PP Meeting করা হয়।",
+      "A PP meeting clarifies buyer requirements, approved samples, measurements, construction, trims, workmanship and quality standards before production starts."
+    ],
+    [
+      "Inline Inspection ও Final Inspection-এর মধ্যে পার্থক্য কী?",
+      "What is the difference between inline inspection and final inspection?",
+      "Inline Inspection production চলাকালীন defect শনাক্ত করে। Final Inspection সাধারণত order সম্পন্ন হওয়ার পর finished goods-এর quality, quantity, packing ও buyer requirement যাচাই করে।",
+      "Inline inspection identifies defects during production. Final inspection checks finished goods, quantity, packing and buyer requirements after production is completed."
+    ]
+  ],
+  "AQL & Inspection": [
+    [
+      "AQL-এর পূর্ণরূপ কী?",
+      "What is the full form of AQL?",
+      "AQL-এর পূর্ণরূপ Acceptable Quality Limit। এটি sampling inspection-এ lot acceptance-এর জন্য ব্যবহৃত একটি নির্ধারিত quality limit।",
+      "AQL stands for Acceptable Quality Limit. It is a specified quality limit used for lot acceptance in sampling inspection."
+    ],
+    [
+      "Inspection Level বলতে কী বোঝায়?",
+      "What is an inspection level?",
+      "Inspection Level নির্ধারণ করে lot size অনুযায়ী কতগুলো sample পরীক্ষা করতে হবে। Buyer বা inspection standard অনুযায়ী level নির্বাচন করা হয়।",
+      "Inspection level determines the sample size to be inspected based on lot size. The level is selected according to buyer or inspection standards."
+    ],
+    [
+      "Sample Size কীভাবে নির্ধারণ করা হয়?",
+      "How is sample size determined?",
+      "Lot size, inspection level এবং প্রযোজ্য sampling standard-এর sample-size table অনুসরণ করে sample নির্ধারণ করা হয়।",
+      "Sample size is determined using the applicable sampling-standard table based on lot size and inspection level."
+    ],
+    [
+      "AQL 2.5 বলতে কী বোঝায়?",
+      "What does AQL 2.5 mean?",
+      "AQL 2.5 হলো sampling plan-এর একটি নির্ধারিত quality parameter। এটি সব অবস্থায় ২.৫% defect সরাসরি অনুমোদন করে—এমন অর্থ নয়; sample size ও acceptance/rejection number দেখতে হয়।",
+      "AQL 2.5 is a quality parameter in a sampling plan. It does not simply mean that 2.5% defects are always acceptable; sample size and acceptance/rejection numbers must be checked."
+    ],
+    [
+      "Acceptance Number কী?",
+      "What is an acceptance number?",
+      "নির্দিষ্ট sampling plan অনুযায়ী sample-এ সর্বোচ্চ যতটি defect পাওয়া গেলেও lot গ্রহণযোগ্য হতে পারে, তাকে Acceptance Number বলে।",
+      "The acceptance number is the maximum number of defects allowed in the sample for the lot to be accepted under a specified sampling plan."
+    ],
+    [
+      "Rejection Number কী?",
+      "What is a rejection number?",
+      "Sampling plan অনুযায়ী sample-এ defect-এর সংখ্যা যে সীমায় পৌঁছালে lot reject করতে হয়, তাকে Rejection Number বলে।",
+      "The rejection number is the defect count at which the lot must be rejected under the specified sampling plan."
+    ],
+    [
+      "Random Sampling কেন জরুরি?",
+      "Why is random sampling important?",
+      "Lot-এর বিভিন্ন carton বা location থেকে random sample নিলে inspection আরও নিরপেক্ষ হয় এবং শুধু ভালো পণ্য বেছে নেওয়ার ঝুঁকি কমে।",
+      "Random sampling from different cartons or locations makes inspection more impartial and reduces the risk of selecting only good products."
+    ],
+    [
+      "100% Inspection কখন করা হয়?",
+      "When is 100% inspection required?",
+      "Buyer instruction, critical safety concern, repeated serious defects অথবা নির্দিষ্ট corrective requirement থাকলে 100% inspection করা হতে পারে।",
+      "100% inspection may be required by buyer instruction, critical safety concerns, repeated serious defects or specific corrective requirements."
+    ],
+    [
+      "Inspection Report-এ কী কী তথ্য থাকে?",
+      "What information is included in an inspection report?",
+      "Inspection report-এ order ও style details, lot quantity, sample size, defect classification, measurement result, packing status এবং pass/fail decision উল্লেখ থাকে।",
+      "An inspection report includes order and style details, lot quantity, sample size, defect classification, measurement results, packing status and pass/fail decision."
+    ],
+    [
+      "Inspection Fail হলে কী করা হয়?",
+      "What happens when an inspection fails?",
+      "Inspection fail হলে defect details report করতে হয়, lot hold বা rejection status জানাতে হয় এবং buyer-এর নির্দেশনা অনুযায়ী sorting, rework বা corrective action নিতে হয়।",
+      "When inspection fails, report the defect details, communicate the lot hold or rejection status, and arrange sorting, rework or corrective action according to buyer instructions."
+    ]
+  ],
+  "Fabric": [
+    [
+      "Fabric GSM কী?",
+      "What is fabric GSM?",
+      "GSM-এর পূর্ণরূপ Grams per Square Meter। এটি প্রতি বর্গমিটার কাপড়ের ওজন নির্দেশ করে। GSM কম-বেশি হলে garment-এর weight, hand feel ও appearance পরিবর্তিত হতে পারে।",
+      "GSM stands for Grams per Square Meter. It indicates the weight of fabric per square metre. GSM variation can affect garment weight, hand feel and appearance."
+    ],
+    [
+      "Fabric Shrinkage কী?",
+      "What is fabric shrinkage?",
+      "Wash বা finishing-এর পর fabric-এর length বা width কমে যাওয়াকে shrinkage বলে। Production-এর আগে shrinkage test করে pattern ও measurement allowance নির্ধারণ করা হয়।",
+      "Fabric shrinkage is the reduction in length or width after washing or finishing. Shrinkage testing helps determine pattern and measurement allowances before production."
+    ],
+    [
+      "Fabric Shade Variation কী?",
+      "What is fabric shade variation?",
+      "একই fabric lot বা roll-এর মধ্যে রঙের পার্থক্য থাকলে তাকে shade variation বলে। Cutting-এর আগে shade band ও roll-wise shade পরীক্ষা করতে হয়।",
+      "Fabric shade variation means colour differences between rolls or within a lot. Check shade bands and roll-wise shades before cutting."
+    ],
+    [
+      "Fabric Bowing ও Skewing কী?",
+      "What are fabric bowing and skewing?",
+      "Fabric-এর width বরাবর pattern বা weft line বাঁকা হলে bowing এবং diagonal দিকে সরে গেলে skewing বলা হয়। এগুলো garment-এর appearance ও measurement-এ প্রভাব ফেলতে পারে।",
+      "Bowing occurs when a pattern or weft line curves across the fabric width, while skewing is a diagonal distortion. Both can affect garment appearance and measurements."
+    ],
+    [
+      "Fabric Inspection-এ 4-Point System কী?",
+      "What is the 4-point system in fabric inspection?",
+      "4-Point System হলো fabric defect grading-এর একটি পদ্ধতি। Defect-এর দৈর্ঘ্য ও গুরুত্ব অনুযায়ী ১, ২, ৩ বা ৪ point দেওয়া হয়।",
+      "The 4-point system is a method of grading fabric defects. Defects receive 1, 2, 3 or 4 points according to their size and severity."
+    ],
+    [
+      "Fabric Relaxation কেন করা হয়?",
+      "Why is fabric relaxation carried out?",
+      "Fabric knitting বা finishing-এর পর tension-এ থাকতে পারে। Cutting-এর আগে relaxation দিলে fabric স্থিতিশীল হয় এবং পরবর্তী shrinkage বা measurement variation কমতে পারে।",
+      "Fabric may retain tension after knitting or finishing. Relaxation before cutting allows it to stabilize and can reduce later shrinkage or measurement variation."
+    ],
+    [
+      "Fabric Pilling কী?",
+      "What is fabric pilling?",
+      "Fabric-এর surface-এ ছোট ছোট fiber ball তৈরি হওয়াকে pilling বলে। Fiber type, yarn construction ও finishing-এর কারণে pilling হতে পারে।",
+      "Pilling is the formation of small fiber balls on the fabric surface. It can be influenced by fiber type, yarn construction and finishing."
+    ],
+    [
+      "Fabric Color Fastness কী?",
+      "What is fabric colour fastness?",
+      "Wash, rubbing, perspiration বা light-এর সংস্পর্শে fabric-এর রঙ কতটা স্থায়ী থাকে তাকে colour fastness বলে। Buyer requirement অনুযায়ী test করতে হয়।",
+      "Colour fastness describes how well fabric colour resists washing, rubbing, perspiration or light. Testing must follow buyer requirements."
+    ],
+    [
+      "Fabric Defect ও Garment Defect-এর পার্থক্য কী?",
+      "What is the difference between a fabric defect and a garment defect?",
+      "Fabric defect কাপড়ের মধ্যেই থাকে, যেমন hole, slub বা shade variation। Garment defect তৈরি হয় cutting, sewing বা finishing-এর সময়, যেমন open seam বা measurement error।",
+      "A fabric defect exists in the material, such as a hole, slub or shade variation. A garment defect occurs during cutting, sewing or finishing, such as an open seam or measurement error."
+    ],
+    [
+      "Fabric Lot ও Roll Number কেন সংরক্ষণ করা হয়?",
+      "Why are fabric lot and roll numbers recorded?",
+      "Traceability বজায় রাখতে lot ও roll number সংরক্ষণ করা হয়। কোনো shade বা quality problem হলে সংশ্লিষ্ট fabric roll শনাক্ত করে দ্রুত ব্যবস্থা নেওয়া যায়।",
+      "Lot and roll numbers are recorded for traceability. If a shade or quality issue occurs, the affected fabric rolls can be identified quickly."
+    ]
+  ],
+  "Washing": [
+    [
+      "Garment Washing কী?",
+      "What is garment washing?",
+      "Garment washing হলো তৈরি পোশাককে নির্দিষ্ট chemical, water ও mechanical process-এর মাধ্যমে পরিষ্কার, নরম বা নির্দিষ্ট appearance দেওয়ার প্রক্রিয়া।",
+      "Garment washing is a process that uses chemicals, water and mechanical action to clean, soften or create a specific appearance on finished garments."
+    ],
+    [
+      "Enzyme Wash কী?",
+      "What is enzyme wash?",
+      "Enzyme wash-এ enzyme ব্যবহার করে fabric বা garment-এর surface-এর loose fibre অপসারণ করা হয়। এতে fabric নরম হয় এবং নির্দিষ্ট washed appearance তৈরি হতে পারে।",
+      "Enzyme washing uses enzymes to remove loose surface fibres. It can soften the fabric and create a specific washed appearance."
+    ],
+    [
+      "Stone Wash কী?",
+      "What is stone wash?",
+      "Stone wash-এ সাধারণত pumice stone ব্যবহার করে garment-এর surface-এ abrasion তৈরি করা হয়। এতে garment-এর রঙ কিছুটা ফেড হয় এবং worn appearance আসে।",
+      "Stone washing commonly uses pumice stones to create abrasion on garments, producing a faded and worn appearance."
+    ],
+    [
+      "Bleach Wash কেন করা হয়?",
+      "Why is bleach washing performed?",
+      "Bleach wash garment-এর রঙ হালকা করতে বা নির্দিষ্ট faded effect তৈরি করতে ব্যবহৃত হয়। Chemical concentration, time ও temperature নিয়ন্ত্রণ করা জরুরি।",
+      "Bleach washing is used to lighten garment colour or create a faded effect. Chemical concentration, time and temperature must be controlled."
+    ],
+    [
+      "Washing-এর পর Measurement কেন পরীক্ষা করতে হয়?",
+      "Why must measurements be checked after washing?",
+      "Washing-এর ফলে garment-এর length ও width পরিবর্তিত হতে পারে। তাই approved measurement chart ও tolerance অনুযায়ী post-wash measurement পরীক্ষা করতে হয়।",
+      "Washing can change garment length and width. Post-wash measurements must be checked against the approved measurement chart and tolerance."
+    ],
+    [
+      "Washing-এর Chemical Recipe কেন গুরুত্বপূর্ণ?",
+      "Why is the washing chemical recipe important?",
+      "Chemical-এর ধরন ও পরিমাণ ভুল হলে shade variation, fabric damage, uneven washing বা strength loss হতে পারে। Approved recipe অনুসরণ করতে হয়।",
+      "Incorrect chemical types or quantities can cause shade variation, fabric damage, uneven washing or strength loss. Follow the approved recipe."
+    ],
+    [
+      "Garment Washing-এ Shade Variation কেন হয়?",
+      "Why does shade variation occur in garment washing?",
+      "Chemical dosage, machine loading, temperature, washing time, water quality বা garment-এর fabric variation-এর কারণে shade variation হতে পারে।",
+      "Shade variation may result from chemical dosage, machine loading, temperature, washing time, water quality or fabric variation."
+    ],
+    [
+      "Washing-এর পর Hand Feel কীভাবে যাচাই করা হয়?",
+      "How is hand feel checked after washing?",
+      "Approved sample-এর সঙ্গে garment-এর softness, stiffness ও surface feel তুলনা করতে হয়। Buyer-এর নির্ধারিত standard অনুসরণ করতে হবে।",
+      "Compare garment softness, stiffness and surface feel with the approved sample. Follow the buyer's specified standard."
+    ],
+    [
+      "Washing-এর পর Garment Damage কী কী হতে পারে?",
+      "What types of garment damage can occur after washing?",
+      "Excessive abrasion বা ভুল chemical ব্যবহারে hole, broken seam, fabric thinning, print damage, colour loss বা excessive shrinkage হতে পারে।",
+      "Excessive abrasion or incorrect chemicals may cause holes, broken seams, fabric thinning, print damage, colour loss or excessive shrinkage."
+    ],
+    [
+      "Bulk Washing-এর আগে কী Approval প্রয়োজন?",
+      "What approval is required before bulk washing?",
+      "Approved wash sample, shade, hand feel, measurement, chemical recipe এবং প্রয়োজনীয় test result যাচাই করে buyer বা সংশ্লিষ্ট অনুমোদিত ব্যক্তির approval নিতে হয়।",
+      "Obtain buyer or authorized approval after checking the approved wash sample, shade, hand feel, measurements, chemical recipe and required test results."
+    ]
+  ],
+  "Merchandising": [
+    [
+      "Garment Merchandising বলতে কী বোঝায়?",
+      "What is garment merchandising?",
+      "Garment merchandising হলো buyer-এর order পাওয়া থেকে শুরু করে material sourcing, production follow-up, quality coordination এবং shipment পর্যন্ত পুরো প্রক্রিয়া সমন্বয় করা।",
+      "Garment merchandising coordinates the process from receiving a buyer order through material sourcing, production follow-up and quality coordination to shipment."
+    ],
+    [
+      "Tech Pack কী?",
+      "What is a tech pack?",
+      "Tech Pack হলো garment তৈরির বিস্তারিত নির্দেশনা। এতে design, measurement, construction, fabric, trims, label, artwork এবং buyer requirement থাকে।",
+      "A tech pack is a detailed production document containing design, measurements, construction, fabric, trims, labels, artwork and buyer requirements."
+    ],
+    [
+      "BOM-এর পূর্ণরূপ কী?",
+      "What is the full form of BOM?",
+      "BOM-এর পূর্ণরূপ Bill of Materials। একটি garment তৈরিতে কী কী fabric, trims ও accessories লাগবে এবং তাদের প্রয়োজনীয় পরিমাণ কত, তা BOM-এ উল্লেখ থাকে।",
+      "BOM stands for Bill of Materials. It lists the fabrics, trims and accessories required to make a garment and their quantities."
+    ],
+    [
+      "TNA Calendar কী?",
+      "What is a TNA calendar?",
+      "TNA-এর পূর্ণরূপ Time and Action Calendar। Order-এর গুরুত্বপূর্ণ কাজ, deadline ও completion date পরিকল্পনা ও অনুসরণ করার জন্য এটি ব্যবহার করা হয়।",
+      "TNA stands for Time and Action Calendar. It is used to plan and track important order activities, deadlines and completion dates."
+    ],
+    [
+      "Order Confirmation কী?",
+      "What is order confirmation?",
+      "Buyer ও supplier-এর মধ্যে order-এর style, quantity, price, delivery date এবং অন্যান্য শর্ত নিশ্চিত করার প্রক্রিয়াকে order confirmation বলে।",
+      "Order confirmation is the process of confirming the style, quantity, price, delivery date and other terms between buyer and supplier."
+    ],
+    [
+      "PP Sample কী?",
+      "What is a PP sample?",
+      "PP-এর পূর্ণরূপ Pre-Production। Bulk production শুরুর আগে approved materials, construction, measurement ও workmanship যাচাইয়ের জন্য PP sample তৈরি করা হয়।",
+      "PP stands for Pre-Production. A PP sample is made before bulk production to verify approved materials, construction, measurements and workmanship."
+    ],
+    [
+      "Fabric Consumption কী?",
+      "What is fabric consumption?",
+      "একটি garment তৈরিতে গড়ে কতটুকু fabric লাগে তাকে fabric consumption বলে। এটি marker efficiency, fabric width, size ratio ও pattern-এর ওপর নির্ভর করে।",
+      "Fabric consumption is the average amount of fabric required to make one garment. It depends on marker efficiency, fabric width, size ratio and pattern."
+    ],
+    [
+      "Lead Time কী?",
+      "What is lead time in garment merchandising?",
+      "Order confirmation থেকে নির্ধারিত shipment বা delivery পর্যন্ত মোট সময়কে lead time বলা হয়। সঠিক planning-এর জন্য এটি গুরুত্বপূর্ণ।",
+      "Lead time is the total time from order confirmation to the scheduled shipment or delivery date. It is important for effective planning."
+    ],
+    [
+      "Shipment Documents কী কী হতে পারে?",
+      "What documents may be required for shipment?",
+      "Shipment-এর ক্ষেত্রে commercial invoice, packing list, carton details, bill of lading বা airway bill এবং buyer বা destination অনুযায়ী অন্যান্য export documents প্রয়োজন হতে পারে।",
+      "Shipment may require a commercial invoice, packing list, carton details, bill of lading or airway bill, and other export documents depending on the buyer and destination."
+    ],
+    [
+      "Order-এর Shipment Delay হলে কী তথ্য যাচাই করা হয়?",
+      "What information should be checked when an order shipment is delayed?",
+      "Production status, material availability, inspection result, packing completion, booking status এবং shipment deadline যাচাই করে delay-এর কারণ ও revised plan সংশ্লিষ্ট পক্ষকে জানাতে হয়।",
+      "Check production status, material availability, inspection results, packing completion, booking status and shipment deadlines. Communicate the delay reason and revised plan to the relevant parties."
+    ]
+  ]
+}
