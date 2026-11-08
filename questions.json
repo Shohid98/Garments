@@ -1,4 +1,66 @@
 {
+  "_sections": [
+    {
+      "key": "Cutting",
+      "bn": "কাটিং",
+      "emoji": "✂️"
+    },
+    {
+      "key": "Sewing",
+      "bn": "সুইং",
+      "emoji": "🧵"
+    },
+    {
+      "key": "Finishing",
+      "bn": "ফিনিশিং",
+      "emoji": "👔"
+    },
+    {
+      "key": "Knitting",
+      "bn": "নিটিং",
+      "emoji": "🧶"
+    },
+    {
+      "key": "Printing",
+      "bn": "প্রিন্টিং",
+      "emoji": "🎨"
+    },
+    {
+      "key": "Embroidery",
+      "bn": "এমব্রয়ডারি",
+      "emoji": "🪡"
+    },
+    {
+      "key": "Quality Assurance",
+      "bn": "কোয়ালিটি অ্যাসুরেন্স",
+      "emoji": "✅"
+    },
+    {
+      "key": "AQL & Inspection",
+      "bn": "AQL ও ইন্সপেকশন",
+      "emoji": "🔍"
+    },
+    {
+      "key": "Fabric",
+      "bn": "ফ্যাব্রিক",
+      "emoji": "🧵"
+    },
+    {
+      "key": "Washing",
+      "bn": "ওয়াশিং",
+      "emoji": "🫧"
+    },
+    {
+      "key": "Merchandising",
+      "bn": "মার্চেন্ডাইজিং",
+      "emoji": "📋"
+    },
+    {
+      "key": "GPQ",
+      "bn": "জিপিকিউ",
+      "emoji": "📒"
+    }
+  ],
   "Cutting": [
     [
       "কাটিং বিভাগের প্রধান দায়িত্ব কী?",
@@ -123,7 +185,7 @@
       "DHU = (Total defects ÷ Total garments checked) × 100. Example: 30 defects in 200 garments gives 15 DHU. Multiple defects on one garment are counted separately as defects."
     ]
   ],
-    "Finishing": [
+  "Finishing": [
     [
       "গার্মেন্টস ফিনিশিং বিভাগের প্রধান কাজ কী?",
       "What are the main responsibilities of the garment finishing department?",
@@ -679,6 +741,14 @@
       "What information should be checked when an order shipment is delayed?",
       "Production status, material availability, inspection result, packing completion, booking status এবং shipment deadline যাচাই করে delay-এর কারণ ও revised plan সংশ্লিষ্ট পক্ষকে জানাতে হয়।",
       "Check production status, material availability, inspection results, packing completion, booking status and shipment deadlines. Communicate the delay reason and revised plan to the relevant parties."
+    ]
+  ],
+  "GPQ": [
+    [
+      "G.P.Q এর পূর্ণ রূপ কি?",
+      "What is the full form of G.P.Q?",
+      "উৎপাদন ও গুণমানের জন্য নির্দেশিকা",
+      "Guide Line for Production & Quality"
     ]
   ]
 }
