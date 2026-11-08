@@ -178,6 +178,36 @@
       "How is DHU calculated on a sewing line?",
       "DHU = (মোট defect ÷ মোট garment checked) × 100। উদাহরণ: ২০০টি garment-এ ৩০টি defect পাওয়া গেলে DHU = ৩০÷২০০×১০০ = ১৫। এখানে এক garment-এ একাধিক defect থাকলে defect count আলাদা করে গণনা করতে হবে।",
       "DHU = (Total defects ÷ Total garments checked) × 100. Example: 30 defects in 200 garments gives 15 DHU. Multiple defects on one garment are counted separately as defects."
+    ],
+    [
+      "Sewing Line-এ DHU বলতে কী বোঝায়?",
+      "What does DHU mean in a sewing line?",
+      "DHU অর্থ Defects per Hundred Units। প্রতি ১০০টি Garments-এ গড়ে কতটি Defect পাওয়া যাচ্ছে তা বোঝায়।",
+      "DHU means Defects per Hundred Units. It indicates the average number of defects found per 100 garments."
+    ],
+    [
+      "Sewing Line-এ Inline Inspection কেন করা হয়?",
+      "Why is inline inspection performed in a sewing line?",
+      "উৎপাদন চলাকালীন ত্রুটি শনাক্ত করে দ্রুত সংশোধনের জন্য Inline Inspection করা হয়। এতে Defect বৃদ্ধি এবং Rework কমানো সম্ভব।",
+      "Inline inspection identifies defects during production so corrective action can be taken quickly, reducing defect buildup and rework."
+    ],
+    [
+      "SPI বলতে কী বোঝায়?",
+      "What does SPI mean?",
+      "SPI অর্থ Stitches Per Inch। প্রতি ইঞ্চিতে কতটি সেলাই রয়েছে তা বোঝায়।",
+      "SPI means Stitches Per Inch. It measures the number of stitches per inch."
+    ],
+    [
+      "Seam Puckering কী?",
+      "What is seam puckering?",
+      "সেলাইয়ের স্থানে কাপড় কুঁচকে যাওয়াকে Seam Puckering বলে। ভুল Thread Tension, Needle বা Machine Setting এর কারণে এটি হতে পারে।",
+      "Seam puckering is the unwanted gathering or wrinkling of fabric along a seam. It can result from incorrect thread tension, needle selection, or machine settings."
+    ],
+    [
+      "Sewing Line-এ Broken Stitch কেন হয়?",
+      "Why does broken stitch occur in a sewing line?",
+      "ভুল Thread Tension, নিম্নমানের Thread, ভোঁতা বা ক্ষতিগ্রস্ত Needle এবং Machine Setting-এর সমস্যার কারণে Broken Stitch হতে পারে।",
+      "Broken stitches may occur due to incorrect thread tension, poor thread quality, a blunt or damaged needle, or incorrect machine settings."
     ]
   ],
   "Finishing": [
