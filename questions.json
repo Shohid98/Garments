@@ -59,6 +59,11 @@
       "key": "General Quality",
       "bn": "General Quality",
       "emoji": "📒"
+    },
+    {
+      "key": "Store",
+      "bn": "স্টোর",
+      "emoji": "🏬"
     }
   ],
   "Cutting": [
@@ -1487,6 +1492,338 @@
       "What is RCA?",
       "RCA (Root Cause Analysis) হলো কোনো সমস্যা বা ত্রুটির প্রকৃত মূল কারণ খুঁজে বের করার পদ্ধতিগত বিশ্লেষণ।",
       "RCA (Root Cause Analysis) is a systematic method of identifying the underlying root cause of a problem or defect."
+    ]
+  ],
+  "Store": [
+    [
+      "Garments Store Section-এর প্রধান কাজ কী?",
+      "What are the main responsibilities of a Garments Store Section?",
+      "Garments Store-এর প্রধান কাজ হলো Raw Materials গ্রহণ, সংরক্ষণ, Stock Management, Production-এ Material Issue এবং Inventory Record সংরক্ষণ করা।",
+      "The main responsibilities of a Garments Store are receiving raw materials, storing them, managing stock, issuing materials to production, and maintaining inventory records."
+    ],
+    [
+      "Garments Factory-তে Store কত প্রকার হতে পারে?",
+      "What are the common types of stores in a garment factory?",
+      "সাধারণত Fabric Store, Accessories Store, Trims Store, Chemical Store, Packing Materials Store এবং Finished Goods Store থাকে।",
+      "Common stores include Fabric Store, Accessories Store, Trims Store, Chemical Store, Packing Materials Store, and Finished Goods Store."
+    ],
+    [
+      "Fabric Store-এর প্রধান কাজ কী?",
+      "What are the main responsibilities of a Fabric Store?",
+      "Fabric গ্রহণ, Fabric Inspection-এর ব্যবস্থা করা, Shade ও Lot অনুযায়ী সংরক্ষণ, Stock Record রাখা এবং Cutting Section-এ Fabric Issue করা।",
+      "The main responsibilities are receiving fabric, arranging fabric inspection, storing it by shade and lot, maintaining stock records, and issuing fabric to the Cutting Section."
+    ],
+    [
+      "Accessories Store-এর কাজ কী?",
+      "What are the responsibilities of an Accessories Store?",
+      "Button, Zipper, Thread, Label, Elastic, Drawcord এবং অন্যান্য Accessories গ্রহণ, সংরক্ষণ, হিসাব রাখা ও Production-এ সরবরাহ করা।",
+      "The responsibilities include receiving, storing, recording, and supplying buttons, zippers, threads, labels, elastics, drawcords, and other accessories to production."
+    ],
+    [
+      "Material Receiving কী?",
+      "What is Material Receiving?",
+      "Supplier বা Transport থেকে Factory-তে আসা Fabric, Accessories ও অন্যান্য Materials গ্রহণ করে Quantity এবং Documents যাচাই করার প্রক্রিয়াকে Material Receiving বলে।",
+      "Material Receiving is the process of accepting fabrics, accessories, and other materials from suppliers or transporters and checking their quantities and documents."
+    ],
+    [
+      "Material Receive করার সময় কী কী Document চেক করতে হয়?",
+      "Which documents should be checked during material receiving?",
+      "সাধারণত Challan, Delivery Note, Purchase Order (PO), Invoice, Packing List এবং প্রযোজ্য ক্ষেত্রে Test Report চেক করতে হয়।",
+      "Generally, the Challan, Delivery Note, Purchase Order (PO), Invoice, Packing List, and applicable Test Reports should be checked."
+    ],
+    [
+      "Purchase Order (PO) কী?",
+      "What is a Purchase Order (PO)?",
+      "Purchase Order হলো Buyer বা প্রতিষ্ঠানের অনুমোদিত ক্রয় নির্দেশনা, যেখানে Material Description, Quantity, Specification, Price এবং Delivery Details উল্লেখ থাকে।",
+      "A Purchase Order is an authorized purchasing document that specifies material descriptions, quantities, specifications, prices, and delivery details."
+    ],
+    [
+      "Challan কী?",
+      "What is a Challan?",
+      "Challan হলো পণ্য সরবরাহের সঙ্গে দেওয়া একটি Document, যেখানে Material Description, Quantity এবং Delivery Information উল্লেখ থাকে।",
+      "A Challan is a delivery document that contains material descriptions, quantities, and delivery information."
+    ],
+    [
+      "Material Receiving Report (MRR) কী?",
+      "What is a Material Receiving Report (MRR)?",
+      "Factory-তে Material গ্রহণের পর প্রকৃত Quantity, Supplier Information, PO এবং Receiving Details রেকর্ড করার Document-কে MRR বলে।",
+      "An MRR is a document used to record the actual received quantity, supplier information, PO details, and receiving information."
+    ],
+    [
+      "GRN কী?",
+      "What is a Goods Received Note (GRN)?",
+      "GRN হলো Supplier থেকে পণ্য গ্রহণের পর যাচাইকৃত Received Quantity রেকর্ড করার একটি আনুষ্ঠানিক Document।",
+      "A Goods Received Note (GRN) is an official document used to record the verified quantity of goods received from a supplier."
+    ],
+    [
+      "Material Receiving-এর সময় Quantity কম পাওয়া গেলে কী করতে হবে?",
+      "What should be done if the received material quantity is short?",
+      "Challan ও PO-এর সঙ্গে প্রকৃত Quantity মিলিয়ে Short Quantity রেকর্ড করতে হবে, সংশ্লিষ্ট কর্তৃপক্ষকে জানাতে হবে এবং Supplier-এর সঙ্গে সমাধান করতে হবে।",
+      "Compare the actual quantity with the Challan and PO, record the shortage, inform the concerned authority, and resolve the issue with the supplier."
+    ],
+    [
+      "Excess Material Receive হলে কী করতে হবে?",
+      "What should be done if excess material is received?",
+      "PO ও Challan-এর তুলনায় অতিরিক্ত Material পাওয়া গেলে তা আলাদাভাবে রেকর্ড করতে হবে এবং অনুমোদন ছাড়া Stock-এ অন্তর্ভুক্ত করা যাবে না।",
+      "If excess material is received compared with the PO and Challan, record it separately and do not include it in stock without authorization."
+    ],
+    [
+      "Fabric Roll Number কী?",
+      "What is a Fabric Roll Number?",
+      "Fabric Roll Number হলো প্রতিটি Fabric Roll শনাক্ত করার জন্য ব্যবহৃত একটি Unique Identification Number।",
+      "A Fabric Roll Number is a unique identification number used to identify each fabric roll."
+    ],
+    [
+      "Fabric Lot Number কী?",
+      "What is a Fabric Lot Number?",
+      "একই উৎপাদন Batch বা Lot-এর Fabric শনাক্ত ও আলাদা রাখার জন্য ব্যবহৃত নম্বরকে Fabric Lot Number বলে।",
+      "A Fabric Lot Number is used to identify and separate fabrics belonging to the same production batch or lot."
+    ],
+    [
+      "Fabric Shade Segregation কেন করা হয়?",
+      "Why is Fabric Shade Segregation necessary?",
+      "বিভিন্ন Shade-এর Fabric মিশে যাওয়া প্রতিরোধ এবং Cutting ও Sewing-এ Shade Variation সমস্যা এড়ানোর জন্য Shade অনুযায়ী Fabric আলাদা করে রাখতে হয়।",
+      "Fabric is separated by shade to prevent mixing different shades and avoid shade variation problems in cutting and sewing."
+    ],
+    [
+      "FIFO কী?",
+      "What is FIFO?",
+      "FIFO-এর পূর্ণরূপ First In, First Out। যে Material আগে Store-এ প্রবেশ করে, সেটি আগে Issue করার পদ্ধতিকে FIFO বলে।",
+      "FIFO stands for First In, First Out. It is a stock management method in which materials received first are issued first."
+    ],
+    [
+      "FEFO কী?",
+      "What is FEFO?",
+      "FEFO-এর পূর্ণরূপ First Expired, First Out। যে Material-এর Expiry Date আগে, সেটি আগে ব্যবহার বা Issue করার পদ্ধতিকে FEFO বলে।",
+      "FEFO stands for First Expired, First Out. It means issuing materials with the earliest expiry date first."
+    ],
+    [
+      "Stock Register কী?",
+      "What is a Stock Register?",
+      "Stock Register হলো Material-এর Opening Balance, Receive, Issue, Return এবং Closing Balance সংরক্ষণের রেকর্ড।",
+      "A Stock Register is a record of material opening balance, receipts, issues, returns, and closing balance."
+    ],
+    [
+      "Bin Card কী?",
+      "What is a Bin Card?",
+      "Bin Card হলো নির্দিষ্ট Material বা Storage Location-এর পাশে রাখা রেকর্ড, যেখানে প্রতিটি Receive ও Issue-এর Quantity এবং Balance লেখা হয়।",
+      "A Bin Card is a record maintained at a specific material or storage location to track every receipt, issue, and balance quantity."
+    ],
+    [
+      "Stock Ledger কী?",
+      "What is a Stock Ledger?",
+      "Stock Ledger হলো Store-এর বিভিন্ন Material-এর Receipt, Issue এবং Balance-এর বিস্তারিত হিসাব সংরক্ষণের রেকর্ড।",
+      "A Stock Ledger is a detailed record of receipts, issues, and balances of different materials in the store."
+    ],
+    [
+      "Physical Stock কী?",
+      "What is Physical Stock?",
+      "Store-এ বাস্তবে গণনা করে যে পরিমাণ Material পাওয়া যায় তাকে Physical Stock বলে।",
+      "Physical Stock is the actual quantity of materials counted and available in the store."
+    ],
+    [
+      "Book Stock কী?",
+      "What is Book Stock?",
+      "Stock Register বা Software-এ রেকর্ড অনুযায়ী যে পরিমাণ Material থাকার কথা তাকে Book Stock বলে।",
+      "Book Stock is the quantity of materials recorded in the stock register or inventory system."
+    ],
+    [
+      "Stock Reconciliation কী?",
+      "What is Stock Reconciliation?",
+      "Physical Stock এবং Book Stock তুলনা করে কোনো পার্থক্য থাকলে তার কারণ খুঁজে বের করে হিসাব সংশোধন করার প্রক্রিয়াকে Stock Reconciliation বলে।",
+      "Stock Reconciliation is the process of comparing physical stock with book stock, identifying differences, and correcting records."
+    ],
+    [
+      "Stock Variance কী?",
+      "What is Stock Variance?",
+      "Physical Stock এবং Book Stock-এর মধ্যে যে পার্থক্য দেখা যায় তাকে Stock Variance বলে।",
+      "Stock Variance is the difference between physical stock and book stock."
+    ],
+    [
+      "Minimum Stock Level কী?",
+      "What is Minimum Stock Level?",
+      "Material-এর যে সর্বনিম্ন পরিমাণ Stock রাখা প্রয়োজন, তার নিচে নেমে গেলে Replenishment-এর ব্যবস্থা করতে হয়।",
+      "Minimum Stock Level is the lowest quantity of material that should be maintained before replenishment is required."
+    ],
+    [
+      "Maximum Stock Level কী?",
+      "What is Maximum Stock Level?",
+      "Store-এ কোনো Material-এর যে সর্বোচ্চ Stock Quantity নির্ধারণ করা হয় তাকে Maximum Stock Level বলে।",
+      "Maximum Stock Level is the highest quantity of a material allowed to be maintained in the store."
+    ],
+    [
+      "Reorder Level কী?",
+      "What is Reorder Level?",
+      "Stock যে নির্ধারিত পর্যায়ে পৌঁছালে নতুন Material কেনার জন্য Purchase Requisition বা Reorder করতে হয় তাকে Reorder Level বলে।",
+      "Reorder Level is the stock quantity at which a new purchase requisition or reorder should be initiated."
+    ],
+    [
+      "Safety Stock কী?",
+      "What is Safety Stock?",
+      "Supplier Delay, অতিরিক্ত Consumption বা জরুরি চাহিদা মোকাবিলার জন্য অতিরিক্ত যে Stock রাখা হয় তাকে Safety Stock বলে।",
+      "Safety Stock is the extra inventory maintained to handle supplier delays, unexpected consumption, or urgent demand."
+    ],
+    [
+      "Material Issue কী?",
+      "What is Material Issue?",
+      "অনুমোদিত Requisition অনুযায়ী Store থেকে Production বা সংশ্লিষ্ট বিভাগে Material সরবরাহ করাকে Material Issue বলে।",
+      "Material Issue is the process of supplying materials from the store to production or other departments against an authorized requisition."
+    ],
+    [
+      "Material Requisition কী?",
+      "What is a Material Requisition?",
+      "Production বা অন্য কোনো বিভাগ থেকে প্রয়োজনীয় Material পাওয়ার জন্য Store-এ জমা দেওয়া আনুষ্ঠানিক চাহিদাপত্রকে Material Requisition বলে।",
+      "A Material Requisition is a formal request submitted by production or another department to obtain required materials from the store."
+    ],
+    [
+      "Material Issue Slip কী?",
+      "What is a Material Issue Slip?",
+      "Store থেকে Material সরবরাহের সময় Material Name, Style, Quantity, Department এবং Authorization উল্লেখ করে যে Document তৈরি করা হয় তাকে Material Issue Slip বলে।",
+      "A Material Issue Slip is a document prepared during material issuance that records the material name, style, quantity, department, and authorization."
+    ],
+    [
+      "Production-এ Material Issue করার আগে কী কী যাচাই করতে হয়?",
+      "What should be checked before issuing materials to production?",
+      "Style Number, Buyer, Color, Size, Material Specification, Required Quantity এবং Approved Requisition যাচাই করতে হয়।",
+      "Check the style number, buyer, color, size, material specifications, required quantity, and approved requisition."
+    ],
+    [
+      "Material Return কী?",
+      "What is Material Return?",
+      "Production-এ ব্যবহারের পর অবশিষ্ট বা অতিরিক্ত Material Store-এ ফেরত দেওয়ার প্রক্রিয়াকে Material Return বলে।",
+      "Material Return is the process of returning unused or excess materials from production to the store."
+    ],
+    [
+      "Leftover Material কী?",
+      "What is Leftover Material?",
+      "Production বা Order সম্পন্ন হওয়ার পর অব্যবহৃত অবস্থায় যে Material অবশিষ্ট থাকে তাকে Leftover Material বলে।",
+      "Leftover Material refers to unused materials remaining after production or completion of an order."
+    ],
+    [
+      "Fabric Consumption কী?",
+      "What is Fabric Consumption?",
+      "একটি Garment তৈরিতে যে পরিমাণ Fabric প্রয়োজন হয় তাকে Fabric Consumption বলে।",
+      "Fabric Consumption is the quantity of fabric required to produce one garment."
+    ],
+    [
+      "Fabric Issue Quantity কীভাবে নির্ধারণ করা হয়?",
+      "How is Fabric Issue Quantity determined?",
+      "Order Quantity, Approved Fabric Consumption, Allowance এবং Buyer বা Factory-এর নির্ধারিত Wastage বিবেচনা করে Fabric Issue Quantity নির্ধারণ করা হয়।",
+      "Fabric Issue Quantity is determined by considering order quantity, approved fabric consumption, allowance, and the wastage standard set by the buyer or factory."
+    ],
+    [
+      "Fabric Wastage কী?",
+      "What is Fabric Wastage?",
+      "Cutting বা Production-এর সময় ব্যবহারের অযোগ্য হয়ে যাওয়া বা অতিরিক্ত খরচ হওয়া Fabric-এর পরিমাণকে Fabric Wastage বলে।",
+      "Fabric Wastage is the amount of fabric lost or rendered unusable during cutting or production."
+    ],
+    [
+      "Fabric Store-এ Roll Inspection কেন গুরুত্বপূর্ণ?",
+      "Why is Roll Inspection important in a Fabric Store?",
+      "Fabric-এর Shade, Width, Length, GSM এবং দৃশ্যমান Defect যাচাই করে পরবর্তী Production সমস্যা প্রতিরোধের জন্য Roll Inspection গুরুত্বপূর্ণ।",
+      "Roll Inspection is important for checking fabric shade, width, length, GSM, and visible defects to prevent problems in later production."
+    ],
+    [
+      "Accessories Shortage হলে কী করতে হবে?",
+      "What should be done if there is an accessories shortage?",
+      "Physical Stock ও Stock Record যাচাই করে Shortage Quantity নির্ধারণ করতে হবে, সংশ্লিষ্ট Merchandiser ও Production Team-কে জানাতে হবে এবং অনুমোদন অনুযায়ী জরুরি ব্যবস্থা নিতে হবে।",
+      "Verify physical stock and stock records, determine the shortage quantity, inform the concerned merchandiser and production team, and take necessary action with approval."
+    ],
+    [
+      "Wrong Material Issue হলে কী করতে হবে?",
+      "What should be done if the wrong material is issued?",
+      "ভুল Material ব্যবহার বন্ধ করতে হবে, সংশ্লিষ্ট বিভাগকে জানাতে হবে, ভুল Material ফেরত নিতে হবে এবং সঠিক Material Issue করে Record সংশোধন করতে হবে।",
+      "Stop the use of the wrong material, inform the concerned department, retrieve the incorrect material, issue the correct material, and update the records."
+    ],
+    [
+      "Damaged Material কীভাবে সংরক্ষণ করতে হয়?",
+      "How should damaged materials be stored?",
+      "Damaged Material ভালো Material থেকে আলাদা করে Quarantine বা Identified Area-তে রাখতে হবে এবং Damage Report তৈরি করে সংশ্লিষ্ট কর্তৃপক্ষকে জানাতে হবে।",
+      "Damaged materials must be separated from good materials, kept in a quarantine or identified area, and reported to the concerned authority."
+    ],
+    [
+      "Quarantine Area কী?",
+      "What is a Quarantine Area?",
+      "সন্দেহজনক, Damaged, Rejected বা Inspection Pending Material আলাদা করে রাখার নির্ধারিত স্থানকে Quarantine Area বলে।",
+      "A Quarantine Area is a designated place for separating suspicious, damaged, rejected, or inspection-pending materials."
+    ],
+    [
+      "Store-এ Material Labeling কেন করা হয়?",
+      "Why is material labeling necessary in a store?",
+      "Material Name, Style, Buyer, Color, Lot Number, Quantity এবং Status সহজে শনাক্ত করার জন্য Labeling করা হয়।",
+      "Material labeling is used to easily identify the material name, style, buyer, color, lot number, quantity, and status."
+    ],
+    [
+      "Fabric Store-এ কীভাবে Fabric সংরক্ষণ করা উচিত?",
+      "How should fabric be stored in a Fabric Store?",
+      "Fabric পরিষ্কার, শুকনো ও নির্ধারিত তাপমাত্রা-আর্দ্রতাসম্পন্ন স্থানে Rack বা Pallet-এর ওপর রাখতে হবে এবং সরাসরি মেঝে ও দেয়ালের সংস্পর্শ এড়াতে হবে।",
+      "Fabric should be stored in a clean, dry area with controlled temperature and humidity, placed on racks or pallets, and kept away from direct floor and wall contact."
+    ],
+    [
+      "Store-এ Fire Safety কেন গুরুত্বপূর্ণ?",
+      "Why is Fire Safety important in a store?",
+      "Fabric, Carton ও অন্যান্য Materials দাহ্য হতে পারে। তাই Fire Extinguisher, Emergency Exit, Electrical Safety এবং Fire Prevention ব্যবস্থা নিশ্চিত করা জরুরি।",
+      "Fabrics, cartons, and other materials may be flammable. Therefore, fire extinguishers, emergency exits, electrical safety, and fire prevention measures are essential."
+    ],
+    [
+      "Store-এ Pest Control কেন প্রয়োজন?",
+      "Why is Pest Control necessary in a store?",
+      "ইঁদুর, পোকামাকড় ও অন্যান্য Pest থেকে Fabric, Accessories এবং Packaging Materials রক্ষা করার জন্য Pest Control প্রয়োজন।",
+      "Pest Control is necessary to protect fabrics, accessories, and packaging materials from rodents, insects, and other pests."
+    ],
+    [
+      "Stock Taking কী?",
+      "What is Stock Taking?",
+      "নির্দিষ্ট সময় পর Store-এর সব Material বাস্তবে গণনা করে Stock Record-এর সঙ্গে মিলিয়ে দেখার প্রক্রিয়াকে Stock Taking বলে।",
+      "Stock Taking is the process of physically counting all materials in the store at a scheduled time and comparing them with stock records."
+    ],
+    [
+      "Monthly Stock Report-এ কী কী তথ্য থাকে?",
+      "What information is included in a Monthly Stock Report?",
+      "সাধারণত Opening Stock, Monthly Receive, Monthly Issue, Return, Damage, Adjustment এবং Closing Stock-এর তথ্য থাকে।",
+      "A Monthly Stock Report generally includes opening stock, monthly receipts, issues, returns, damaged materials, adjustments, and closing stock."
+    ],
+    [
+      "Store Management-এ ERP Software-এর কাজ কী?",
+      "What is the role of ERP software in store management?",
+      "ERP Software-এর মাধ্যমে Material Receiving, Stock Balance, Material Issue, Return, Purchase এবং Inventory Report ডিজিটালভাবে পরিচালনা ও পর্যবেক্ষণ করা যায়।",
+      "ERP software helps manage and monitor material receiving, stock balance, material issues, returns, purchasing, and inventory reports digitally."
+    ],
+    [
+      "Store-এর 5S কী?",
+      "What is 5S in Store Management?",
+      "5S হলো Sort, Set in Order, Shine, Standardize এবং Sustain। এর মাধ্যমে Store পরিষ্কার, গোছানো, নিরাপদ ও কার্যকর রাখা হয়।",
+      "5S stands for Sort, Set in Order, Shine, Standardize, and Sustain. It helps keep the store clean, organized, safe, and efficient."
+    ],
+    [
+      "Store Keeper-এর প্রধান দায়িত্ব কী?",
+      "What are the main responsibilities of a Store Keeper?",
+      "Material Receive, Quantity Check, Proper Storage, Stock Record Update, Material Issue, Return Management এবং Store Safety নিশ্চিত করা Store Keeper-এর প্রধান দায়িত্ব।",
+      "The main responsibilities of a Store Keeper are receiving materials, checking quantities, proper storage, updating stock records, issuing materials, managing returns, and ensuring store safety."
+    ],
+    [
+      "Store-এ Inventory Accuracy কী?",
+      "What is Inventory Accuracy?",
+      "বাস্তব Stock এবং Inventory Record-এর মধ্যে সঠিক মিল থাকার মাত্রাকে Inventory Accuracy বলে।",
+      "Inventory Accuracy measures how closely the actual stock matches the inventory records."
+    ],
+    [
+      "Dead Stock কী?",
+      "What is Dead Stock?",
+      "দীর্ঘদিন ধরে ব্যবহার বা Issue না হওয়া এবং বর্তমানে Production-এ প্রয়োজন নেই এমন Stock-কে Dead Stock বলে।",
+      "Dead Stock refers to inventory that has not been used or issued for a long time and is no longer required for current production."
+    ],
+    [
+      "Obsolete Material কী?",
+      "What is Obsolete Material?",
+      "Design, Style, Buyer Requirement বা Specification পরিবর্তনের কারণে যে Material আর ব্যবহারযোগ্য থাকে না তাকে Obsolete Material বলে।",
+      "Obsolete Material refers to materials that are no longer usable due to changes in design, style, buyer requirements, or specifications."
+    ],
+    [
+      "Store-এ Material Shortage প্রতিরোধের উপায় কী?",
+      "How can material shortages be prevented in a store?",
+      "নিয়মিত Stock Monitoring, Reorder Level নির্ধারণ, Accurate Inventory Record, Timely Purchase Requisition এবং Production Plan অনুযায়ী Material Availability নিশ্চিত করতে হবে।",
+      "Material shortages can be prevented through regular stock monitoring, setting reorder levels, maintaining accurate inventory records, timely purchase requisitions, and ensuring material availability according to production plans."
     ]
   ]
 }
