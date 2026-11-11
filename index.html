@@ -84,7 +84,6 @@ header{
 
 .section-wrap{
  display:grid;
- grid-template-columns: repeat(2, 1fr);
  gap:16px;
  max-width:1250px; margin:0 auto 20px; padding:0 14px;
 }
@@ -231,11 +230,13 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
 
 .empty{text-align:center; color:var(--muted); padding:30px; grid-column: 1 / -1;}
 
+/* Responsive Fixes for Mobile View */
 @media(max-width:1024px){
  #questionList{grid-template-columns: repeat(2, 1fr);}
 }
 
 @media(max-width:650px){
+ #questionList{grid-template-columns: 1fr !important;}
  header{padding:18px 12px}
  .brand h1{font-size:21px}
  .brand p{font-size:12px}
@@ -345,8 +346,9 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
 <div id="sections" class="section-wrap"></div>
 
 <main class="container" id="mainContainer" style="display:none;">
- <button class="back-btn" onclick="goHome()">⬅️ সেকশন তালিকায় ফিরে যান</button>
+ <button class="back-btn" onclick="goHome()" id="backButton">⬅️ সেকশন তালিকায় ফিরে যান</button>
  <h2 class="section-heading" id="sectionHeading">✂️ কাটিং বিভাগ</h2>
+ <div id="subSections" class="section-wrap" style="display:none; margin-bottom:20px;"></div>
  <div id="questionList"></div>
 </main>
 
@@ -371,20 +373,25 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
     <button class="active" onclick="showAdminTab('manage',this)">Manage</button>
     <button onclick="showAdminTab('bulk',this)">Bulk Add</button>
     <button onclick="showAdminTab('sections-config',this)">Sections & Layout</button>
-    <button onclick="showAdminTab('header-config',this)">🏷️ Header Branding</button>
+    <button onclick="showAdminTab('header-config',this)">🏷️ Header</button>
     <button onclick="showAdminTab('password-tab',this)">🔒 Password</button>
     <button onclick="showAdminTab('supabase',this)">Supabase Sync</button>
    </div>
    
    <div id="tab-manage" class="admin-tab">
-    <h3>📚 Section Management</h3>
+    <h3>📚 Section & Sub-Section Management</h3>
     <div class="admin-grid">
-     <input id="newSectionKey" placeholder="Section English name">
+     <input id="newSectionKey" placeholder="English name (মূল বা সাব-ফোল্ডার)">
      <input id="newSectionBn" placeholder="বাংলা নাম">
      <input id="newSectionEmoji" placeholder="Emoji (যেমন ✂️)">
     </div>
-    <button class="admin-primary" onclick="addSection()">＋ Add Section</button>
-    <div class="admin-grid">
+    <label style="margin-top:8px; display:block; color:#ffdf48;">কোথায় তৈরি করতে চান?</label>
+    <select id="parentSectionSelect" style="margin-bottom:10px;">
+     <option value="">-- এটি একটি মূল সেকশন (Root Section) --</option>
+    </select>
+    <button class="admin-primary" onclick="addSection()">＋ Add Section / Sub-Folder</button>
+    
+    <div class="admin-grid" style="margin-top:15px;">
      <select id="manageSection" onchange="refreshAdminQuestions()"></select>
      <input id="renameSectionBn" placeholder="নতুন বাংলা নাম">
     </div>
@@ -418,7 +425,7 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
    <!-- Sections Order, Visibility & Layout Tab -->
    <div id="tab-sections-config" class="admin-tab" style="display:none">
     <h3>👁️ Section Visibility, Order & Home Layout</h3>
-    <p>হোমপেজে সেকশনগুলো কত লাইনে বা কলামে দেখাবে তা সিলেক্ট করুন এবং সেকশনগুলোর ভিজিবিলিটি/ক্রম পরিবর্তন করুন।</p>
+    <p>হোমপেজে সেকশনগুলো কত কলামে দেখাবে তা সিলেক্ট করুন এবং সেকশনগুলোর ভিজিবিলিটি/ক্রম পরিবর্তন করুন।</p>
     
     <div style="margin:15px 0; background:#102f50; padding:12px; border-radius:10px; border:1px solid #37648c;">
      <label style="display:block; margin-bottom:6px; color:#ffdf48; font-weight:bold;">হোমপেজ লেআউট (Home Layout Columns):</label>
@@ -435,10 +442,9 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
    <!-- Header Branding Tab -->
    <div id="tab-header-config" class="admin-tab" style="display:none">
     <h3>🏷️ Header & Branding Configuration</h3>
-    <p>ওয়েবসাইটের হেডার টাইটেল এবং সাবটাইটেল পরিবর্তন করুন।</p>
-    <label>মেইন হেডার টাইটেল (যেমন: Garments Pro Notebook)</label>
-    <input id="inputHeaderTitle" type="text" placeholder="Garments Pro Notebook" style="margin-bottom:10px">
-    <label>হাইলাইট ওয়ার্ড কালার টেক্সট (যেমন: Notebook)</label>
+    <label>মেইন হেডার টাইটেল</label>
+    <input id="inputHeaderTitle" type="text" placeholder="Garments Pro" style="margin-bottom:10px">
+    <label>হাইলাইট ওয়ার্ড কালার টেক্সট</label>
     <input id="inputHeaderHighlight" type="text" placeholder="Notebook" style="margin-bottom:10px">
     <label>সাবটাইটেল (ডেসক্রিপশন)</label>
     <input id="inputHeaderSubtitle" type="text" placeholder="Garments Industry Knowledge..." style="margin-bottom:10px">
@@ -500,27 +506,28 @@ function getAdminPassword(){
 }
 
 const defaultSections = [
- {key:"Cutting",bn:"কাটিং",emoji:"✂️",visible:true},
- {key:"Sewing",bn:"সুইং",emoji:"🧵",visible:true},
- {key:"Finishing",bn:"ফিনিশিং",emoji:"👔",visible:true},
- {key:"Knitting",bn:"নিটিং",emoji:"🧶",visible:true},
- {key:"Printing",bn:"প্রিন্টিং",emoji:"🎨",visible:true},
- {key:"Embroidery",bn:"এমব্রয়ডারি",emoji:"🪡",visible:true},
- {key:"Quality Assurance",bn:"কোয়ালিটি অ্যাসুরেন্স",emoji:"✅",visible:true},
- {key:"AQL & Inspection",bn:"AQL ও ইন্সপেকশন",emoji:"🔍",visible:true},
- {key:"Fabric",bn:"ফ্যাব্রিক",emoji:"🧵",visible:true},
- {key:"Washing",bn:"ওয়াশিং",emoji:"🫧",visible:true},
- {key:"Merchandising",bn:"মার্চেন্ডাইজিং",emoji:"📋",visible:true}
+ {key:"Cutting",bn:"কাটিং",emoji:"✂️",visible:true, parent:null},
+ {key:"Sewing",bn:"সুইং",emoji:"🧵",visible:true, parent:null},
+ {key:"Finishing",bn:"ফিনিশিং",emoji:"👔",visible:true, parent:null},
+ {key:"Knitting",bn:"নিটিং",emoji:"🧶",visible:true, parent:null},
+ {key:"Printing",bn:"প্রিন্টিং",emoji:"🎨",visible:true, parent:null},
+ {key:"Embroidery",bn:"এমব্রয়ডারি",emoji:"🪡",visible:true, parent:null},
+ {key:"Quality Assurance",bn:"কোয়ালিটি অ্যাসুরেন্স",emoji:"✅",visible:true, parent:null},
+ {key:"AQL & Inspection",bn:"AQL ও ইন্সপেকশন",emoji:"🔍",visible:true, parent:null},
+ {key:"Fabric",bn:"ফ্যাব্রিক",emoji:"🧵",visible:true, parent:null},
+ {key:"Washing",bn:"ওয়াশিং",emoji:"🫧",visible:true, parent:null},
+ {key:"Merchandising",bn:"মার্চেন্ডাইজিং",emoji:"📋",visible:true, parent:null}
 ];
 
 let sections = defaultSections.map(s=>({...s}));
 let data = {};
 let currentSection = null; 
+let navigationStack = []; // For sub-folders / breadcrumbs
 let adminMode = false;
 let bulkDraft = [];
 let supabaseClient = null;
 let activeTimers = {};
-let homeLayoutCols = 2; // Default 2 columns
+let homeLayoutCols = 2; 
 let brandingConfig = {
  mainTitle: "Garments Pro",
  highlightTitle: "Notebook",
@@ -610,7 +617,8 @@ function processRawData(raw){
     key:String(s.key),
     bn:String(s.bn || s.key),
     emoji:String(s.emoji || "📘"),
-    visible: s.visible !== false
+    visible: s.visible !== false,
+    parent: s.parent ? String(s.parent) : null
    }));
  }else{
   sections = defaultSections.map(s=>({...s}));
@@ -750,29 +758,54 @@ function toggleFavorite(event, sec, idx){
  renderQuestions();
 }
 
-function renderSections(){
+function renderSections(parentKey = null){
  const holder = document.getElementById("sections");
  holder.innerHTML = "";
- holder.style.gridTemplateColumns = `repeat(${homeLayoutCols}, 1fr)`;
+ holder.style.gridTemplateColumns = `repeat(${window.innerWidth <= 650 ? 2 : homeLayoutCols}, 1fr)`;
 
- const favBtn = document.createElement("button");
- favBtn.className = "section-btn fav-section-btn";
- favBtn.innerHTML = '<span class="emoji">❤️</span><span>ফেভারিট প্রশ্ন</span><small>Favorites</small>';
- favBtn.onclick = () => openSection("FAVOURITES");
- holder.appendChild(favBtn);
+ if(!parentKey){
+  const favBtn = document.createElement("button");
+  favBtn.className = "section-btn fav-section-btn";
+  favBtn.innerHTML = '<span class="emoji">❤️</span><span>ফেভারিট প্রশ্ন</span><small>Favorites</small>';
+  favBtn.onclick = () => openSection("FAVOURITES");
+  holder.appendChild(favBtn);
+ }
 
- const visibleSections = sections.filter(s=>s.visible !== false);
- visibleSections.forEach(section=>{
+ const targetSections = sections.filter(s => (s.parent || null) === parentKey && s.visible !== false);
+ 
+ targetSections.forEach(section=>{
+  const hasSub = sections.some(s => s.parent === section.key && s.visible !== false);
+  const qCount = (data[section.key] || []).length;
+  
   const button = document.createElement("button");
   button.className = "section-btn";
   button.innerHTML =
    '<span class="emoji">'+escapeHTML(section.emoji)+'</span>'+
    '<span>'+escapeHTML(section.bn)+'</span>'+
-   '<small>'+escapeHTML(section.key)+'</small>';
+   '<small>'+(hasSub ? '📁 ফোল্ডার' : qCount+' প্রশ্ন')+'</small>';
 
-  button.onclick = () => openSection(section.key);
+  button.onclick = () => {
+   if(hasSub){
+    navigationStack.push(parentKey);
+    renderSections(section.key);
+   } else {
+    openSection(section.key);
+   }
+  };
   holder.appendChild(button);
  });
+
+ if(parentKey){
+  const backMainBtn = document.createElement("button");
+  backMainBtn.className = "section-btn";
+  backMainBtn.style.background = "var(--btn-bg)";
+  backMainBtn.innerHTML = '<span class="emoji">⬅️</span><span>ফিরে যান</span>';
+  backMainBtn.onclick = () => {
+   const prev = navigationStack.pop() || null;
+   renderSections(prev);
+  };
+  holder.appendChild(backMainBtn);
+ }
 }
 
 function changeHomeLayout(cols){
@@ -805,10 +838,28 @@ function openSection(sectionKey){
 
  if(sectionKey === "FAVOURITES"){
   document.getElementById("sectionHeading").textContent = "❤️ ফেভারিট প্রশ্নসমূহ / Favorite Questions";
+  document.getElementById("subSections").style.display = "none";
  } else {
   const selected = sections.find(s=>s.key===currentSection);
   document.getElementById("sectionHeading").textContent =
    selected ? selected.emoji+" "+selected.bn+" / "+selected.key : "Questions";
+   
+  // Check if this section has sub-folders/sub-sections
+  const subSecs = sections.filter(s => s.parent === sectionKey && s.visible !== false);
+  const subHolder = document.getElementById("subSections");
+  subHolder.innerHTML = "";
+  if(subSecs.length > 0){
+   subHolder.style.display = "grid";
+   subSecs.forEach(sub => {
+    const subBtn = document.createElement("button");
+    subBtn.className = "section-btn";
+    subBtn.innerHTML = '<span class="emoji">'+escapeHTML(sub.emoji)+'</span><span>'+escapeHTML(sub.bn)+'</span>';
+    subBtn.onclick = () => openSection(sub.key);
+    subHolder.appendChild(subBtn);
+   });
+  } else {
+   subHolder.style.display = "none";
+  }
  }
 
  renderQuestions();
@@ -816,9 +867,11 @@ function openSection(sectionKey){
 
 function goHome(){
  currentSection = null;
+ navigationStack = [];
  document.getElementById("search").value = "";
  document.getElementById("sections").style.display = "grid";
  document.getElementById("mainContainer").style.display = "none";
+ renderSections(null);
 }
 
 function handleSearch(){
@@ -848,9 +901,16 @@ function renderQuestions(){
    }
   });
  } else {
-  const questions = data[currentSection] || [];
-  questions.forEach((item, idx) => {
-   questionsToRender.push({item, sec: currentSection, idx});
+  // Gather questions from current section and its sub-sections recursively if needed
+  let targetKeys = [currentSection];
+  let subList = sections.filter(s => s.parent === currentSection && s.visible !== false);
+  subList.forEach(sub => targetKeys.push(sub.key));
+
+  targetKeys.forEach(sk => {
+   const questions = data[sk] || [];
+   questions.forEach((item, idx) => {
+    questionsToRender.push({item, sec: sk, idx});
+   });
   });
  }
 
@@ -1072,11 +1132,17 @@ function showAdminTab(tab,button){
 }
 
 function refreshAdminSelects(){
- const ids = ["manageSection","bulkSection"];
+ const ids = ["manageSection","bulkSection","parentSectionSelect"];
  ids.forEach(id=>{
   const select = document.getElementById(id);
   if(!select) return;
   select.innerHTML="";
+  if(id === "parentSectionSelect"){
+   const defaultOpt = document.createElement("option");
+   defaultOpt.value = "";
+   defaultOpt.textContent = "-- এটি একটি মূল সেকশন (Root Section) --";
+   select.appendChild(defaultOpt);
+  }
   sections.forEach(section=>{
    const option = document.createElement("option");
    option.value=section.key;
@@ -1096,7 +1162,7 @@ function refreshAdminSectionsList(){
   const row = document.createElement("div");
   row.className = "admin-srow";
   row.innerHTML = `
-   <span><b>${section.emoji} ${section.bn}</b> (${section.key})</span>
+   <span><b>${section.emoji} ${section.bn}</b> (${section.key}) ${section.parent ? '[Sub: '+section.parent+']' : ''}</span>
    <label style="display:flex; align-items:center; gap:5px; cursor:pointer;">
     <input type="checkbox" ${isChecked} onchange="toggleSectionVisibility(${index}, this.checked)" style="width:auto; cursor:pointer;"> Visible
    </label>
@@ -1134,10 +1200,11 @@ function addSection(){
  if(!adminMode) return;
  const key = document.getElementById("newSectionKey").value.trim();
  const bn = document.getElementById("newSectionBn").value.trim();
- const emoji = document.getElementById("newSectionEmoji").value.trim() || "📘";
+ const emoji = document.getElementById("newSectionEmoji").value.trim() || "📁";
+ const parent = document.getElementById("parentSectionSelect").value || null;
 
  if(!key || !bn) return alert("নাম দিন।");
- sections.push({key,bn,emoji,visible:true});
+ sections.push({key, bn, emoji, visible:true, parent});
  data[key]=[];
  renderSections();
  refreshAdminSelects();
@@ -1145,7 +1212,7 @@ function addSection(){
  document.getElementById("newSectionKey").value="";
  document.getElementById("newSectionBn").value="";
  document.getElementById("newSectionEmoji").value="";
- alert("সেকশন যোগ হয়েছে।");
+ alert("সেকশন বা ফোল্ডার সফলভাবে তৈরি হয়েছে।");
  saveToSupabaseCloudAuto();
 }
 
@@ -1153,7 +1220,7 @@ function deleteSection(){
  if(!adminMode) return;
  const sec = getManageSection();
  if(!confirm(`Are you sure you want to delete section "${sec}"?`)) return;
- sections = sections.filter(s => s.key !== sec);
+ sections = sections.filter(s => s.key !== sec && s.parent !== sec);
  delete data[sec];
  renderSections();
  refreshAdminSelects();
