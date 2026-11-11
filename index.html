@@ -43,35 +43,63 @@ header{
 .search:focus{border-color:var(--cyan);box-shadow:0 0 12px #18dfff66}
 .search::placeholder{color:#bdd1e9}
 
-/* Vertical Sections Layout on Homepage */
+/* Grid Layout: 2 items per row (Left & Right) */
 .section-wrap{
- display:flex;flex-direction:column;gap:15px;
+ display:grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap:15px;
  max-width:1050px;margin:0 auto 20px;padding:0 14px;
 }
 .section-btn{
- width:100%;min-height:70px;padding:15px 20px;
+ width:100%;min-height:75px;padding:15px 20px;
  display:flex;align-items:center;gap:15px;cursor:pointer;
  color:white;background:linear-gradient(145deg,#15385e,#091a34);
  border:2px solid #28577f;border-radius:15px;
  font-size:18px;font-weight:bold;text-align:left;
+ transition: transform 0.2s, box-shadow 0.2s;
+}
+.section-btn:hover{
+ transform: translateY(-2px);
+ box-shadow: 0 4px 15px rgba(36,223,255,0.3);
 }
 .section-btn .emoji{font-size:28px}
 .section-btn small{margin-left:auto;font-size:13px;color:#b6d9f4}
-.section-btn.active{
- border:3px solid transparent;
- background:
- linear-gradient(145deg,#15385e,#091a34) padding-box,
- conic-gradient(#00eaff,#ffdf35,#00e5a0,#168cff,#bd5cff,#00eaff) border-box;
- box-shadow:0 0 15px #00dfff88;
+
+.back-btn{
+ display:inline-flex;align-items:center;gap:8px;
+ padding:10px 18px;margin-bottom:15px;
+ background:#12365e;color:var(--cyan);border:1px solid #356b9e;
+ border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;
 }
+.back-btn:hover{background:#1a487c}
+
 .container{max-width:1050px;margin:auto;padding:4px 14px 40px}
 .section-heading{font-size:23px;color:var(--yellow);margin:18px 0}
+
+/* Animated RGB Border for Question Card */
+@keyframes rgbRotate {
+ 0% { background-position: 0% 50%; }
+ 50% { background-position: 100% 50%; }
+ 100% { background-position: 0% 50%; }
+}
+
 .question-card{
- margin:15px 0;border-radius:17px;overflow:hidden;
+ margin:20px 0;border-radius:17px;overflow:hidden;
  background:linear-gradient(130deg,#fff,#e3f0ff);
- color:#07172f;border:2px solid #5ba8ed;
+ color:#07172f;
+ position:relative;
+ cursor:pointer;
+ user-select:none;
+ border: 3px solid transparent;
+ background-image: linear-gradient(#e3f0ff, #e3f0ff), 
+                   linear-gradient(90deg, #ff0055, #7a00ff, #00e5a0, #ffdf48, #ff0055);
+ background-origin: border-box;
+ background-clip: padding-box, border-box;
+ background-size: 100% 100%, 300% 300%;
+ animation: rgbRotate 6s ease infinite;
  box-shadow:0 5px 16px #0005;
 }
+
 .question-top{
  display:flex;align-items:center;gap:10px;
  padding:11px 13px;color:white;
@@ -82,7 +110,6 @@ header{
  border-radius:50%;display:grid;place-items:center;
  background:white;color:#1262bd;font-weight:bold;
 }
-.question-label{font-size:12px;font-weight:bold;letter-spacing:.3px}
 .language-btn{
  margin-left:auto;padding:8px 12px;border-radius:9px;
  border:1px solid #ffffff99;background:#092b51;
@@ -92,26 +119,17 @@ header{
  padding:17px 17px 19px;font-size:18px;
  line-height:1.7;font-weight:bold;
 }
-.answer-toggle{
- width:100%;padding:12px 16px;text-align:left;
- border:0;border-top:1px solid #b6cce3;
- background:#eaf4ff;color:#07518e;
- font-size:15px;font-weight:bold;cursor:pointer;
-}
+
 .answer-panel{
  display:none;margin:12px;padding:16px;
  border-radius:14px;color:white;line-height:1.85;
  background:linear-gradient(145deg,#092447,#06162d);
  border:2px solid #00dca1;
  box-shadow:0 0 12px #00dca155,inset 0 0 18px #0d4160;
+ cursor:default;
 }
 .answer-panel.open{display:block}
-.answer-panel.selected{
- border:2px solid transparent;
- background:
- linear-gradient(145deg,#092447,#06162d) padding-box,
- conic-gradient(#00eaff,#00e78c,#ffdf35,#168cff,#00eaff) border-box;
-}
+
 .answer-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:12px}
 .answer-title{font-size:18px;font-weight:bold;color:#4dffc1}
 .answer-lang{margin-left:auto;display:flex;gap:7px}
@@ -123,11 +141,29 @@ header{
 .answer-lang button.active{background:#008d69;border-color:#5dffca}
 .answer-content{font-size:15.5px;white-space:pre-line}
 .card-actions{display:flex;gap:8px;margin-top:15px}
+
+/* Progress bar inside Question Card */
+.progress-container {
+ width: 100%;
+ height: 6px;
+ background-color: rgba(0,0,0,0.1);
+ display: none;
+}
+.progress-bar {
+ width: 100%;
+ height: 100%;
+ background-color: #00e5a0;
+ border-radius: 0 3px 3px 0;
+ transition: width 0.3s linear;
+}
+
 .empty{text-align:center;color:#c4d9f1;padding:30px}
 body.light{background:#edf4ff;color:#10294b}
 body.light .search{background:white;color:#10294b}
 body.light .section-btn{background:#fff;color:#10294b}
-@media(max-width:600px){
+
+@media(max-width:650px){
+ .section-wrap{grid-template-columns: 1fr;}
  header{padding:18px 12px}
  .brand h1{font-size:21px}
  .brand p{font-size:12px}
@@ -137,10 +173,11 @@ body.light .section-btn{background:#fff;color:#10294b}
  .question-text{font-size:17px}
  .answer-content{font-size:15px}
 }
+
 @media print{
  body{background:white;color:black}
  header,.search,.section-wrap,.top-actions,.language-btn,
- .answer-toggle,.answer-lang,.card-actions{display:none!important}
+ .answer-lang,.card-actions,.back-btn,.progress-container{display:none!important}
  .answer-panel{display:block!important;background:white;color:black;box-shadow:none}
  .answer-title{color:black}
  .question-card{break-inside:avoid;box-shadow:none}
@@ -245,11 +282,14 @@ body.light .section-btn{background:#fff;color:#10294b}
 
 <input id="search" class="search"
  placeholder="🔍 প্রশ্ন খুঁজুন... / Search questions"
- oninput="renderQuestions()">
+ oninput="handleSearch()">
 
+<!-- Sections Wrapper (2 columns on Home) -->
 <div id="sections" class="section-wrap"></div>
 
-<main class="container">
+<!-- Main Question Container (Initially hidden until section is chosen or searched) -->
+<main class="container" id="mainContainer" style="display:none;">
+ <button class="back-btn" onclick="goHome()">⬅️ সেকশন তালিকায় ফিরে যান</button>
  <h2 class="section-heading" id="sectionHeading">✂️ কাটিং বিভাগ</h2>
  <div id="questionList"></div>
 </main>
@@ -318,7 +358,6 @@ body.light .section-btn{background:#fff;color:#10294b}
     <div id="adminQuestionList" class="admin-question-list"></div>
    </div>
 
-   <!-- Sections Position, Visibility & Order Tab -->
    <div id="tab-sections-config" class="admin-tab" style="display:none">
     <h3>↕️ Section Layout, Visibility & Order</h3>
     <p>সেকশনগুলোর পজিশন উপরে/নিচে নিন এবং দৃশ্যমানতা (Visible) নিয়ন্ত্রণ করুন।</p>
@@ -342,7 +381,6 @@ A-EN: English answer"></textarea>
     <button id="bulkSaveButton" class="admin-primary" style="display:none" onclick="saveBulk()">＋ Save All Questions</button>
    </div>
 
-   <!-- Supabase Connection Tab -->
    <div id="tab-supabase" class="admin-tab" style="display:none">
     <h3>⚡ Supabase Connection</h3>
     <p>আপনার Supabase Project URL এবং API Key (Anon / Service Role) এখানে দিন। এটি ব্রাউজারের Session Storage-এ সংরক্ষিত থাকবে।</p>
@@ -398,59 +436,33 @@ const defaultSections = [
 
 let sections = defaultSections.map(s=>({...s}));
 let data = {};
-let currentSection = "Cutting";
+let currentSection = null; // Default null for home view
 let currentLanguage = "bn";
 let adminMode = false;
 let bulkDraft = [];
-let githubSha = null;
 let supabaseClient = null;
+let activeTimers = {}; // Store timers for auto closing answers
 
 /* =====================================
-   LOAD DATA (Supabase First, Fallback to JSON)
+   LOAD DATA
 ===================================== */
 
 async function loadQuestionData(){
  const list = document.getElementById("questionList");
  list.innerHTML = '<div class="empty">⏳ Loading questions...</div>';
 
- let loadedFromSupabase = false;
- const sbUrl = sessionStorage.getItem("garmentsSupabaseUrl");
- const sbKey = sessionStorage.getItem("garmentsSupabaseKey");
-
- if(sbUrl && sbKey){
-  try{
-   supabaseClient = window.supabase.createClient(sbUrl, sbKey);
-   const { data: rows, error } = await supabaseClient
-    .from("garments_data")
-    .select("*")
-    .limit(1);
-
-   if(!error && rows && rows.length > 0){
-    const raw = rows[0].payload || rows[0];
-    processRawData(raw);
-    loadedFromSupabase = true;
-   }
-  }catch(e){
-   console.warn("Supabase load failed, falling back to JSON", e);
-  }
- }
-
- if(!loadedFromSupabase){
-  try{
-   const response = await fetch("./questions.json?v="+Date.now(),{cache:"no-store"});
-   if(!response.ok) throw new Error("questions.json could not be loaded");
-   const raw = await response.json();
-   processRawData(raw);
-  }catch(error){
-   list.innerHTML =
-    '<div class="empty">⚠️ প্রশ্ন লোড করা যায়নি। Supabase বা questions.json ফাইল চেক করুন。<br>'+
-    escapeHTML(error.message)+'</div>';
-   return;
-  }
+ try{
+  const response = await fetch("./questions.json?v="+Date.now(),{cache:"no-store"});
+  if(!response.ok) throw new Error("questions.json could not be loaded");
+  const raw = await response.json();
+  processRawData(raw);
+ }catch(error){
+  list.innerHTML =
+   '<div class="empty">⚠️ প্রশ্ন লোড করা যায়নি। questions.json ফাইলটি পরীক্ষা করুন।<br>'+
+   escapeHTML(error.message)+'</div>';
  }
 
  renderSections();
- renderQuestions();
  refreshAdminSelects();
  refreshAdminSectionsList();
 }
@@ -483,11 +495,6 @@ function processRawData(raw){
  sections.forEach(section=>{
   if(!Array.isArray(data[section.key])) data[section.key]=[];
  });
-
- const visibleSections = sections.filter(s=>s.visible !== false);
- if(!visibleSections.some(s=>s.key===currentSection)){
-  currentSection = visibleSections[0]?.key || sections[0]?.key || "";
- }
 }
 
 function escapeHTML(value){
@@ -498,7 +505,7 @@ function escapeHTML(value){
 }
 
 /* =====================================
-   SECTION DISPLAY (Vertical)
+   NAVIGATION & SECTIONS DISPLAY
 ===================================== */
 
 function renderSections(){
@@ -509,32 +516,58 @@ function renderSections(){
 
  visibleSections.forEach(section=>{
   const button = document.createElement("button");
-  button.className = "section-btn"+(section.key===currentSection ? " active":"");
+  button.className = "section-btn";
   button.innerHTML =
    '<span class="emoji">'+escapeHTML(section.emoji)+'</span>'+
    '<span>'+escapeHTML(section.bn)+'</span>'+
    '<small>'+escapeHTML(section.key)+'</small>';
 
   button.onclick = ()=>{
-   currentSection = section.key;
-   renderSections();
-   renderQuestions();
-   refreshAdminSelects();
+   openSection(section.key);
   };
 
   holder.appendChild(button);
  });
+}
+
+function openSection(sectionKey){
+ currentSection = sectionKey;
+ document.getElementById("sections").style.display = "none";
+ document.getElementById("mainContainer").style.display = "block";
 
  const selected = sections.find(s=>s.key===currentSection);
  document.getElementById("sectionHeading").textContent =
   selected ? selected.emoji+" "+selected.bn+" / "+selected.key : "Questions";
+
+ renderQuestions();
+}
+
+function goHome(){
+ currentSection = null;
+ document.getElementById("search").value = "";
+ document.getElementById("sections").style.display = "grid";
+ document.getElementById("mainContainer").style.display = "none";
+}
+
+function handleSearch(){
+ const searchVal = document.getElementById("search").value.trim();
+ if(searchVal && currentSection === null){
+  // Open first section or search mode
+  const visibleSections = sections.filter(s=>s.visible !== false);
+  if(visibleSections.length > 0){
+   openSection(visibleSections[0].key);
+  }
+ }
+ renderQuestions();
 }
 
 /* =====================================
-   QUESTION DISPLAY
+   QUESTION DISPLAY & AUTO TIMER
 ===================================== */
 
 function renderQuestions(){
+ if(!currentSection) return;
+
  const holder = document.getElementById("questionList");
  const search = document.getElementById("search").value.trim().toLowerCase();
  const questions = data[currentSection] || [];
@@ -552,16 +585,16 @@ function renderQuestions(){
 
   const card = document.createElement("article");
   card.className = "question-card";
+  card.onclick = (e) => handleCardClick(e, index);
 
   card.innerHTML = `
    <div class="question-top">
     <span class="question-number">${count}</span>
-    <div class="question-label">QUESTION / প্রশ্ন</div>
-    <button class="language-btn" onclick="toggleQuestionLanguage(this,${index})">EN / BN</button>
+    <button class="language-btn" onclick="toggleQuestionLanguage(event, this, ${index})">EN / BN</button>
    </div>
    <div class="question-text" id="question-${index}">${escapeHTML(currentLanguage==="bn" ? bnQ : enQ)}</div>
-   <button class="answer-toggle" onclick="toggleAnswer(${index})">＋ Show Answer / উত্তর দেখুন</button>
-   <div class="answer-panel" id="answer-${index}">
+   
+   <div class="answer-panel" id="answer-${index}" onclick="event.stopPropagation()">
     <div class="answer-toolbar">
      <span class="answer-title">ANSWER / উত্তর</span>
      <div class="answer-lang">
@@ -576,6 +609,10 @@ function renderQuestions(){
       <button onclick="deleteQuestion(${index})">🗑️ Delete</button>
      </div>` : ""}
    </div>
+
+   <div class="progress-container" id="progress-container-${index}">
+    <div class="progress-bar" id="progress-bar-${index}"></div>
+   </div>
   `;
   holder.appendChild(card);
  });
@@ -585,7 +622,65 @@ function renderQuestions(){
  }
 }
 
-function toggleQuestionLanguage(button,index){
+function handleCardClick(event, index){
+ // Prevent trigger when clicking action elements
+ if(event.target.tagName === 'BUTTON' || event.target.closest('.answer-panel')) return;
+ toggleAnswer(index);
+}
+
+function toggleAnswer(index){
+ const panel = document.getElementById("answer-"+index);
+ const progressContainer = document.getElementById("progress-container-"+index);
+ const progressBar = document.getElementById("progress-bar-"+index);
+
+ if(!panel) return;
+
+ const isOpen = panel.classList.contains("open");
+
+ if(isOpen){
+  // Close panel
+  panel.classList.remove("open");
+  progressContainer.style.display = "none";
+  clearAutoTimer(index);
+ } else {
+  // Open panel
+  panel.classList.add("open");
+  progressContainer.style.display = "block";
+  startAutoTimer(index, progressBar);
+ }
+}
+
+function startAutoTimer(index, progressBar){
+ clearAutoTimer(index);
+
+ const totalDuration = 4 * 60 * 1000; // 4 minutes = 240,000 ms
+ const intervalStep = 200; // update every 200ms
+ let elapsed = 0;
+
+ progressBar.style.width = "100%";
+
+ const interval = setInterval(() => {
+  elapsed += intervalStep;
+  const remainingPercent = Math.max(0, 100 - (elapsed / totalDuration) * 100);
+  progressBar.style.width = remainingPercent + "%";
+
+  if (elapsed >= totalDuration) {
+   toggleAnswer(index); // Auto close
+  }
+ }, intervalStep);
+
+ activeTimers[index] = interval;
+}
+
+function clearAutoTimer(index){
+ if(activeTimers[index]){
+  clearInterval(activeTimers[index]);
+  delete activeTimers[index];
+ }
+}
+
+function toggleQuestionLanguage(event, button, index){
+ event.stopPropagation();
  const item = data[currentSection]?.[index];
  if(!item) return;
  currentLanguage = currentLanguage==="bn" ? "en":"bn";
@@ -593,14 +688,7 @@ function toggleQuestionLanguage(button,index){
  button.textContent = currentLanguage==="bn" ? "EN / BN":"BN / EN";
 }
 
-function toggleAnswer(index){
- const panel = document.getElementById("answer-"+index);
- if(!panel) return;
- panel.classList.toggle("open");
- panel.classList.toggle("selected");
-}
-
-function changeAnswerLanguage(index,language,button){
+function changeAnswerLanguage(index, language, button){
  const item = data[currentSection]?.[index];
  if(!item) return;
  const content = document.getElementById("answer-content-"+index);
@@ -615,7 +703,7 @@ function toggleTheme(){
 }
 
 /* =====================================
-   ADMIN LOGIN / LOGOUT
+   ADMIN PANEL LOGIC
 ===================================== */
 
 function openAdmin(){
@@ -688,10 +776,6 @@ function showAdminTab(tab,button){
  button.classList.add("active");
 }
 
-/* =====================================
-   ADMIN SECTIONS CONFIG & ORDERING
-===================================== */
-
 function refreshAdminSelects(){
  const ids = ["manageSection","bulkSection"];
  ids.forEach(id=>{
@@ -736,7 +820,7 @@ function moveSection(index, direction){
  sections[newIndex] = temp;
  refreshAdminSectionsList();
  renderSections();
- alert("পজিশন পরিবর্তন করা হয়েছে। সেভ করতে Supabase বা GitHub-এ Sync করুন।");
+ alert("পজিশন পরিবর্তন করা হয়েছে। সেভ করতে Sync চাপুন।");
 }
 
 function toggleSectionVisibility(index){
@@ -765,7 +849,6 @@ function addSection(){
  }
  sections.push({key,bn,emoji,visible:true});
  data[key]=[];
- currentSection=key;
 
  document.getElementById("newSectionKey").value="";
  document.getElementById("newSectionBn").value="";
@@ -822,13 +905,12 @@ function deleteSection(){
  sections=sections.filter(s=>s.key!==key);
  delete data[key];
  if(currentSection===key){
-  currentSection=sections[0]?.key || "";
+  goHome();
  }
  renderSections();
  refreshAdminSelects();
  refreshAdminSectionsList();
  refreshAdminQuestions();
- renderQuestions();
  alert("Section মুছে ফেলা হয়েছে।");
 }
 
@@ -909,8 +991,7 @@ function refreshAdminQuestions(){
   edit.className="admin-small";
   edit.textContent="✏️ Edit";
   edit.onclick=()=>{
-   currentSection=section;
-   renderSections();
+   openSection(section);
    editQuestion(index);
   };
 
@@ -918,20 +999,12 @@ function refreshAdminQuestions(){
   remove.className="admin-danger";
   remove.textContent="🗑️";
   remove.onclick=()=>{
-   const oldSection=currentSection;
-   currentSection=section;
    deleteQuestion(index);
-   currentSection=oldSection;
-   renderSections();
   };
 
   row.append(title,edit,remove);
   holder.appendChild(row);
  });
-}
-
-function normalizeText(value){
- return String(value || "").normalize("NFKC").toLowerCase().replace(/\s+/g," ").trim();
 }
 
 function parseBulkQuestions(textValue){
@@ -1022,7 +1095,7 @@ function saveBulk(){
 }
 
 /* =====================================
-   SUPABASE SYNC FUNCTIONS
+   SUPABASE & GITHUB SYNC
 ===================================== */
 
 function saveSupabaseConfig(){
@@ -1078,22 +1151,16 @@ async function saveToSupabase(){
    output[section.key] = Array.isArray(data[section.key]) ? data[section.key] : [];
   });
 
-  // Upsert to garments_data table (Assuming table has id=1 or similar primary key)
   const { error } = await supabaseClient
    .from("garments_data")
    .upsert({ id: 1, payload: output });
 
   if(error) throw error;
-
   msg.textContent = "✅ সফলভাবে Supabase ডেটাবেজে সেভ হয়েছে!";
  }catch(err){
   msg.textContent = "❌ Supabase সেভ ব্যর্থ হয়েছে: " + err.message;
  }
 }
-
-/* =====================================
-   GITHUB TOKEN MANAGEMENT
-===================================== */
 
 function saveToken(){
  if(!adminMode) return;
