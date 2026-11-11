@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f2f5f9">
-<title>Garments Pro Notebook</title>
+<title id="pageTitle">Garments Pro Notebook</title>
 
 <!-- Manifest Link for PWA -->
 <link rel="manifest" href="manifest.json">
@@ -50,7 +50,6 @@ body{
  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Smooth RGB Border Animation */
 @keyframes smoothRGB {
  0% { background-position: 0% 50%; }
  50% { background-position: 100% 50%; }
@@ -62,7 +61,6 @@ header{
  padding:22px 16px; background:var(--header-bg);
  border-bottom:1px solid var(--btn-border);
 }
-.logo{font-size:40px}
 .brand{min-width:0}
 .brand h1{font-size:25px;margin:0;line-height:1.3; color:var(--text);}
 .brand h1 span{color:var(--yellow)}
@@ -84,7 +82,6 @@ header{
 .search:focus{border-color:var(--cyan); box-shadow:0 0 12px rgba(2,132,199,0.25)}
 .search::placeholder{color:var(--muted)}
 
-/* Grid Layout: 2 items per row on Home */
 .section-wrap{
  display:grid;
  grid-template-columns: repeat(2, 1fr);
@@ -92,7 +89,6 @@ header{
  max-width:1250px; margin:0 auto 20px; padding:0 14px;
 }
 
-/* Section Card with Soft RGB Gradient Border */
 .section-btn{
  width:100%; min-height:75px; padding:15px 20px;
  display:flex; align-items:center; gap:15px; cursor:pointer;
@@ -134,14 +130,12 @@ header{
 .container{max-width:1250px; margin:auto; padding:4px 14px 40px}
 .section-heading{font-size:23px; color:var(--yellow); margin:18px 0}
 
-/* Questions Grid: 3 columns inside section */
 #questionList {
  display: grid;
  grid-template-columns: repeat(3, 1fr);
  gap: 20px;
 }
 
-/* Question Card with Animated RGB Gradient Border (No Images) */
 .question-card{
  border-radius: 20px;
  overflow: hidden;
@@ -219,7 +213,6 @@ header{
  padding: 6px 12px; border-radius: 8px; color: white; background: var(--cyan); border: none; cursor: pointer; font-weight: bold; font-size: 12px;
 }
 
-/* Progress bar inside Question Card */
 .progress-container {
  width: 100%;
  height: 4px;
@@ -243,23 +236,11 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
 }
 
 @media(max-width:650px){
- .section-wrap{grid-template-columns: 1fr;}
- #questionList{grid-template-columns: 1fr;}
  header{padding:18px 12px}
  .brand h1{font-size:21px}
  .brand p{font-size:12px}
- .logo{font-size:34px}
  .icon-btn{padding:9px;font-size:18px}
  .section-btn{min-height:60px;font-size:16px}
-}
-
-@media print{
- body{background:white; color:black}
- header,.search,.section-wrap,.top-actions,.language-btn,.fav-btn,
- .answer-toolbar,.card-actions,.back-btn,.progress-container{display:none!important}
- .answer-panel{display:block!important; background:white; color:black; box-shadow:none}
- .answer-title{color:black}
- .question-card{break-inside:avoid; box-shadow:none}
 }
 
 /* ADMIN PANEL DESIGN */
@@ -347,14 +328,12 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
 <body>
 
 <header>
- <div class="logo">🎓</div>
  <div class="brand">
-  <h1>Garments Pro <span>Notebook</span></h1>
-  <p>Garments Industry Knowledge & Interview Preparation</p>
+  <h1 id="headerMainTitle">Garments Pro <span>Notebook</span></h1>
+  <p id="headerSubTitle">Garments Industry Knowledge & Interview Preparation</p>
  </div>
  <div class="top-actions">
   <button class="icon-btn" onclick="toggleTheme()" title="Theme">🌙</button>
-  <button class="icon-btn" onclick="window.print()" title="Print">🖨️</button>
   <button class="icon-btn" onclick="openAdmin()" title="Admin">⚙️</button>
  </div>
 </header>
@@ -363,10 +342,8 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
  placeholder="🔍 প্রশ্ন খুঁজুন... / Search questions"
  oninput="handleSearch()">
 
-<!-- Sections Wrapper (2 columns on Home) -->
 <div id="sections" class="section-wrap"></div>
 
-<!-- Main Question Container -->
 <main class="container" id="mainContainer" style="display:none;">
  <button class="back-btn" onclick="goHome()">⬅️ সেকশন তালিকায় ফিরে যান</button>
  <h2 class="section-heading" id="sectionHeading">✂️ কাটিং বিভাগ</h2>
@@ -393,10 +370,10 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
    <div class="admin-tabs">
     <button class="active" onclick="showAdminTab('manage',this)">Manage</button>
     <button onclick="showAdminTab('bulk',this)">Bulk Add</button>
-    <button onclick="showAdminTab('sections-config',this)">Sections Order</button>
+    <button onclick="showAdminTab('sections-config',this)">Sections & Layout</button>
+    <button onclick="showAdminTab('header-config',this)">🏷️ Header Branding</button>
     <button onclick="showAdminTab('password-tab',this)">🔒 Password</button>
     <button onclick="showAdminTab('supabase',this)">Supabase Sync</button>
-    <button onclick="showAdminTab('github',this)">GitHub Sync</button>
    </div>
    
    <div id="tab-manage" class="admin-tab">
@@ -438,21 +415,44 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
     <div id="adminQuestionList" class="admin-question-list"></div>
    </div>
 
+   <!-- Sections Order, Visibility & Layout Tab -->
    <div id="tab-sections-config" class="admin-tab" style="display:none">
-    <h3>↕️ Section Layout, Visibility & Order</h3>
-    <p>সেকশনগুলোর পজিশন উপরে/নিচে নিন এবং দৃশ্যমানতা (Visible) নিয়ন্ত্রণ করুন।</p>
+    <h3>👁️ Section Visibility, Order & Home Layout</h3>
+    <p>হোমপেজে সেকশনগুলো কত লাইনে বা কলামে দেখাবে তা সিলেক্ট করুন এবং সেকশনগুলোর ভিজিবিলিটি/ক্রম পরিবর্তন করুন।</p>
+    
+    <div style="margin:15px 0; background:#102f50; padding:12px; border-radius:10px; border:1px solid #37648c;">
+     <label style="display:block; margin-bottom:6px; color:#ffdf48; font-weight:bold;">হোমপেজ লেআউট (Home Layout Columns):</label>
+     <select id="homeLayoutSelect" onchange="changeHomeLayout(this.value)" style="margin-bottom:0;">
+      <option value="1">Single Line (১ কলাম)</option>
+      <option value="2" selected>Double Line (২ কলাম - ডিফল্ট)</option>
+      <option value="3">Three Columns (৩ কলাম)</option>
+     </select>
+    </div>
+
     <div id="adminSectionOrderList" class="admin-section-list"></div>
    </div>
 
-   <!-- Password Change Tab -->
+   <!-- Header Branding Tab -->
+   <div id="tab-header-config" class="admin-tab" style="display:none">
+    <h3>🏷️ Header & Branding Configuration</h3>
+    <p>ওয়েবসাইটের হেডার টাইটেল এবং সাবটাইটেল পরিবর্তন করুন।</p>
+    <label>মেইন হেডার টাইটেল (যেমন: Garments Pro Notebook)</label>
+    <input id="inputHeaderTitle" type="text" placeholder="Garments Pro Notebook" style="margin-bottom:10px">
+    <label>হাইলাইট ওয়ার্ড কালার টেক্সট (যেমন: Notebook)</label>
+    <input id="inputHeaderHighlight" type="text" placeholder="Notebook" style="margin-bottom:10px">
+    <label>সাবটাইটেল (ডেসক্রিপশন)</label>
+    <input id="inputHeaderSubtitle" type="text" placeholder="Garments Industry Knowledge..." style="margin-bottom:10px">
+    <button class="admin-primary" onclick="saveHeaderBranding()">Save Header Branding</button>
+    <div id="headerBrandingMessage" class="admin-message"></div>
+   </div>
+
    <div id="tab-password-tab" class="admin-tab" style="display:none">
     <h3>🔑 Change Admin Password</h3>
-    <p>অ্যাডমিন প্যানেলের পাসওয়ার্ড পরিবর্তন করুন। নতুন পাসওয়ার্ড ব্রাউজারে সংরক্ষিত থাকবে।</p>
     <label>বর্তমান পাসওয়ার্ড (Old Password)</label>
     <input id="oldPassword" type="password" placeholder="Enter current password" style="margin-bottom:10px">
     <label>নতুন পাসওয়ার্ড (New Password)</label>
     <input id="newPassword" type="password" placeholder="Enter new password" style="margin-bottom:10px">
-    <label>নতুন পাসওয়ার্ড নিশ্চিত করুন (Confirm Password)</label>
+    <label>কনফার্ম পাসওয়ার্ড (Confirm Password)</label>
     <input id="confirmPassword" type="password" placeholder="Confirm new password" style="margin-bottom:10px">
     <button class="admin-primary" onclick="changeAdminPassword()">Update Password</button>
     <div id="passwordMessage" class="admin-message"></div>
@@ -460,44 +460,31 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
 
    <div id="tab-bulk" class="admin-tab" style="display:none">
     <h3>📥 Bulk Question Add</h3>
-    <p>প্রথমে Section নির্বাচন করুন। প্রতিটি প্রশ্ন ও উত্তরের ব্লকের মাঝে একটি খালি লাইন রাখুন।</p>
     <select id="bulkSection"></select>
     <textarea id="bulkText" class="bulk-input" placeholder="Q-BN: বাংলা প্রশ্ন
 Q-EN: English question
 A-BN: বাংলা উত্তর
 A-EN: English answer"></textarea>
     <div class="admin-grid">
-     <button class="admin-primary" onclick="previewBulk()">👁️ Preview Questions</button>
-     <button class="admin-small" onclick="document.getElementById('bulkText').value='';document.getElementById('bulkPreview').innerHTML='def'">Clear</button>
+     <button class="admin-primary" onclick="previewBulk()">👁️ Preview</button>
+     <button class="admin-small" onclick="document.getElementById('bulkText').value='';document.getElementById('bulkPreview').innerHTML=''">Clear</button>
     </div>
     <div id="bulkMessage" class="admin-message"></div>
     <div id="bulkPreview" class="bulk-preview"></div>
-    <button id="bulkSaveButton" class="admin-primary" style="display:none" onclick="saveBulk()">＋ Save All Questions</button>
+    <button id="bulkSaveButton" class="admin-primary" style="display:none" onclick="saveBulk()">＋ Save All</button>
    </div>
 
    <div id="tab-supabase" class="admin-tab" style="display:none">
-    <h3>⚡ Supabase Connection</h3>
-    <p>আপনার Supabase Project URL এবং API Key এখানে দিন।</p>
+    <h3>⚡ Supabase Connection & Cloud Sync</h3>
+    <p>আপনার Supabase Project URL এবং Publishable Key দিয়ে কানেক্ট করুন।</p>
     <input id="supabaseUrl" type="text" placeholder="https://your-project.supabase.co" style="margin-bottom:8px">
-    <input id="supabaseKey" type="password" placeholder="Supabase Anon/Service API Key">
+    <input id="supabaseKey" type="password" placeholder="Supabase Publishable/Anon Key">
     <div class="admin-grid" style="margin-top:8px">
-     <button class="admin-primary" onclick="saveSupabaseConfig()">Save Supabase Config</button>
+     <button class="admin-primary" onclick="saveSupabaseConfig()">Save Config</button>
      <button class="admin-small" onclick="clearSupabaseConfig()">Clear Config</button>
     </div>
-    <button class="admin-primary" onclick="saveToSupabase()" style="margin-top:10px">⚡ Save Changes to Supabase</button>
+    <button class="admin-primary" onclick="saveToSupabaseCloud()" style="margin-top:10px">⚡ Sync & Save All to Supabase Cloud</button>
     <div id="supabaseMessage" class="admin-message"></div>
-   </div>
-
-   <div id="tab-github" class="admin-tab" style="display:none">
-    <h3>☁️ GitHub Connection</h3>
-    <p>GitHub Fine-grained Personal Access Token এখানে দিন।</p>
-    <input id="githubToken" type="password" placeholder="github_pat_...">
-    <div class="admin-grid">
-     <button class="admin-primary" onclick="saveToken()">Save Token</button>
-     <button class="admin-small" onclick="clearToken()">Clear Token</button>
-    </div>
-    <button class="admin-primary" onclick="saveToGithub()" style="margin-top:10px">☁️ Save Changes to GitHub</button>
-    <div id="githubMessage" class="admin-message"></div>
    </div>
   </div>
  </div>
@@ -507,10 +494,6 @@ A-EN: English answer"></textarea>
 "use strict";
 
 const DEFAULT_ADMIN_PASSWORD = "#ShohidRana98#98";
-const GITHUB_OWNER = "Shohid98";
-const GITHUB_REPO = "Garments";
-const GITHUB_BRANCH = "main";
-const GITHUB_FILE = "questions.json";
 
 function getAdminPassword(){
  return localStorage.getItem("garmentsAdminPass") || DEFAULT_ADMIN_PASSWORD;
@@ -537,38 +520,88 @@ let adminMode = false;
 let bulkDraft = [];
 let supabaseClient = null;
 let activeTimers = {};
+let homeLayoutCols = 2; // Default 2 columns
+let brandingConfig = {
+ mainTitle: "Garments Pro",
+ highlightTitle: "Notebook",
+ subtitle: "Garments Industry Knowledge & Interview Preparation"
+};
+
+function initSupabaseConnection(){
+ const url = localStorage.getItem("sb_url");
+ const key = localStorage.getItem("sb_key");
+ if(url && key && window.supabase){
+  try{
+   supabaseClient = window.supabase.createClient(url, key);
+  }catch(e){
+   supabaseClient = null;
+  }
+ }
+}
 
 async function loadQuestionData(){
+ initSupabaseConnection();
  const list = document.getElementById("questionList");
  list.innerHTML = '<div class="empty">⏳ Loading questions...</div>';
 
- try{
-  const response = await fetch("./questions.json?v="+Date.now(),{cache:"no-store"});
-  if(!response.ok) throw new Error("questions.json could not be loaded");
-  const raw = await response.json();
-  processRawData(raw);
- }catch(error){
-  list.innerHTML =
-   '<div class="empty">⚠️ প্রশ্ন লোড করা যায়নি। questions.json ফাইলটি পরীক্ষা করুন।<br>'+
-   escapeHTML(error.message)+'</div>';
+ let loadedFromSupabase = false;
+ if(supabaseClient){
+  try{
+   const { data: rows, error } = await supabaseClient.from('garments_data').select('*');
+   if(!error && rows && rows.length > 0){
+    let raw = {};
+    rows.forEach(r => {
+     if(r.section_key === "_sections"){
+      raw._sections = r.questions_json;
+     } else if(r.section_key === "_settings"){
+      raw._settings = r.questions_json;
+     } else {
+      raw[r.section_key] = r.questions_json;
+     }
+    });
+    processRawData(raw);
+    loadedFromSupabase = true;
+   }
+  }catch(err){
+   console.error("Supabase load error:", err);
+  }
+ }
+
+ if(!loadedFromSupabase){
+  try{
+   const response = await fetch("./questions.json?v="+Date.now(),{cache:"no-store"});
+   if(response.ok){
+    const raw = await response.json();
+    processRawData(raw);
+   } else {
+    throw new Error("File not found");
+   }
+  }catch(error){
+   sections = defaultSections.map(s=>({...s}));
+   sections.forEach(s => data[s.key] = []);
+  }
  }
 
  renderSections();
+ updateHeaderBrandingUI();
  refreshAdminSelects();
  refreshAdminSectionsList();
+ refreshAdminQuestions();
 }
 
 function processRawData(raw){
- if(!raw || typeof raw !== "object" || Array.isArray(raw)){
-  throw new Error("Invalid data format");
- }
-
+ if(!raw || typeof raw !== "object" || Array.isArray(raw)) return;
  data = {};
  Object.keys(raw).forEach(key=>{
-  if(key !== "_sections" && Array.isArray(raw[key])){
+  if(key !== "_sections" && key !== "_settings" && Array.isArray(raw[key])){
    data[key] = raw[key];
   }
  });
+
+ if(raw._settings && typeof raw._settings === "object"){
+  if(raw._settings.layoutCols) homeLayoutCols = parseInt(raw._settings.layoutCols) || 2;
+  if(raw._settings.branding) brandingConfig = {...brandingConfig, ...raw._settings.branding};
+ }
 
  if(Array.isArray(raw._sections) && raw._sections.length){
   sections = raw._sections
@@ -586,6 +619,104 @@ function processRawData(raw){
  sections.forEach(section=>{
   if(!Array.isArray(data[section.key])) data[section.key]=[];
  });
+}
+
+function updateHeaderBrandingUI(){
+ const mainEl = document.getElementById("headerMainTitle");
+ if(mainEl){
+  mainEl.innerHTML = `${escapeHTML(brandingConfig.mainTitle)} <span>${escapeHTML(brandingConfig.highlightTitle)}</span>`;
+ }
+ const subEl = document.getElementById("headerSubTitle");
+ if(subEl){
+  subEl.textContent = brandingConfig.subtitle;
+ }
+ document.getElementById("pageTitle").textContent = `${brandingConfig.mainTitle} ${brandingConfig.highlightTitle}`;
+
+ const layoutSelect = document.getElementById("homeLayoutSelect");
+ if(layoutSelect) layoutSelect.value = homeLayoutCols;
+
+ const inputMain = document.getElementById("inputHeaderTitle");
+ const inputHigh = document.getElementById("inputHeaderHighlight");
+ const inputSub = document.getElementById("inputHeaderSubtitle");
+ if(inputMain) inputMain.value = brandingConfig.mainTitle;
+ if(inputHigh) inputHigh.value = brandingConfig.highlightTitle;
+ if(inputSub) inputSub.value = brandingConfig.subtitle;
+}
+
+async function saveToSupabaseCloudAuto(){
+ if(!supabaseClient) return;
+ try{
+  await supabaseClient.from('garments_data').delete().neq('id', 0);
+  let rowsToInsert = [
+   { section_key: "_sections", questions_json: sections },
+   { section_key: "_settings", questions_json: { layoutCols: homeLayoutCols, branding: brandingConfig } }
+  ];
+  Object.keys(data).forEach(secKey => {
+   rowsToInsert.push({ section_key: secKey, questions_json: data[secKey] });
+  });
+  await supabaseClient.from('garments_data').insert(rowsToInsert);
+  console.log("Auto-synced to Supabase cloud successfully.");
+ }catch(e){
+  console.error("Auto-sync error:", e);
+ }
+}
+
+async function saveToSupabaseCloud(){
+ initSupabaseConnection();
+ const msg = document.getElementById("supabaseMessage");
+ if(!supabaseClient){
+  msg.textContent = "❌ প্রথমে Supabase URL এবং Key সেট করে সেভ করুন।";
+  return;
+ }
+
+ msg.textContent = "⏳ Uploading data to Supabase Cloud...";
+
+ try{
+  await supabaseClient.from('garments_data').delete().neq('id', 0);
+
+  let rowsToInsert = [
+   { section_key: "_sections", questions_json: sections },
+   { section_key: "_settings", questions_json: { layoutCols: homeLayoutCols, branding: brandingConfig } }
+  ];
+  Object.keys(data).forEach(secKey => {
+   rowsToInsert.push({ section_key: secKey, questions_json: data[secKey] });
+  });
+
+  const { error } = await supabaseClient.from('garments_data').insert(rowsToInsert);
+  if(error) throw error;
+
+  msg.textContent = "✅ সফলভাবে Supabase ক্লাউডে সেভ হয়েছে!";
+  setTimeout(()=> msg.textContent="", 4000);
+ }catch(err){
+  msg.textContent = "❌ Error: " + err.message;
+ }
+}
+
+function saveSupabaseConfig(){
+ const url = document.getElementById("supabaseUrl").value.trim();
+ const key = document.getElementById("supabaseKey").value.trim();
+ const msg = document.getElementById("supabaseMessage");
+
+ if(!url || !key){
+  msg.textContent = "❌ URL এবং Key উভয়ই দিন।";
+  return;
+ }
+
+ localStorage.setItem("sb_url", url);
+ localStorage.setItem("sb_key", key);
+ initSupabaseConnection();
+ msg.textContent = "✅ Supabase Config Saved Successfully!";
+ loadQuestionData();
+}
+
+function clearSupabaseConfig(){
+ localStorage.removeItem("sb_url");
+ localStorage.removeItem("sb_key");
+ supabaseClient = null;
+ document.getElementById("supabaseUrl").value = "";
+ document.getElementById("supabaseKey").value = "";
+ document.getElementById("supabaseMessage").textContent = "🧹 Config Cleared!";
+ loadQuestionData();
 }
 
 function escapeHTML(value){
@@ -622,6 +753,7 @@ function toggleFavorite(event, sec, idx){
 function renderSections(){
  const holder = document.getElementById("sections");
  holder.innerHTML = "";
+ holder.style.gridTemplateColumns = `repeat(${homeLayoutCols}, 1fr)`;
 
  const favBtn = document.createElement("button");
  favBtn.className = "section-btn fav-section-btn";
@@ -641,6 +773,29 @@ function renderSections(){
   button.onclick = () => openSection(section.key);
   holder.appendChild(button);
  });
+}
+
+function changeHomeLayout(cols){
+ homeLayoutCols = parseInt(cols) || 2;
+ renderSections();
+ saveToSupabaseCloudAuto();
+}
+
+function saveHeaderBranding(){
+ const main = document.getElementById("inputHeaderTitle").value.trim() || "Garments Pro";
+ const high = document.getElementById("inputHeaderHighlight").value.trim() || "Notebook";
+ const sub = document.getElementById("inputHeaderSubtitle").value.trim() || "";
+
+ brandingConfig.mainTitle = main;
+ brandingConfig.highlightTitle = high;
+ brandingConfig.subtitle = sub;
+
+ updateHeaderBrandingUI();
+ saveToSupabaseCloudAuto();
+
+ const msg = document.getElementById("headerBrandingMessage");
+ msg.textContent = "✅ Header branding updated successfully!";
+ setTimeout(()=> msg.textContent="", 3000);
 }
 
 function openSection(sectionKey){
@@ -791,7 +946,7 @@ function toggleAnswer(index){
 
 function startAutoTimer(index, progressBar){
  clearAutoTimer(index);
- const totalDuration = 4 * 60 * 1000; // 4 Minutes
+ const totalDuration = 4 * 60 * 1000;
  const intervalStep = 200;
  let elapsed = 0;
  progressBar.style.width = "100%";
@@ -822,7 +977,6 @@ function toggleTheme(){
  localStorage.setItem("garmentsTheme", isDark ? "dark" : "light");
 }
 
-// Initial theme check
 if(localStorage.getItem("garmentsTheme") === "dark"){
  document.body.classList.add("dark");
 }
@@ -832,6 +986,11 @@ function openAdmin(){
  const modal = document.getElementById("adminModal");
  modal.classList.add("show");
  modal.setAttribute("aria-hidden","false");
+
+ const savedUrl = localStorage.getItem("sb_url") || "";
+ const savedKey = localStorage.getItem("sb_key") || "";
+ document.getElementById("supabaseUrl").value = savedUrl;
+ document.getElementById("supabaseKey").value = savedKey;
 
  if(sessionStorage.getItem("garmentsAdmin")==="yes"){
   adminMode = true;
@@ -858,7 +1017,7 @@ function adminLogin(){
   showAdminTools();
   renderQuestions();
  }else{
-  message.textContent="পাসওয়ার্ড ভুল হয়েছে! Contact: shohidrana98@gmail.com";
+  message.textContent="পাসওয়ার্ড ভুল হয়েছে!";
  }
 }
 
@@ -877,12 +1036,12 @@ function changeAdminPassword(){
   return;
  }
  if(newPass !== confirmPass){
-  msg.textContent = "❌ নতুন পাসওয়ার্ড এবং কনফার্ম পাসওয়ার্ড মিলছে না।";
+  msg.textContent = "❌ পাসওয়ার্ড মিলছে না।";
   return;
  }
 
  localStorage.setItem("garmentsAdminPass", newPass);
- msg.textContent = "✅ সফলভাবে অ্যাডমিন পাসওয়ার্ড পরিবর্তন করা হয়েছে!";
+ msg.textContent = "✅ সফলভাবে পাসওয়ার্ড পরিবর্তিত হয়েছে!";
  document.getElementById("oldPassword").value = "";
  document.getElementById("newPassword").value = "";
  document.getElementById("confirmPassword").value = "";
@@ -894,6 +1053,7 @@ function showAdminTools(){
  refreshAdminSelects();
  refreshAdminQuestions();
  refreshAdminSectionsList();
+ updateHeaderBrandingUI();
 }
 
 function adminLogout(){
@@ -932,15 +1092,27 @@ function refreshAdminSectionsList(){
  holder.innerHTML = "";
 
  sections.forEach((section, index)=>{
+  const isChecked = section.visible !== false ? "checked" : "";
   const row = document.createElement("div");
   row.className = "admin-srow";
   row.innerHTML = `
    <span><b>${section.emoji} ${section.bn}</b> (${section.key})</span>
+   <label style="display:flex; align-items:center; gap:5px; cursor:pointer;">
+    <input type="checkbox" ${isChecked} onchange="toggleSectionVisibility(${index}, this.checked)" style="width:auto; cursor:pointer;"> Visible
+   </label>
    <button class="admin-small" onclick="moveSection(${index}, -1)">⬆️ Up</button>
    <button class="admin-small" onclick="moveSection(${index}, 1)">⬇️ Down</button>
   `;
   holder.appendChild(row);
  });
+}
+
+function toggleSectionVisibility(index, isVisible){
+ if(sections[index]){
+  sections[index].visible = isVisible;
+  renderSections();
+  saveToSupabaseCloudAuto();
+ }
 }
 
 function moveSection(index, direction){
@@ -951,6 +1123,7 @@ function moveSection(index, direction){
  sections[newIndex] = temp;
  refreshAdminSectionsList();
  renderSections();
+ saveToSupabaseCloudAuto();
 }
 
 function getManageSection(){
@@ -969,7 +1142,24 @@ function addSection(){
  renderSections();
  refreshAdminSelects();
  refreshAdminSectionsList();
- alert("যোগ হয়েছে।");
+ document.getElementById("newSectionKey").value="";
+ document.getElementById("newSectionBn").value="";
+ document.getElementById("newSectionEmoji").value="";
+ alert("সেকশন যোগ হয়েছে।");
+ saveToSupabaseCloudAuto();
+}
+
+function deleteSection(){
+ if(!adminMode) return;
+ const sec = getManageSection();
+ if(!confirm(`Are you sure you want to delete section "${sec}"?`)) return;
+ sections = sections.filter(s => s.key !== sec);
+ delete data[sec];
+ renderSections();
+ refreshAdminSelects();
+ refreshAdminSectionsList();
+ alert("সেকশন ডিলিট হয়েছে।");
+ saveToSupabaseCloudAuto();
 }
 
 function saveQuestion(){
@@ -979,19 +1169,84 @@ function saveQuestion(){
  const qEn=document.getElementById("qEn").value.trim();
  const aBn=document.getElementById("aBn").value.trim();
  const aEn=document.getElementById("aEn").value.trim();
+ const editIdx = parseInt(document.getElementById("editQuestionIndex").value);
 
  if(!qBn || !qEn || !aBn || !aEn) return alert("সব ঘর পূরণ করুন।");
  if(!Array.isArray(data[section])) data[section]=[];
- data[section].push([qBn,qEn,aBn,aEn]);
- alert("প্রশ্ন সেভ হয়েছে।");
+
+ if(editIdx > -1){
+  data[section][editIdx] = [qBn, qEn, aBn, aEn];
+  document.getElementById("editQuestionIndex").value = "-1";
+  alert("প্রশ্ন আপডেট হয়েছে।");
+ } else {
+  data[section].push([qBn,qEn,aBn,aEn]);
+  alert("প্রশ্ন সেভ হয়েছে।");
+ }
+
+ clearQuestionForm();
+ refreshAdminQuestions();
  renderQuestions();
+ saveToSupabaseCloudAuto();
+}
+
+function clearQuestionForm(){
+ document.getElementById("qBn").value="";
+ document.getElementById("qEn").value="";
+ document.getElementById("aBn").value="";
+ document.getElementById("aEn").value="";
+ document.getElementById("editQuestionIndex").value="-1";
+}
+
+function editQuestion(sec, idx){
+ const item = data[sec][idx];
+ if(!item) return;
+ document.getElementById("manageSection").value = sec;
+ document.getElementById("qBn").value = item[0];
+ document.getElementById("qEn").value = item[1];
+ document.getElementById("aBn").value = item[2];
+ document.getElementById("aEn").value = item[3];
+ document.getElementById("editQuestionIndex").value = idx;
+ 
+ const modalBox = document.querySelector(".admin-box");
+ if(modalBox) modalBox.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function deleteQuestion(sec, idx){
+ if(!confirm("এই প্রশ্নটি ডিলিট করতে চান?")) return;
+ data[sec].splice(idx, 1);
+ refreshAdminQuestions();
+ renderQuestions();
+ saveToSupabaseCloudAuto();
+}
+
+function refreshAdminQuestions(){
+ const holder = document.getElementById("adminQuestionList");
+ if(!holder) return;
+ const sec = getManageSection();
+ const qs = data[sec] || [];
+ holder.innerHTML = "";
+
+ if(qs.length === 0){
+  holder.innerHTML = '<div class="admin-note">কোনো প্রশ্ন নেই।</div>';
+  return;
+ }
+
+ qs.forEach((q, idx)=>{
+  const row = document.createElement("div");
+  row.className = "admin-qrow";
+  row.innerHTML = `
+   <span><b>#${idx+1}</b> ${escapeHTML(q[0])}</span>
+   <button class="admin-small" onclick="editQuestion('${sec}', ${idx})">✏️</button>
+   <button class="admin-danger" onclick="deleteQuestion('${sec}', ${idx})">🗑️</button>
+  `;
+  holder.appendChild(row);
+ });
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
  if(sessionStorage.getItem("garmentsAdmin")==="yes") adminMode=true;
  loadQuestionData();
 
- // Supabase Realtime Database Listener (Safe & Secure)
  if (typeof supabaseClient !== 'undefined' && supabaseClient) {
    supabaseClient
      .channel('public:garments_data')
