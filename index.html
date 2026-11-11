@@ -236,6 +236,8 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
 }
 
 @media(max-width:650px){
+ /* Mobile default: 1 column (one section per line) */
+ .section-wrap{grid-template-columns: 1fr !important;}
  #questionList{grid-template-columns: 1fr !important;}
  header{padding:18px 12px}
  .brand h1{font-size:21px}
@@ -379,13 +381,13 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
    </div>
    
    <div id="tab-manage" class="admin-tab">
-    <h3>📚 Section & Sub-Section Management</h3>
+    <h3>📚 Section & Sub-Section / Folder Management</h3>
     <div class="admin-grid">
-     <input id="newSectionKey" placeholder="English name (মূল বা সাব-ফোল্ডার)">
+     <input id="newSectionKey" placeholder="English name (মূল বা ফোল্ডার)">
      <input id="newSectionBn" placeholder="বাংলা নাম">
-     <input id="newSectionEmoji" placeholder="Emoji (যেমন ✂️)">
+     <input id="newSectionEmoji" placeholder="Emoji (যেমন ✂️ বা 📁)">
     </div>
-    <label style="margin-top:8px; display:block; color:#ffdf48;">কোথায় তৈরি করতে চান?</label>
+    <label style="margin-top:8px; display:block; color:#ffdf48;">কোথায় তৈরি করতে চান? (প্যারেন্ট ফোল্ডার)</label>
     <select id="parentSectionSelect" style="margin-bottom:10px;">
      <option value="">-- এটি একটি মূল সেকশন (Root Section) --</option>
     </select>
@@ -406,6 +408,9 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
 
     <h3>✍️ Add / Edit Question</h3>
     <input id="editQuestionIndex" type="hidden" value="-1">
+    <label style="color:#ffdf48; font-weight:bold;">কোন সেকশনে প্রশ্নটি যোগ করবেন?</label>
+    <select id="manageSectionForQuestion" style="margin-bottom:12px;"></select>
+    
     <label>বাংলা প্রশ্ন</label>
     <textarea id="qBn" placeholder="বাংলা প্রশ্ন লিখুন"></textarea>
     <label>English Question</label>
@@ -425,13 +430,13 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
    <!-- Sections Order, Visibility & Layout Tab -->
    <div id="tab-sections-config" class="admin-tab" style="display:none">
     <h3>👁️ Section Visibility, Order & Home Layout</h3>
-    <p>হোমপেজে সেকশনগুলো কত কলামে দেখাবে তা সিলেক্ট করুন এবং সেকশনগুলোর ভিজিবিলিটি/ক্রম পরিবর্তন করুন।</p>
+    <p>হোমপেজে সেকশনগুলো কত কলামে দেখাবে তা সিলেক্ট করুন (মোবাইলে ডিফল্টভাবে ১ কলাম বা এক লাইনে প্রতিটি সেকশন দেখাবে)।</p>
     
     <div style="margin:15px 0; background:#102f50; padding:12px; border-radius:10px; border:1px solid #37648c;">
      <label style="display:block; margin-bottom:6px; color:#ffdf48; font-weight:bold;">হোমপেজ লেআউট (Home Layout Columns):</label>
      <select id="homeLayoutSelect" onchange="changeHomeLayout(this.value)" style="margin-bottom:0;">
-      <option value="1">Single Line (১ কলাম)</option>
-      <option value="2" selected>Double Line (২ কলাম - ডিফল্ট)</option>
+      <option value="1">Single Line (১ কলাম - প্রতি লাইনে ১টি)</option>
+      <option value="2" selected>Double Line (২ কলাম)</option>
       <option value="3">Three Columns (৩ কলাম)</option>
      </select>
     </div>
@@ -522,12 +527,12 @@ const defaultSections = [
 let sections = defaultSections.map(s=>({...s}));
 let data = {};
 let currentSection = null; 
-let navigationStack = []; // For sub-folders / breadcrumbs
+let navigationStack = []; 
 let adminMode = false;
 let bulkDraft = [];
 let supabaseClient = null;
 let activeTimers = {};
-let homeLayoutCols = 2; 
+let homeLayoutCols = 1; // Default mobile & initial layout: 1 column (single line per section)
 let brandingConfig = {
  mainTitle: "Garments Pro",
  highlightTitle: "Notebook",
@@ -606,7 +611,7 @@ function processRawData(raw){
  });
 
  if(raw._settings && typeof raw._settings === "object"){
-  if(raw._settings.layoutCols) homeLayoutCols = parseInt(raw._settings.layoutCols) || 2;
+  if(raw._settings.layoutCols) homeLayoutCols = parseInt(raw._settings.layoutCols) || 1;
   if(raw._settings.branding) brandingConfig = {...brandingConfig, ...raw._settings.branding};
  }
 
@@ -761,7 +766,7 @@ function toggleFavorite(event, sec, idx){
 function renderSections(parentKey = null){
  const holder = document.getElementById("sections");
  holder.innerHTML = "";
- holder.style.gridTemplateColumns = `repeat(${window.innerWidth <= 650 ? 2 : homeLayoutCols}, 1fr)`;
+ holder.style.gridTemplateColumns = `repeat(${window.innerWidth <= 650 ? 1 : homeLayoutCols}, 1fr)`;
 
  if(!parentKey){
   const favBtn = document.createElement("button");
@@ -809,7 +814,7 @@ function renderSections(parentKey = null){
 }
 
 function changeHomeLayout(cols){
- homeLayoutCols = parseInt(cols) || 2;
+ homeLayoutCols = parseInt(cols) || 1;
  renderSections();
  saveToSupabaseCloudAuto();
 }
@@ -844,7 +849,6 @@ function openSection(sectionKey){
   document.getElementById("sectionHeading").textContent =
    selected ? selected.emoji+" "+selected.bn+" / "+selected.key : "Questions";
    
-  // Check if this section has sub-folders/sub-sections
   const subSecs = sections.filter(s => s.parent === sectionKey && s.visible !== false);
   const subHolder = document.getElementById("subSections");
   subHolder.innerHTML = "";
@@ -901,7 +905,6 @@ function renderQuestions(){
    }
   });
  } else {
-  // Gather questions from current section and its sub-sections recursively if needed
   let targetKeys = [currentSection];
   let subList = sections.filter(s => s.parent === currentSection && s.visible !== false);
   subList.forEach(sub => targetKeys.push(sub.key));
@@ -1132,7 +1135,7 @@ function showAdminTab(tab,button){
 }
 
 function refreshAdminSelects(){
- const ids = ["manageSection","bulkSection","parentSectionSelect"];
+ const ids = ["manageSection","bulkSection","parentSectionSelect","manageSectionForQuestion"];
  ids.forEach(id=>{
   const select = document.getElementById(id);
   if(!select) return;
@@ -1231,7 +1234,7 @@ function deleteSection(){
 
 function saveQuestion(){
  if(!adminMode) return;
- const section=getManageSection();
+ const section = document.getElementById("manageSectionForQuestion").value || getManageSection();
  const qBn=document.getElementById("qBn").value.trim();
  const qEn=document.getElementById("qEn").value.trim();
  const aBn=document.getElementById("aBn").value.trim();
@@ -1267,7 +1270,7 @@ function clearQuestionForm(){
 function editQuestion(sec, idx){
  const item = data[sec][idx];
  if(!item) return;
- document.getElementById("manageSection").value = sec;
+ document.getElementById("manageSectionForQuestion").value = sec;
  document.getElementById("qBn").value = item[0];
  document.getElementById("qEn").value = item[1];
  document.getElementById("aBn").value = item[2];
