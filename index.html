@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#07172f">
 <title>Garments Pro Notebook</title>
+<!-- Supabase JS Client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
  --bg:#07172f;--navy:#092447;--panel:#102d50;
@@ -40,20 +42,21 @@ header{
 }
 .search:focus{border-color:var(--cyan);box-shadow:0 0 12px #18dfff66}
 .search::placeholder{color:#bdd1e9}
+
+/* Vertical Sections Layout on Homepage */
 .section-wrap{
- display:flex;gap:12px;overflow-x:auto;
- padding:14px 15px 22px;scrollbar-width:thin;
+ display:flex;flex-direction:column;gap:15px;
+ max-width:1050px;margin:0 auto 20px;padding:0 14px;
 }
 .section-btn{
- flex:0 0 125px;min-height:112px;padding:12px 7px;
- display:flex;flex-direction:column;align-items:center;
- justify-content:center;gap:7px;cursor:pointer;
+ width:100%;min-height:70px;padding:15px 20px;
+ display:flex;align-items:center;gap:15px;cursor:pointer;
  color:white;background:linear-gradient(145deg,#15385e,#091a34);
- border:2px solid #28577f;border-radius:19px;
- font-size:15px;font-weight:bold;
+ border:2px solid #28577f;border-radius:15px;
+ font-size:18px;font-weight:bold;text-align:left;
 }
-.section-btn .emoji{font-size:30px}
-.section-btn small{font-size:11px;color:#b6d9f4}
+.section-btn .emoji{font-size:28px}
+.section-btn small{margin-left:auto;font-size:13px;color:#b6d9f4}
 .section-btn.active{
  border:3px solid transparent;
  background:
@@ -130,7 +133,7 @@ body.light .section-btn{background:#fff;color:#10294b}
  .brand p{font-size:12px}
  .logo{font-size:34px}
  .icon-btn{padding:9px;font-size:18px}
- .section-btn{flex-basis:112px;min-height:104px}
+ .section-btn{min-height:60px;font-size:16px}
  .question-text{font-size:17px}
  .answer-content{font-size:15px}
 }
@@ -200,16 +203,16 @@ body.light .section-btn{background:#fff;color:#10294b}
  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
  gap:8px;margin:9px 0
 }
-.admin-question-list{display:grid;gap:8px;margin-top:14px}
-.admin-qrow{
+.admin-question-list,.admin-section-list{display:grid;gap:8px;margin-top:14px}
+.admin-qrow,.admin-srow{
  background:#102f50;border:1px solid #37648c;
  border-radius:10px;padding:10px;display:flex;
  gap:8px;align-items:center;justify-content:space-between
 }
-.admin-qrow span{
+.admin-qrow span,.admin-srow span{
  flex:1;min-width:0;overflow-wrap:anywhere
 }
-.admin-qrow button{padding:7px 9px}
+.admin-qrow button,.admin-srow button{padding:7px 9px}
 .bulk-input{min-height:250px!important}
 .bulk-preview{margin-top:12px;max-height:330px;overflow:auto}
 .bulk-item{
@@ -221,7 +224,7 @@ body.light .section-btn{background:#fff;color:#10294b}
 @media(max-width:600px){
  .admin-grid{grid-template-columns:1fr}
  .admin-box{padding:12px;margin:5px auto}
- .admin-qrow{flex-wrap:wrap}
+ .admin-qrow,.admin-srow{flex-wrap:wrap}
 }
 </style>
 </head>
@@ -271,8 +274,11 @@ body.light .section-btn{background:#fff;color:#10294b}
    <div class="admin-tabs">
     <button class="active" onclick="showAdminTab('manage',this)">Manage</button>
     <button onclick="showAdminTab('bulk',this)">Bulk Add</button>
+    <button onclick="showAdminTab('sections-config',this)">Sections Order</button>
+    <button onclick="showAdminTab('supabase',this)">Supabase Sync</button>
     <button onclick="showAdminTab('github',this)">GitHub Sync</button>
    </div>
+   
    <div id="tab-manage" class="admin-tab">
     <h3>📚 Section Management</h3>
     <div class="admin-grid">
@@ -312,6 +318,13 @@ body.light .section-btn{background:#fff;color:#10294b}
     <div id="adminQuestionList" class="admin-question-list"></div>
    </div>
 
+   <!-- Sections Position, Visibility & Order Tab -->
+   <div id="tab-sections-config" class="admin-tab" style="display:none">
+    <h3>↕️ Section Layout, Visibility & Order</h3>
+    <p>সেকশনগুলোর পজিশন উপরে/নিচে নিন এবং দৃশ্যমানতা (Visible) নিয়ন্ত্রণ করুন।</p>
+    <div id="adminSectionOrderList" class="admin-section-list"></div>
+   </div>
+
    <div id="tab-bulk" class="admin-tab" style="display:none">
     <h3>📥 Bulk Question Add</h3>
     <p>প্রথমে Section নির্বাচন করুন। প্রতিটি প্রশ্ন ও উত্তরের ব্লকের মাঝে একটি খালি লাইন রাখুন।</p>
@@ -319,13 +332,7 @@ body.light .section-btn{background:#fff;color:#10294b}
     <textarea id="bulkText" class="bulk-input" placeholder="Q-BN: বাংলা প্রশ্ন
 Q-EN: English question
 A-BN: বাংলা উত্তর
-A-EN: English answer
-
-Q: What is fabric spreading?
-A: Fabric spreading is the process...
-
-Q: What is marker planning?
-A: Marker planning is..."></textarea>
+A-EN: English answer"></textarea>
     <div class="admin-grid">
      <button class="admin-primary" onclick="previewBulk()">👁️ Preview Questions</button>
      <button class="admin-small" onclick="document.getElementById('bulkText').value='';document.getElementById('bulkPreview').innerHTML=''">Clear</button>
@@ -335,9 +342,24 @@ A: Marker planning is..."></textarea>
     <button id="bulkSaveButton" class="admin-primary" style="display:none" onclick="saveBulk()">＋ Save All Questions</button>
    </div>
 
+   <!-- Supabase Connection Tab -->
+   <div id="tab-supabase" class="admin-tab" style="display:none">
+    <h3>⚡ Supabase Connection</h3>
+    <p>আপনার Supabase Project URL এবং API Key (Anon / Service Role) এখানে দিন। এটি ব্রাউজারের Session Storage-এ সংরক্ষিত থাকবে।</p>
+    <input id="supabaseUrl" type="text" placeholder="https://your-project.supabase.co" style="margin-bottom:8px">
+    <input id="supabaseKey" type="password" placeholder="Supabase Anon/Service API Key">
+    <div class="admin-grid" style="margin-top:8px">
+     <button class="admin-primary" onclick="saveSupabaseConfig()">Save Supabase Config</button>
+     <button class="admin-small" onclick="clearSupabaseConfig()">Clear Config</button>
+    </div>
+    <p class="admin-note">Target Table: <b>garments_data</b> (id, payload)</p>
+    <button class="admin-primary" onclick="saveToSupabase()" style="margin-top:10px">⚡ Save Changes to Supabase</button>
+    <div id="supabaseMessage" class="admin-message"></div>
+   </div>
+
    <div id="tab-github" class="admin-tab" style="display:none">
     <h3>☁️ GitHub Connection</h3>
-    <p>GitHub Fine-grained Personal Access Token এখানে দিন। Token আপনার ব্রাউজারের Session Storage-এ থাকবে এবং Logout করলে মুছে যাবে।</p>
+    <p>GitHub Fine-grained Personal Access Token এখানে দিন।</p>
     <input id="githubToken" type="password" placeholder="github_pat_...">
     <div class="admin-grid">
      <button class="admin-primary" onclick="saveToken()">Save Token</button>
@@ -346,7 +368,6 @@ A: Marker planning is..."></textarea>
     <p class="admin-note">Repository: Shohid98/Garments · Branch: main · File: questions.json</p>
     <button class="admin-primary" onclick="saveToGithub()">☁️ Save Changes to GitHub</button>
     <div id="githubMessage" class="admin-message"></div>
-    <p class="admin-note">সতর্কতা: Browser থেকে GitHub API ব্যবহার করলে Token ব্রাউজারের Network/Developer Tools-এ দেখা সম্ভব। শুধু এই Repository-তে সীমাবদ্ধ Contents Read and Write permission ব্যবহার করুন।</p>
    </div>
   </div>
  </div>
@@ -355,10 +376,6 @@ A: Marker planning is..."></textarea>
 <script>
 "use strict";
 
-/* =====================================
-   APP DATA AND DEFAULT SECTIONS
-===================================== */
-
 const ADMIN_PASSWORD = "#ShohidRana98#98";
 const GITHUB_OWNER = "Shohid98";
 const GITHUB_REPO = "Garments";
@@ -366,17 +383,17 @@ const GITHUB_BRANCH = "main";
 const GITHUB_FILE = "questions.json";
 
 const defaultSections = [
- {key:"Cutting",bn:"কাটিং",emoji:"✂️"},
- {key:"Sewing",bn:"সুইং",emoji:"🧵"},
- {key:"Finishing",bn:"ফিনিশিং",emoji:"👔"},
- {key:"Knitting",bn:"নিটিং",emoji:"🧶"},
- {key:"Printing",bn:"প্রিন্টিং",emoji:"🎨"},
- {key:"Embroidery",bn:"এমব্রয়ডারি",emoji:"🪡"},
- {key:"Quality Assurance",bn:"কোয়ালিটি অ্যাসুরেন্স",emoji:"✅"},
- {key:"AQL & Inspection",bn:"AQL ও ইন্সপেকশন",emoji:"🔍"},
- {key:"Fabric",bn:"ফ্যাব্রিক",emoji:"🧵"},
- {key:"Washing",bn:"ওয়াশিং",emoji:"🫧"},
- {key:"Merchandising",bn:"মার্চেন্ডাইজিং",emoji:"📋"}
+ {key:"Cutting",bn:"কাটিং",emoji:"✂️",visible:true},
+ {key:"Sewing",bn:"সুইং",emoji:"🧵",visible:true},
+ {key:"Finishing",bn:"ফিনিশিং",emoji:"👔",visible:true},
+ {key:"Knitting",bn:"নিটিং",emoji:"🧶",visible:true},
+ {key:"Printing",bn:"প্রিন্টিং",emoji:"🎨",visible:true},
+ {key:"Embroidery",bn:"এমব্রয়ডারি",emoji:"🪡",visible:true},
+ {key:"Quality Assurance",bn:"কোয়ালিটি অ্যাসুরেন্স",emoji:"✅",visible:true},
+ {key:"AQL & Inspection",bn:"AQL ও ইন্সপেকশন",emoji:"🔍",visible:true},
+ {key:"Fabric",bn:"ফ্যাব্রিক",emoji:"🧵",visible:true},
+ {key:"Washing",bn:"ওয়াশিং",emoji:"🫧",visible:true},
+ {key:"Merchandising",bn:"মার্চেন্ডাইজিং",emoji:"📋",visible:true}
 ];
 
 let sections = defaultSections.map(s=>({...s}));
@@ -386,68 +403,92 @@ let currentLanguage = "bn";
 let adminMode = false;
 let bulkDraft = [];
 let githubSha = null;
+let supabaseClient = null;
 
 /* =====================================
-   LOAD QUESTIONS.JSON
+   LOAD DATA (Supabase First, Fallback to JSON)
 ===================================== */
 
 async function loadQuestionData(){
  const list = document.getElementById("questionList");
  list.innerHTML = '<div class="empty">⏳ Loading questions...</div>';
 
- try{
-  const response = await fetch("./questions.json?v="+Date.now(),{
-   cache:"no-store"
-  });
-  if(!response.ok) throw new Error("questions.json could not be loaded");
+ let loadedFromSupabase = false;
+ const sbUrl = sessionStorage.getItem("garmentsSupabaseUrl");
+ const sbKey = sessionStorage.getItem("garmentsSupabaseKey");
 
-  const raw = await response.json();
+ if(sbUrl && sbKey){
+  try{
+   supabaseClient = window.supabase.createClient(sbUrl, sbKey);
+   const { data: rows, error } = await supabaseClient
+    .from("garments_data")
+    .select("*")
+    .limit(1);
 
-  if(!raw || typeof raw !== "object" || Array.isArray(raw)){
-   throw new Error("Invalid questions.json format");
-  }
-
-  data = {};
-  Object.keys(raw).forEach(key=>{
-   if(key !== "_sections" && Array.isArray(raw[key])){
-    data[key] = raw[key];
+   if(!error && rows && rows.length > 0){
+    const raw = rows[0].payload || rows[0];
+    processRawData(raw);
+    loadedFromSupabase = true;
    }
-  });
-
-  if(Array.isArray(raw._sections) && raw._sections.length){
-   sections = raw._sections
-    .filter(s=>s && s.key)
-    .map(s=>({
-     key:String(s.key),
-     bn:String(s.bn || s.key),
-     emoji:String(s.emoji || "📘")
-    }));
-  }else{
-   sections = defaultSections.map(s=>({...s}));
+  }catch(e){
+   console.warn("Supabase load failed, falling back to JSON", e);
   }
-
-  sections.forEach(section=>{
-   if(!Array.isArray(data[section.key])) data[section.key]=[];
-  });
-
-  if(!sections.some(s=>s.key===currentSection)){
-   currentSection = sections[0]?.key || "";
-  }
-
-  renderSections();
-  renderQuestions();
-  refreshAdminSelects();
-
- }catch(error){
-  list.innerHTML =
-   '<div class="empty">⚠️ প্রশ্ন লোড করা যায়নি। questions.json ফাইলটি পরীক্ষা করুন।<br>'+
-   escapeHTML(error.message)+'</div>';
  }
+
+ if(!loadedFromSupabase){
+  try{
+   const response = await fetch("./questions.json?v="+Date.now(),{cache:"no-store"});
+   if(!response.ok) throw new Error("questions.json could not be loaded");
+   const raw = await response.json();
+   processRawData(raw);
+  }catch(error){
+   list.innerHTML =
+    '<div class="empty">⚠️ প্রশ্ন লোড করা যায়নি। Supabase বা questions.json ফাইল চেক করুন。<br>'+
+    escapeHTML(error.message)+'</div>';
+   return;
+  }
+ }
+
+ renderSections();
+ renderQuestions();
+ refreshAdminSelects();
+ refreshAdminSectionsList();
 }
 
-/* =====================================
-   SAFE TEXT DISPLAY
-===================================== */
+function processRawData(raw){
+ if(!raw || typeof raw !== "object" || Array.isArray(raw)){
+  throw new Error("Invalid data format");
+ }
+
+ data = {};
+ Object.keys(raw).forEach(key=>{
+  if(key !== "_sections" && Array.isArray(raw[key])){
+   data[key] = raw[key];
+  }
+ });
+
+ if(Array.isArray(raw._sections) && raw._sections.length){
+  sections = raw._sections
+   .filter(s=>s && s.key)
+   .map(s=>({
+    key:String(s.key),
+    bn:String(s.bn || s.key),
+    emoji:String(s.emoji || "📘"),
+    visible: s.visible !== false
+   }));
+ }else{
+  sections = defaultSections.map(s=>({...s}));
+ }
+
+ sections.forEach(section=>{
+  if(!Array.isArray(data[section.key])) data[section.key]=[];
+ });
+
+ const visibleSections = sections.filter(s=>s.visible !== false);
+ if(!visibleSections.some(s=>s.key===currentSection)){
+  currentSection = visibleSections[0]?.key || sections[0]?.key || "";
+ }
+}
 
 function escapeHTML(value){
  return String(value ?? "").replace(/[&<>"']/g,ch=>({
@@ -457,17 +498,18 @@ function escapeHTML(value){
 }
 
 /* =====================================
-   SECTION DISPLAY
+   SECTION DISPLAY (Vertical)
 ===================================== */
 
 function renderSections(){
  const holder = document.getElementById("sections");
  holder.innerHTML = "";
 
- sections.forEach(section=>{
+ const visibleSections = sections.filter(s=>s.visible !== false);
+
+ visibleSections.forEach(section=>{
   const button = document.createElement("button");
-  button.className = "section-btn"+
-   (section.key===currentSection ? " active":"");
+  button.className = "section-btn"+(section.key===currentSection ? " active":"");
   button.innerHTML =
    '<span class="emoji">'+escapeHTML(section.emoji)+'</span>'+
    '<span>'+escapeHTML(section.bn)+'</span>'+
@@ -498,17 +540,14 @@ function renderQuestions(){
  const questions = data[currentSection] || [];
 
  holder.innerHTML = "";
-
  let count = 0;
 
  questions.forEach((item,index)=>{
   if(!Array.isArray(item) || item.length<4) return;
-
   const [bnQ,enQ,bnA,enA] = item;
   const questionText = (String(bnQ)+" "+String(enQ)).toLowerCase();
 
   if(search && !questionText.includes(search)) return;
-
   count++;
 
   const card = document.createElement("article");
@@ -538,7 +577,6 @@ function renderQuestions(){
      </div>` : ""}
    </div>
   `;
-
   holder.appendChild(card);
  });
 
@@ -551,8 +589,7 @@ function toggleQuestionLanguage(button,index){
  const item = data[currentSection]?.[index];
  if(!item) return;
  currentLanguage = currentLanguage==="bn" ? "en":"bn";
- document.getElementById("question-"+index).textContent =
-  currentLanguage==="bn" ? item[0]:item[1];
+ document.getElementById("question-"+index).textContent = currentLanguage==="bn" ? item[0]:item[1];
  button.textContent = currentLanguage==="bn" ? "EN / BN":"BN / EN";
 }
 
@@ -566,10 +603,8 @@ function toggleAnswer(index){
 function changeAnswerLanguage(index,language,button){
  const item = data[currentSection]?.[index];
  if(!item) return;
-
  const content = document.getElementById("answer-content-"+index);
  content.textContent = language==="bn" ? item[2]:item[3];
-
  button.parentElement.querySelectorAll("button").forEach(btn=>{
   btn.classList.toggle("active",btn===button);
  });
@@ -578,6 +613,7 @@ function changeAnswerLanguage(index,language,button){
 function toggleTheme(){
  document.body.classList.toggle("light");
 }
+
 /* =====================================
    ADMIN LOGIN / LOGOUT
 ===================================== */
@@ -623,13 +659,18 @@ function showAdminTools(){
  document.getElementById("adminTools").style.display="block";
  refreshAdminSelects();
  refreshAdminQuestions();
+ refreshAdminSectionsList();
+ 
+ const sbUrl = sessionStorage.getItem("garmentsSupabaseUrl");
+ const sbKey = sessionStorage.getItem("garmentsSupabaseKey");
+ if(sbUrl) document.getElementById("supabaseUrl").value = sbUrl;
+ if(sbKey) document.getElementById("supabaseKey").value = sbKey;
 }
 
 function adminLogout(){
  adminMode = false;
  sessionStorage.removeItem("garmentsAdmin");
  sessionStorage.removeItem("garmentsGithubToken");
- document.getElementById("githubToken").value="";
  document.getElementById("adminTools").style.display="none";
  document.getElementById("adminLoginBox").style.display="grid";
  document.getElementById("loginMessage").textContent="";
@@ -641,7 +682,6 @@ function showAdminTab(tab,button){
   el.style.display="none";
  });
  document.getElementById("tab-"+tab).style.display="block";
-
  document.querySelectorAll(".admin-tabs button").forEach(el=>{
   el.classList.remove("active");
  });
@@ -649,45 +689,68 @@ function showAdminTab(tab,button){
 }
 
 /* =====================================
-   ADMIN SECTION SELECTORS
+   ADMIN SECTIONS CONFIG & ORDERING
 ===================================== */
 
 function refreshAdminSelects(){
  const ids = ["manageSection","bulkSection"];
-
  ids.forEach(id=>{
   const select = document.getElementById(id);
   if(!select) return;
-
   const oldValue = select.value || currentSection;
   select.innerHTML="";
-
   sections.forEach(section=>{
    const option = document.createElement("option");
    option.value=section.key;
    option.textContent=section.emoji+" "+section.bn+" / "+section.key;
    select.appendChild(option);
   });
-
-  if(sections.some(s=>s.key===oldValue)){
-   select.value=oldValue;
-  }else if(sections.some(s=>s.key===currentSection)){
-   select.value=currentSection;
-  }
+  if(sections.some(s=>s.key===oldValue)) select.value=oldValue;
+  else if(sections.some(s=>s.key===currentSection)) select.value=currentSection;
  });
+}
+
+function refreshAdminSectionsList(){
+ const holder = document.getElementById("adminSectionOrderList");
+ if(!holder) return;
+ holder.innerHTML = "";
+
+ sections.forEach((section, index)=>{
+  const row = document.createElement("div");
+  row.className = "admin-srow";
+  row.innerHTML = `
+   <span><b>${section.emoji} ${section.bn}</b> (${section.key}) [${section.visible !== false ? 'Visible' : 'Hidden'}]</span>
+   <button class="admin-small" onclick="moveSection(${index}, -1)">⬆️ Up</button>
+   <button class="admin-small" onclick="moveSection(${index}, 1)">⬇️ Down</button>
+   <button class="admin-small" onclick="toggleSectionVisibility(${index})">${section.visible !== false ? '👁️ Hide' : '👁️‍🗨️ Show'}</button>
+  `;
+  holder.appendChild(row);
+ });
+}
+
+function moveSection(index, direction){
+ const newIndex = index + direction;
+ if(newIndex < 0 || newIndex >= sections.length) return;
+ const temp = sections[index];
+ sections[index] = sections[newIndex];
+ sections[newIndex] = temp;
+ refreshAdminSectionsList();
+ renderSections();
+ alert("পজিশন পরিবর্তন করা হয়েছে। সেভ করতে Supabase বা GitHub-এ Sync করুন।");
+}
+
+function toggleSectionVisibility(index){
+ sections[index].visible = sections[index].visible === false ? true : false;
+ refreshAdminSectionsList();
+ renderSections();
 }
 
 function getManageSection(){
  return document.getElementById("manageSection").value || currentSection;
 }
 
-/* =====================================
-   SECTION ADD
-===================================== */
-
 function addSection(){
  if(!adminMode) return;
-
  const key = document.getElementById("newSectionKey").value.trim();
  const bn = document.getElementById("newSectionBn").value.trim();
  const emoji = document.getElementById("newSectionEmoji").value.trim() || "📘";
@@ -696,15 +759,12 @@ function addSection(){
   alert("English ও বাংলা Section নাম লিখুন।");
   return;
  }
-
  if(sections.some(s=>s.key.toLowerCase()===key.toLowerCase())){
   alert("এই Section আগে থেকেই আছে।");
   return;
  }
-
- sections.push({key,bn,emoji});
+ sections.push({key,bn,emoji,visible:true});
  data[key]=[];
-
  currentSection=key;
 
  document.getElementById("newSectionKey").value="";
@@ -713,18 +773,13 @@ function addSection(){
 
  renderSections();
  refreshAdminSelects();
+ refreshAdminSectionsList();
  refreshAdminQuestions();
-
- alert("Section যোগ হয়েছে। GitHub-এ সংরক্ষণ করতে Save Changes to GitHub চাপুন।");
+ alert("Section যোগ হয়েছে।");
 }
-
-/* =====================================
-   SECTION RENAME
-===================================== */
 
 function renameSection(){
  if(!adminMode) return;
-
  const oldKey=getManageSection();
  const section=sections.find(s=>s.key===oldKey);
  if(!section) return;
@@ -737,15 +792,12 @@ function renameSection(){
   alert("এই নামে অন্য Section আছে।");
   return;
  }
-
  if(newKey!==oldKey){
   data[newKey]=data[oldKey] || [];
   delete data[oldKey];
   section.key=newKey;
-
   if(currentSection===oldKey) currentSection=newKey;
  }
-
  section.bn=newBn;
  section.emoji=newEmoji;
 
@@ -755,42 +807,30 @@ function renameSection(){
 
  renderSections();
  refreshAdminSelects();
+ refreshAdminSectionsList();
  refreshAdminQuestions();
-
- alert("Section পরিবর্তন হয়েছে। GitHub-এ Save করুন।");
+ alert("Section পরিবর্তন হয়েছে।");
 }
-
-/* =====================================
-   SECTION DELETE
-===================================== */
 
 function deleteSection(){
  if(!adminMode) return;
-
  const key=getManageSection();
  const section=sections.find(s=>s.key===key);
  if(!section) return;
-
  if(!confirm("আপনি কি '"+section.key+"' Section এবং এর সব প্রশ্ন মুছে ফেলতে চান?")) return;
 
  sections=sections.filter(s=>s.key!==key);
  delete data[key];
-
  if(currentSection===key){
   currentSection=sections[0]?.key || "";
  }
-
  renderSections();
  refreshAdminSelects();
+ refreshAdminSectionsList();
  refreshAdminQuestions();
  renderQuestions();
-
- alert("Section মুছে ফেলা হয়েছে। পরিবর্তন স্থায়ী করতে GitHub-এ Save করুন।");
+ alert("Section মুছে ফেলা হয়েছে।");
 }
-
-/* =====================================
-   QUESTION FORM
-===================================== */
 
 function clearQuestionForm(){
  document.getElementById("editQuestionIndex").value="-1";
@@ -801,7 +841,6 @@ function clearQuestionForm(){
 
 function saveQuestion(){
  if(!adminMode) return;
-
  const section=getManageSection();
  const qBn=document.getElementById("qBn").value.trim();
  const qEn=document.getElementById("qEn").value.trim();
@@ -812,9 +851,7 @@ function saveQuestion(){
   alert("চারটি ঘরই পূরণ করুন।");
   return;
  }
-
  if(!Array.isArray(data[section])) data[section]=[];
-
  const index=Number(document.getElementById("editQuestionIndex").value);
  const question=[qBn,qEn,aBn,aEn];
 
@@ -822,20 +859,9 @@ function saveQuestion(){
   data[section][index]=question;
   alert("Question Edit হয়েছে।");
  }else{
-  const duplicate=data[section].some(item=>
-   normalizeText(item[0])===normalizeText(qBn) ||
-   normalizeText(item[1])===normalizeText(qEn)
-  );
-
-  if(duplicate){
-   alert("একই প্রশ্ন আগে থেকেই আছে।");
-   return;
-  }
-
   data[section].push(question);
   alert("নতুন Question যোগ হয়েছে।");
  }
-
  clearQuestionForm();
  refreshAdminQuestions();
  renderQuestions();
@@ -843,31 +869,23 @@ function saveQuestion(){
 
 function editQuestion(index){
  if(!adminMode) return;
-
  const section=currentSection;
  const item=data[section]?.[index];
  if(!item) return;
-
  document.getElementById("manageSection").value=section;
  document.getElementById("editQuestionIndex").value=String(index);
-
  document.getElementById("qBn").value=item[0];
  document.getElementById("qEn").value=item[1];
  document.getElementById("aBn").value=item[2];
  document.getElementById("aEn").value=item[3];
-
  document.getElementById("tab-manage").scrollIntoView({behavior:"smooth"});
- document.getElementById("qBn").focus();
 }
 
 function deleteQuestion(index){
  if(!adminMode) return;
-
  const item=data[currentSection]?.[index];
  if(!item) return;
-
  if(!confirm("এই প্রশ্নটি মুছে ফেলতে চান?")) return;
-
  data[currentSection].splice(index,1);
  clearQuestionForm();
  refreshAdminQuestions();
@@ -876,17 +894,14 @@ function deleteQuestion(index){
 
 function refreshAdminQuestions(){
  if(!adminMode) return;
-
  const section=getManageSection();
  const holder=document.getElementById("adminQuestionList");
  if(!holder) return;
-
  holder.innerHTML="";
 
  (data[section] || []).forEach((item,index)=>{
   const row=document.createElement("div");
   row.className="admin-qrow";
-
   const title=document.createElement("span");
   title.textContent=(index+1)+". "+item[0];
 
@@ -913,26 +928,11 @@ function refreshAdminQuestions(){
   row.append(title,edit,remove);
   holder.appendChild(row);
  });
-
- if(!holder.children.length){
-  holder.innerHTML='<div class="admin-note">এই Section-এ কোনো প্রশ্ন নেই।</div>';
- }}
-
-/* =====================================
-   TEXT NORMALIZATION
-===================================== */
-
-function normalizeText(value){
- return String(value || "")
-  .normalize("NFKC")
-  .toLowerCase()
-  .replace(/\s+/g," ")
-  .trim();
 }
 
-/* =====================================
-   BULK QUESTION PARSER
-===================================== */
+function normalizeText(value){
+ return String(value || "").normalize("NFKC").toLowerCase().replace(/\s+/g," ").trim();
+}
 
 function parseBulkQuestions(textValue){
  const lines=String(textValue || "").replace(/\r/g,"").split("\n");
@@ -947,29 +947,17 @@ function parseBulkQuestions(textValue){
   activeField="";
  }
 
- const aliases={
-  "q":"q","question":"q","প্রশ্ন":"q",
-  "q-bn":"qBn","question-bn":"qBn",
-  "q-en":"qEn","question-en":"qEn",
-  "a":"a","answer":"a","উত্তর":"a",
-  "a-bn":"aBn","answer-bn":"aBn",
-  "a-en":"aEn","answer-en":"aEn"
- };
-
  lines.forEach(line=>{
   const trimmed=line.trim();
-
   if(!trimmed){
    finish();
    return;
   }
-
   const match=trimmed.match(/^([^:：]+)\s*[:：]\s*(.*)$/);
-
   if(match){
    const label=match[1].trim().toLowerCase();
+   const aliases={"q":"q","question":"q","প্রশ্ন":"q","q-bn":"qBn","q-en":"qEn","a":"a","answer":"a","উত্তর":"a","a-bn":"aBn","a-en":"aEn"};
    const field=aliases[label];
-
    if(field){
     activeField=field;
     current[field]=(current[field] || "");
@@ -977,7 +965,6 @@ function parseBulkQuestions(textValue){
     return;
    }
   }
-
   if(activeField){
    current[activeField]=(current[activeField] || "")+trimmed+"\n";
   }else{
@@ -985,121 +972,123 @@ function parseBulkQuestions(textValue){
    activeField="q";
   }
  });
-
  finish();
 
  return blocks.map(block=>{
-  let qBn=String(block.qBn || "").trim();
-  let qEn=String(block.qEn || "").trim();
-  let aBn=String(block.aBn || "").trim();
-  let aEn=String(block.aEn || "").trim();
-
-  const q=String(block.q || "").trim();
-  const a=String(block.a || "").trim();
-
-  if(q){
-   if(!qBn) qBn=q;
-   if(!qEn) qEn=q;
-  }
-
-  if(a){
-   if(!aBn) aBn=a;
-   if(!aEn) aEn=a;
-  }
-
-  if(!qBn && qEn) qBn=qEn;
-  if(!qEn && qBn) qEn=qBn;
-  if(!aBn && aEn) aBn=aEn;
-  if(!aEn && aBn) aEn=aBn;
-
+  let qBn=String(block.qBn || block.q || "").trim();
+  let qEn=String(block.qEn || block.q || "").trim();
+  let aBn=String(block.aBn || block.a || "").trim();
+  let aEn=String(block.aEn || block.a || "").trim();
   return [qBn,qEn,aBn,aEn];
  });
 }
 
-/* =====================================
-   BULK PREVIEW AND DUPLICATE CHECK
-===================================== */
-
 function previewBulk(){
  if(!adminMode) return;
-
  const section=document.getElementById("bulkSection").value;
  const raw=document.getElementById("bulkText").value;
  const parsed=parseBulkQuestions(raw);
-
  const preview=document.getElementById("bulkPreview");
  const message=document.getElementById("bulkMessage");
  const saveButton=document.getElementById("bulkSaveButton");
-
  preview.innerHTML="";
  bulkDraft=[];
 
- const existing=data[section] || [];
- const seenBn=new Set(existing.map(q=>normalizeText(q[0])).filter(Boolean));
- const seenEn=new Set(existing.map(q=>normalizeText(q[1])).filter(Boolean));
-
- let duplicates=0;
- let invalid=0;
-
  parsed.forEach((item,index)=>{
-  if(item.some(v=>!String(v).trim())){
-   invalid++;
-   return;
-  }
-
-  const bn=normalizeText(item[0]);
-  const en=normalizeText(item[1]);
-
-  if(seenBn.has(bn) || seenEn.has(en)){
-   duplicates++;
-   return;
-  }
-
-  seenBn.add(bn);
-  seenEn.add(en);
+  if(item.some(v=>!String(v).trim())) return;
   bulkDraft.push(item);
-
   const block=document.createElement("div");
   block.className="bulk-item";
-  block.innerHTML=
-   "<b>"+(bulkDraft.length)+". "+escapeHTML(item[0])+"</b><br>"+
-   "<span>"+escapeHTML(item[1])+"</span><br>"+
-   "<small>উত্তর: "+escapeHTML(item[2])+"</small>";
+  block.innerHTML="<b>"+(bulkDraft.length)+". "+escapeHTML(item[0])+"</b><br><span>"+escapeHTML(item[1])+"</span>";
   preview.appendChild(block);
  });
 
- message.textContent=
-  "মোট ব্লক: "+parsed.length+
-  " | যোগ হবে: "+bulkDraft.length+
-  " | Duplicate বাদ: "+duplicates+
-  " | অসম্পূর্ণ বাদ: "+invalid;
-
+ message.textContent="যোগ হবে: "+bulkDraft.length+" টি প্রশ্ন।";
  saveButton.style.display=bulkDraft.length ? "inline-block":"none";
 }
 
-/* =====================================
-   BULK SAVE
-===================================== */
-
 function saveBulk(){
  if(!adminMode || !bulkDraft.length) return;
-
  const section=document.getElementById("bulkSection").value;
  if(!Array.isArray(data[section])) data[section]=[];
-
  data[section].push(...bulkDraft.map(q=>[...q]));
-
- const added=bulkDraft.length;
  bulkDraft=[];
-
  document.getElementById("bulkSaveButton").style.display="none";
  document.getElementById("bulkPreview").innerHTML="";
  document.getElementById("bulkText").value="";
- document.getElementById("bulkMessage").textContent=
-  added+"টি প্রশ্ন যোগ হয়েছে। এখন GitHub-এ Save করুন।";
-
+ document.getElementById("bulkMessage").textContent="প্রশ্নগুলো যোগ হয়েছে।";
  refreshAdminQuestions();
  renderQuestions();
+}
+
+/* =====================================
+   SUPABASE SYNC FUNCTIONS
+===================================== */
+
+function saveSupabaseConfig(){
+ const url = document.getElementById("supabaseUrl").value.trim();
+ const key = document.getElementById("supabaseKey").value.trim();
+ const msg = document.getElementById("supabaseMessage");
+
+ if(!url || !key){
+  msg.textContent="Supabase URL এবং Key দিতে হবে।";
+  return;
+ }
+
+ sessionStorage.setItem("garmentsSupabaseUrl", url);
+ sessionStorage.setItem("garmentsSupabaseKey", key);
+ supabaseClient = window.supabase.createClient(url, key);
+ msg.textContent="Supabase কনফিগারেশন সংরক্ষিত হয়েছে।";
+}
+
+function clearSupabaseConfig(){
+ sessionStorage.removeItem("garmentsSupabaseUrl");
+ sessionStorage.removeItem("garmentsSupabaseKey");
+ document.getElementById("supabaseUrl").value = "";
+ document.getElementById("supabaseKey").value = "";
+ document.getElementById("supabaseMessage").textContent = "Supabase কনফিগারেশন মুছে ফেলা হয়েছে।";
+}
+
+async function saveToSupabase(){
+ const msg = document.getElementById("supabaseMessage");
+ const url = sessionStorage.getItem("garmentsSupabaseUrl");
+ const key = sessionStorage.getItem("garmentsSupabaseKey");
+
+ if(!url || !key){
+  msg.textContent="প্রথমে Supabase URL এবং Key সেভ করুন।";
+  return;
+ }
+
+ msg.textContent="Supabase-এ ডাটা আপডেট করা হচ্ছে...";
+
+ try{
+  if(!supabaseClient){
+   supabaseClient = window.supabase.createClient(url, key);
+  }
+
+  const output = {};
+  output._sections = sections.map(section=>({
+   key: section.key,
+   bn: section.bn,
+   emoji: section.emoji,
+   visible: section.visible
+  }));
+
+  sections.forEach(section=>{
+   output[section.key] = Array.isArray(data[section.key]) ? data[section.key] : [];
+  });
+
+  // Upsert to garments_data table (Assuming table has id=1 or similar primary key)
+  const { error } = await supabaseClient
+   .from("garments_data")
+   .upsert({ id: 1, payload: output });
+
+  if(error) throw error;
+
+  msg.textContent = "✅ সফলভাবে Supabase ডেটাবেজে সেভ হয়েছে!";
+ }catch(err){
+  msg.textContent = "❌ Supabase সেভ ব্যর্থ হয়েছে: " + err.message;
+ }
 }
 
 /* =====================================
@@ -1108,172 +1097,79 @@ function saveBulk(){
 
 function saveToken(){
  if(!adminMode) return;
-
  const token=document.getElementById("githubToken").value.trim();
-
  if(!token){
   document.getElementById("githubMessage").textContent="Token লিখুন।";
   return;
  }
-
  sessionStorage.setItem("garmentsGithubToken",token);
- document.getElementById("githubMessage").textContent="Token এই Session-এ সংরক্ষিত হয়েছে।";
+ document.getElementById("githubMessage").textContent="Token সংরক্ষিত হয়েছে।";
  document.getElementById("githubToken").value="";
 }
 
 function clearToken(){
  sessionStorage.removeItem("garmentsGithubToken");
- document.getElementById("githubToken").value="";
- document.getElementById("githubMessage").textContent="Token মুছে ফেলা হয়েছে।";
+ document.getElementById("githubMessage").textContent="Token মুছে ফেলা হয়েছে।";
 }
-
-/* =====================================
-   GITHUB API HELPERS
-===================================== */
-
-function getGithubHeaders(token){
- return {
-  "Authorization":"Bearer "+token,
-  "Accept":"application/vnd.github+json",
-  "X-GitHub-Api-Version":"2022-11-28",
-  "Content-Type":"application/json"
- };
-}
-
-function encodeBase64Unicode(text){
- const bytes=new TextEncoder().encode(text);
- let binary="";
- bytes.forEach(byte=>binary+=String.fromCharCode(byte));
- return btoa(binary);
-}
-
-/* =====================================
-   SAVE QUESTIONS.JSON TO GITHUB
-===================================== */
 
 async function saveToGithub(){
  if(!adminMode) return;
-
  const message=document.getElementById("githubMessage");
  const token=sessionStorage.getItem("garmentsGithubToken");
-
  if(!token){
-  message.textContent="প্রথমে GitHub Token দিন এবং Save Token চাপুন।";
+  message.textContent="প্রথমে GitHub Token দিন।";
   return;
  }
-
- const saveButton=document.querySelector("#tab-github .admin-primary:last-of-type");
- if(saveButton){
-  saveButton.disabled=true;
-  saveButton.textContent="Saving...";
- }
-
- message.textContent="GitHub-এর সঙ্গে সংযোগ করা হচ্ছে...";
-
+ message.textContent="GitHub-এ সেভ হচ্ছে...";
  try{
-  const apiURL=
-   "https://api.github.com/repos/"+
-   GITHUB_OWNER+"/"+GITHUB_REPO+
-   "/contents/"+GITHUB_FILE;
-
-  const headers=getGithubHeaders(token);
-
-  /* Get existing file SHA */
-  const getResponse=await fetch(apiURL,{
-   method:"GET",
-   headers
-  });
-
-  let sha=null;
-
-  if(getResponse.ok){
-   const existing=await getResponse.json();
-   sha=existing.sha;
-  }else if(getResponse.status!==404){
-   const error=await getResponse.json().catch(()=>({}));
-   throw new Error(error.message || "GitHub file read failed");
-  }
-
-  /* Prepare complete data */
-  const output={};
-
-  output._sections=sections.map(section=>({
-   key:section.key,
-   bn:section.bn,
-   emoji:section.emoji
-  }));
-
-  sections.forEach(section=>{
-   output[section.key]=Array.isArray(data[section.key])
-    ? data[section.key]
-    : [];
-  });
-
-  const jsonText=JSON.stringify(output,null,2);
-
-  const body={
-   message:"Update Garments Pro Notebook questions and sections",
-   content:encodeBase64Unicode(jsonText),
-   branch:GITHUB_BRANCH
+  const apiURL="https://api.github.com/repos/"+GITHUB_OWNER+"/"+GITHUB_REPO+"/contents/"+GITHUB_FILE;
+  const headers={
+   "Authorization":"Bearer "+token,
+   "Accept":"application/vnd.github+json",
+   "Content-Type":"application/json"
   };
 
-  if(sha) body.sha=sha;
+  const getRes = await fetch(apiURL, {method:"GET", headers});
+  let sha = null;
+  if(getRes.ok){
+   const fileData = await getRes.json();
+   sha = fileData.sha;
+  }
 
-  const putResponse=await fetch(apiURL,{
+  const output={};
+  output._sections=sections.map(s=>({key:s.key, bn:s.bn, emoji:s.emoji, visible:s.visible}));
+  sections.forEach(s=>{ output[s.key]=data[s.key] || []; });
+
+  const jsonText=JSON.stringify(output,null,2);
+  const bytes=new TextEncoder().encode(jsonText);
+  let binary="";
+  bytes.forEach(b=>binary+=String.fromCharCode(b));
+  const contentBase64=btoa(binary);
+
+  const putRes=await fetch(apiURL,{
    method:"PUT",
    headers,
-   body:JSON.stringify(body)
+   body:JSON.stringify({
+    message:"Update via Garments Admin Panel",
+    content:contentBase64,
+    branch:GITHUB_BRANCH,
+    sha: sha
+   })
   });
 
-  const result=await putResponse.json().catch(()=>({}));
-
-  if(!putResponse.ok){
-   throw new Error(result.message || "GitHub save failed");
-  }
-
-  githubSha=result.content?.sha || null;
-
-  message.textContent=
-   "✅ সফলভাবে GitHub-এ Save হয়েছে!\n"+
-   "Repository: "+GITHUB_OWNER+"/"+GITHUB_REPO+
-   "\nFile: "+GITHUB_FILE+
-   "\nSections: "+sections.length+
-   "\nQuestions: "+sections.reduce(
-    (total,section)=>total+(data[section.key] || []).length,0
-   );
-
- }catch(error){
-  message.textContent=
-   "❌ Save করা যায়নি: "+error.message+
-   "\nToken, Repository permission এবং Internet connection পরীক্ষা করুন।";
- }finally{
-  if(saveButton){
-   saveButton.disabled=false;
-   saveButton.textContent="☁️ Save Changes to GitHub";
-  }
+  if(!putRes.ok) throw new Error("GitHub save failed");
+  message.textContent="✅ সফলভাবে GitHub-এ Save হয়েছে!";
+ }catch(err){
+  message.textContent="❌ GitHub সেভ ব্যর্থ: "+err.message;
  }
 }
-
-/* =====================================
-   APP INITIALIZATION
-===================================== */
 
 document.addEventListener("DOMContentLoaded",()=>{
  if(sessionStorage.getItem("garmentsAdmin")==="yes"){
   adminMode=true;
  }
-
- const token=sessionStorage.getItem("garmentsGithubToken");
- if(token){
-  document.getElementById("githubToken").placeholder="Token এই Session-এ সংরক্ষিত আছে";
- }
-
  loadQuestionData();
 });
-
-/* =====================================
-   KEYBOARD SUPPORT
-===================================== */
 
 document.getElementById("adminPassword").addEventListener("keydown",event=>{
  if(event.key==="Enter") adminLogin();
@@ -1282,7 +1178,6 @@ document.getElementById("adminPassword").addEventListener("keydown",event=>{
 document.getElementById("adminModal").addEventListener("click",event=>{
  if(event.target.id==="adminModal") closeAdmin();
 });
-
 </script>
 </body>
 </html>
