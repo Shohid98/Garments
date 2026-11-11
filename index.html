@@ -230,13 +230,11 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
 
 .empty{text-align:center; color:var(--muted); padding:30px; grid-column: 1 / -1;}
 
-/* Responsive Fixes for Mobile View */
 @media(max-width:1024px){
  #questionList{grid-template-columns: repeat(2, 1fr);}
 }
 
 @media(max-width:650px){
- /* Mobile default: 1 column (one section per line) */
  .section-wrap{grid-template-columns: 1fr !important;}
  #questionList{grid-template-columns: 1fr !important;}
  header{padding:18px 12px}
@@ -348,7 +346,7 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
 <div id="sections" class="section-wrap"></div>
 
 <main class="container" id="mainContainer" style="display:none;">
- <button class="back-btn" onclick="goHome()" id="backButton">⬅️ সেকশন তালিকায় ফিরে যান</button>
+ <button class="back-btn" onclick="goBack()" id="backButton">⬅️ পিছনে ফিরে যান</button>
  <h2 class="section-heading" id="sectionHeading">✂️ কাটিং বিভাগ</h2>
  <div id="subSections" class="section-wrap" style="display:none; margin-bottom:20px;"></div>
  <div id="questionList"></div>
@@ -427,7 +425,6 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
     <div id="adminQuestionList" class="admin-question-list"></div>
    </div>
 
-   <!-- Sections Order, Visibility & Layout Tab -->
    <div id="tab-sections-config" class="admin-tab" style="display:none">
     <h3>👁️ Section Visibility, Order & Home Layout</h3>
     <p>হোমপেজে সেকশনগুলো কত কলামে দেখাবে তা সিলেক্ট করুন (মোবাইলে ডিফল্টভাবে ১ কলাম বা এক লাইনে প্রতিটি সেকশন দেখাবে)।</p>
@@ -444,7 +441,6 @@ body.dark .progress-container { background-color: rgba(255,255,255,0.05); }
     <div id="adminSectionOrderList" class="admin-section-list"></div>
    </div>
 
-   <!-- Header Branding Tab -->
    <div id="tab-header-config" class="admin-tab" style="display:none">
     <h3>🏷️ Header & Branding Configuration</h3>
     <label>মেইন হেডার টাইটেল</label>
@@ -526,13 +522,12 @@ const defaultSections = [
 
 let sections = defaultSections.map(s=>({...s}));
 let data = {};
-let currentSection = null; 
-let navigationStack = []; 
+let currentPathStack = []; // History stack for seamless back navigation
 let adminMode = false;
 let bulkDraft = [];
 let supabaseClient = null;
 let activeTimers = {};
-let homeLayoutCols = 1; // Default mobile & initial layout: 1 column (single line per section)
+let homeLayoutCols = 1; 
 let brandingConfig = {
  mainTitle: "Garments Pro",
  highlightTitle: "Notebook",
@@ -554,7 +549,7 @@ function initSupabaseConnection(){
 async function loadQuestionData(){
  initSupabaseConnection();
  const list = document.getElementById("questionList");
- list.innerHTML = '<div class="empty">⏳ Loading questions...</div>';
+ if(list) list.innerHTML = '<div class="empty">⏳ Loading questions...</div>';
 
  let loadedFromSupabase = false;
  if(supabaseClient){
@@ -567,6 +562,10 @@ async function loadQuestionData(){
       raw._sections = r.questions_json;
      } else if(r.section_key === "_settings"){
       raw._settings = r.questions_json;
+     } else if(r.section_key === "_admin_pass"){
+      if(r.questions_json && r.questions_json.pass){
+       localStorage.setItem("garmentsAdminPass", r.questions_json.pass);
+      }
      } else {
       raw[r.section_key] = r.questions_json;
      }
@@ -594,7 +593,7 @@ async function loadQuestionData(){
   }
  }
 
- renderSections();
+ renderCurrentView();
  updateHeaderBrandingUI();
  refreshAdminSelects();
  refreshAdminSectionsList();
@@ -605,7 +604,7 @@ function processRawData(raw){
  if(!raw || typeof raw !== "object" || Array.isArray(raw)) return;
  data = {};
  Object.keys(raw).forEach(key=>{
-  if(key !== "_sections" && key !== "_settings" && Array.isArray(raw[key])){
+  if(key !== "_sections" && key !== "_settings" && key !== "_admin_pass" && Array.isArray(raw[key])){
    data[key] = raw[key];
   }
  });
@@ -662,7 +661,8 @@ async function saveToSupabaseCloudAuto(){
   await supabaseClient.from('garments_data').delete().neq('id', 0);
   let rowsToInsert = [
    { section_key: "_sections", questions_json: sections },
-   { section_key: "_settings", questions_json: { layoutCols: homeLayoutCols, branding: brandingConfig } }
+   { section_key: "_settings", questions_json: { layoutCols: homeLayoutCols, branding: brandingConfig } },
+   { section_key: "_admin_pass", questions_json: { pass: getAdminPassword() } }
   ];
   Object.keys(data).forEach(secKey => {
    rowsToInsert.push({ section_key: secKey, questions_json: data[secKey] });
@@ -689,7 +689,8 @@ async function saveToSupabaseCloud(){
 
   let rowsToInsert = [
    { section_key: "_sections", questions_json: sections },
-   { section_key: "_settings", questions_json: { layoutCols: homeLayoutCols, branding: brandingConfig } }
+   { section_key: "_settings", questions_json: { layoutCols: homeLayoutCols, branding: brandingConfig } },
+   { section_key: "_admin_pass", questions_json: { pass: getAdminPassword() } }
   ];
   Object.keys(data).forEach(secKey => {
    rowsToInsert.push({ section_key: secKey, questions_json: data[secKey] });
@@ -760,28 +761,62 @@ function toggleFavorite(event, sec, idx){
  }
 
  localStorage.setItem("garmentsFavs", JSON.stringify(favs));
- renderQuestions();
+ renderCurrentView();
 }
 
-function renderSections(parentKey = null){
+// Navigation Handler with State Stack
+function renderCurrentView(){
+ const current = currentPathStack.length > 0 ? currentPathStack[currentPathStack.length - 1] : null;
+
+ if(!current){
+  // Home View
+  document.getElementById("sections").style.display = "grid";
+  document.getElementById("mainContainer").style.display = "none";
+  renderRootSections();
+ } else if(current === "FAVOURITES"){
+  document.getElementById("sections").style.display = "none";
+  document.getElementById("mainContainer").style.display = "block";
+  document.getElementById("sectionHeading").textContent = "❤️ ফেভারিট প্রশ্নসমূহ / Favorite Questions";
+  document.getElementById("subSections").style.display = "none";
+  renderQuestions();
+ } else {
+  // Check if it's a folder (has sub-sections) or a leaf section (has questions)
+  const isFolder = sections.some(s => s.parent === current && s.visible !== false);
+  document.getElementById("sections").style.display = "none";
+  document.getElementById("mainContainer").style.display = "block";
+
+  const selected = sections.find(s => s.key === current);
+  document.getElementById("sectionHeading").textContent = selected ? selected.emoji+" "+selected.bn+" / "+selected.key : "Questions";
+
+  if(isFolder){
+   document.getElementById("subSections").style.display = "none";
+   renderSubFolders(current);
+  } else {
+   document.getElementById("subSections").style.display = "none";
+   renderQuestions();
+  }
+ }
+}
+
+function renderRootSections(){
  const holder = document.getElementById("sections");
  holder.innerHTML = "";
  holder.style.gridTemplateColumns = `repeat(${window.innerWidth <= 650 ? 1 : homeLayoutCols}, 1fr)`;
 
- if(!parentKey){
-  const favBtn = document.createElement("button");
-  favBtn.className = "section-btn fav-section-btn";
-  favBtn.innerHTML = '<span class="emoji">❤️</span><span>ফেভারিট প্রশ্ন</span><small>Favorites</small>';
-  favBtn.onclick = () => openSection("FAVOURITES");
-  holder.appendChild(favBtn);
- }
+ const favBtn = document.createElement("button");
+ favBtn.className = "section-btn fav-section-btn";
+ favBtn.innerHTML = '<span class="emoji">❤️</span><span>ফেভারিট প্রশ্ন</span><small>Favorites</small>';
+ favBtn.onclick = () => {
+  currentPathStack.push("FAVOURITES");
+  renderCurrentView();
+ };
+ holder.appendChild(favBtn);
 
- const targetSections = sections.filter(s => (s.parent || null) === parentKey && s.visible !== false);
- 
- targetSections.forEach(section=>{
+ const rootSecs = sections.filter(s => !s.parent && s.visible !== false);
+ rootSecs.forEach(section => {
   const hasSub = sections.some(s => s.parent === section.key && s.visible !== false);
   const qCount = (data[section.key] || []).length;
-  
+
   const button = document.createElement("button");
   button.className = "section-btn";
   button.innerHTML =
@@ -790,32 +825,54 @@ function renderSections(parentKey = null){
    '<small>'+(hasSub ? '📁 ফোল্ডার' : qCount+' প্রশ্ন')+'</small>';
 
   button.onclick = () => {
-   if(hasSub){
-    navigationStack.push(parentKey);
-    renderSections(section.key);
-   } else {
-    openSection(section.key);
-   }
+   currentPathStack.push(section.key);
+   renderCurrentView();
   };
   holder.appendChild(button);
  });
+}
 
- if(parentKey){
-  const backMainBtn = document.createElement("button");
-  backMainBtn.className = "section-btn";
-  backMainBtn.style.background = "var(--btn-bg)";
-  backMainBtn.innerHTML = '<span class="emoji">⬅️</span><span>ফিরে যান</span>';
-  backMainBtn.onclick = () => {
-   const prev = navigationStack.pop() || null;
-   renderSections(prev);
-  };
-  holder.appendChild(backMainBtn);
+function renderSubFolders(parentKey){
+ const holder = document.getElementById("questionList");
+ holder.innerHTML = "";
+
+ const subSecs = sections.filter(s => s.parent === parentKey && s.visible !== false);
+ if(subSecs.length === 0){
+  renderQuestions();
+  return;
  }
+
+ subSecs.forEach(sub => {
+  const hasSub = sections.some(s => s.parent === sub.key && s.visible !== false);
+  const qCount = (data[sub.key] || []).length;
+
+  const button = document.createElement("button");
+  button.className = "section-btn";
+  button.style.marginBottom = "12px";
+  button.innerHTML =
+   '<span class="emoji">'+escapeHTML(sub.emoji)+'</span>'+
+   '<span>'+escapeHTML(sub.bn)+'</span>'+
+   '<small>'+(hasSub ? '📁 ফোল্ডার' : qCount+' প্রশ্ন')+'</small>';
+
+  button.onclick = () => {
+   currentPathStack.push(sub.key);
+   renderCurrentView();
+  };
+  holder.appendChild(button);
+ });
+}
+
+function goBack(){
+ if(currentPathStack.length > 0){
+  currentPathStack.pop();
+ }
+ document.getElementById("search").value = "";
+ renderCurrentView();
 }
 
 function changeHomeLayout(cols){
  homeLayoutCols = parseInt(cols) || 1;
- renderSections();
+ renderCurrentView();
  saveToSupabaseCloudAuto();
 }
 
@@ -837,67 +894,37 @@ function saveHeaderBranding(){
 }
 
 function openSection(sectionKey){
- currentSection = sectionKey;
- document.getElementById("sections").style.display = "none";
- document.getElementById("mainContainer").style.display = "block";
-
- if(sectionKey === "FAVOURITES"){
-  document.getElementById("sectionHeading").textContent = "❤️ ফেভারিট প্রশ্নসমূহ / Favorite Questions";
-  document.getElementById("subSections").style.display = "none";
- } else {
-  const selected = sections.find(s=>s.key===currentSection);
-  document.getElementById("sectionHeading").textContent =
-   selected ? selected.emoji+" "+selected.bn+" / "+selected.key : "Questions";
-   
-  const subSecs = sections.filter(s => s.parent === sectionKey && s.visible !== false);
-  const subHolder = document.getElementById("subSections");
-  subHolder.innerHTML = "";
-  if(subSecs.length > 0){
-   subHolder.style.display = "grid";
-   subSecs.forEach(sub => {
-    const subBtn = document.createElement("button");
-    subBtn.className = "section-btn";
-    subBtn.innerHTML = '<span class="emoji">'+escapeHTML(sub.emoji)+'</span><span>'+escapeHTML(sub.bn)+'</span>';
-    subBtn.onclick = () => openSection(sub.key);
-    subHolder.appendChild(subBtn);
-   });
-  } else {
-   subHolder.style.display = "none";
-  }
- }
-
- renderQuestions();
+ currentPathStack.push(sectionKey);
+ renderCurrentView();
 }
 
 function goHome(){
- currentSection = null;
- navigationStack = [];
+ currentPathStack = [];
  document.getElementById("search").value = "";
- document.getElementById("sections").style.display = "grid";
- document.getElementById("mainContainer").style.display = "none";
- renderSections(null);
+ renderCurrentView();
 }
 
 function handleSearch(){
  const searchVal = document.getElementById("search").value.trim();
- if(searchVal && currentSection === null){
+ if(searchVal && currentPathStack.length === 0){
   const visibleSections = sections.filter(s=>s.visible !== false);
   if(visibleSections.length > 0){
    openSection(visibleSections[0].key);
   }
  }
- renderQuestions();
+ renderCurrentView();
 }
 
 function renderQuestions(){
- if(!currentSection) return;
+ const current = currentPathStack[currentPathStack.length - 1];
+ if(!current) return;
 
  const holder = document.getElementById("questionList");
  const search = document.getElementById("search").value.trim().toLowerCase();
  
  let questionsToRender = [];
 
- if(currentSection === "FAVOURITES"){
+ if(current === "FAVOURITES"){
   const favs = getFavorites();
   favs.forEach(f => {
    if(data[f.sec] && data[f.sec][f.idx]){
@@ -905,8 +932,8 @@ function renderQuestions(){
    }
   });
  } else {
-  let targetKeys = [currentSection];
-  let subList = sections.filter(s => s.parent === currentSection && s.visible !== false);
+  let targetKeys = [current];
+  let subList = sections.filter(s => s.parent === current && s.visible !== false);
   subList.forEach(sub => targetKeys.push(sub.key));
 
   targetKeys.forEach(sk => {
@@ -1078,7 +1105,7 @@ function adminLogin(){
   message.textContent="";
   document.getElementById("adminPassword").value="";
   showAdminTools();
-  renderQuestions();
+  renderCurrentView();
  }else{
   message.textContent="পাসওয়ার্ড ভুল হয়েছে!";
  }
@@ -1108,6 +1135,7 @@ function changeAdminPassword(){
  document.getElementById("oldPassword").value = "";
  document.getElementById("newPassword").value = "";
  document.getElementById("confirmPassword").value = "";
+ saveToSupabaseCloudAuto();
 }
 
 function showAdminTools(){
@@ -1124,7 +1152,7 @@ function adminLogout(){
  sessionStorage.removeItem("garmentsAdmin");
  document.getElementById("adminTools").style.display="none";
  document.getElementById("adminLoginBox").style.display="grid";
- renderQuestions();
+ renderCurrentView();
 }
 
 function showAdminTab(tab,button){
@@ -1179,7 +1207,7 @@ function refreshAdminSectionsList(){
 function toggleSectionVisibility(index, isVisible){
  if(sections[index]){
   sections[index].visible = isVisible;
-  renderSections();
+  renderCurrentView();
   saveToSupabaseCloudAuto();
  }
 }
@@ -1191,7 +1219,7 @@ function moveSection(index, direction){
  sections[index] = sections[newIndex];
  sections[newIndex] = temp;
  refreshAdminSectionsList();
- renderSections();
+ renderCurrentView();
  saveToSupabaseCloudAuto();
 }
 
@@ -1209,7 +1237,7 @@ function addSection(){
  if(!key || !bn) return alert("নাম দিন।");
  sections.push({key, bn, emoji, visible:true, parent});
  data[key]=[];
- renderSections();
+ renderCurrentView();
  refreshAdminSelects();
  refreshAdminSectionsList();
  document.getElementById("newSectionKey").value="";
@@ -1225,7 +1253,7 @@ function deleteSection(){
  if(!confirm(`Are you sure you want to delete section "${sec}"?`)) return;
  sections = sections.filter(s => s.key !== sec && s.parent !== sec);
  delete data[sec];
- renderSections();
+ renderCurrentView();
  refreshAdminSelects();
  refreshAdminSectionsList();
  alert("সেকশন ডিলিট হয়েছে।");
@@ -1255,7 +1283,7 @@ function saveQuestion(){
 
  clearQuestionForm();
  refreshAdminQuestions();
- renderQuestions();
+ renderCurrentView();
  saveToSupabaseCloudAuto();
 }
 
@@ -1285,7 +1313,7 @@ function deleteQuestion(sec, idx){
  if(!confirm("এই প্রশ্নটি ডিলিট করতে চান?")) return;
  data[sec].splice(idx, 1);
  refreshAdminQuestions();
- renderQuestions();
+ renderCurrentView();
  saveToSupabaseCloudAuto();
 }
 
